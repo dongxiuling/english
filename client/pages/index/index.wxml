@@ -1,61 +1,58 @@
 <!--index.wxml-->
-<view class="container">
-    <!-- 用户登录测试 -->
-    <view class="userinfo" bindtap="login">
-        <image
-            class="userinfo-avatar"
-            src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}"
-            background-size="cover"
-        ></image>
-        <view>
-            <text class="userinfo-nickname">{{logged ? userInfo.nickName : '点击测试登录接口'}}</text>
-            <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
-        </view>
-    </view>
-
-    <!-- 信道连接测试 -->
-    <view class="tunnel">
-        <view class="tunnel-text uploader-text">
-            <text bindtap="doRequest">请求（是否带有登陆态）</text>
-            <switch class="tunnel-switch" bindchange="switchRequestMode" color="#007AFF"/>
-        </view>
-        <view class="tunnel-text" wx:if="{{requestResult}}">
-            <text class="request-text">{{'请求结果：' + requestResult}}</text>
-        </view>
-    </view>
-
-    <!-- 上传图片测试 -->
-    <view class="uploader">
-        <view class="uploader-text" bindtap="doUpload">
-            <text>上传图片</text>
-        </view>
-        <view class="uploader-container" wx:if="{{imgUrl}}">
-            <image
-                class="uploader-image"
-                src="{{imgUrl}}"
-                mode="aspectFit"
-                bindtap="previewImg"
-            ></image>
-        </view>
-    </view>
-
-    <!-- 信道连接测试 -->
-    <view class="tunnel">
-        <view class="tunnel-text">
-            <text>信道</text>
-            <switch class="tunnel-switch" bindchange="switchChange" color="#007AFF"/>
-        </view>
-        <view class="tunnel-text {{ tunnelStatus && tunnelStatus === 'connected' ? 'active' : 'disable' }}" bindtap="sendMessage">
-            <text>发送消息</text>
-        </view>
-    </view>
-
-    <!-- 上传图片测试 -->
-    <view class="uploader">
-        <navigator url="../addCgi/addCgi" open-type="navigate" class="uploader-text">
-            <text>快速增加 CGI</text>
-        </navigator>
-    </view>
+<!-- 轮播图 -->
+<swiper indicator-dots="{{indicatorDots}}"  
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" >  
+      <block wx:for="{{imgUrls}}">  
+        <swiper-item>  
+           <navigator url="{{item.link}}" hover-class="navigator-hover">  
+            <image src="{{item.url}}" class="slide-image" />  
+           </navigator>   
+        </swiper-item>  
+      </block>  
+</swiper>  
+<!-- 轮播图 结束-->
+<!-- 搜索 -->
+<view class='page_row' bindtap="suo">  
+  <view class="search">  
+    <view class="df search_arr">  
+      <icon class="searchcion" size='20' type='search'></icon>  
+      <input class="" placeholder="请输入关键字" value="{{searchValue}}"/>  
+    </view>  
+  </view>  
+  <view hover-class="find" class='sousuo'>搜索</view>  
 </view>
-
-aaa
+<!-- 搜索结束 -->
+<view class="ranking-list">英语达人排行榜</view>
+<view wx:for="{{rank}}">
+<view class="rank">
+  <view  class="top">
+    <text class='top-list' font-style='italic'>{{item.list}}</text>
+     <image  src="{{item.url}}"></image> 
+    <text class='top-name'>{{item.name}}</text>
+    <view class="top-money">金币</view>
+  </view>
+  
+</view>
+</view>
+<text class="index-title">最新文章</text>
+<view class='index-article'  > 
+    <view  class="index-line" wx:for="{{items}}" wx:for-item="item">
+    <view class='index-writer'>
+        <view><image class="head-port" src="{{item.url}}"></image></view>  
+      <view class='index-name'>
+        <view>姓名：{{item.title}}</view>
+        <view>时间：点1</view>
+      </view>  
+    </view>
+    <view >
+          <textarea 
+  class="content" placeholder="shuru1" auto-focus />
+  <view class="index-post">
+    <view>分享</view>
+    <view>评论</view>
+    <view>收藏</view>
+  </view>
+  </view>
+ </view>
+</view>
+<view class="index-bottom">到底啦</view>

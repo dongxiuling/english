@@ -1,2 +1,22 @@
-<!--pages/forum/forum.wxml-->
-<text>pages/forum/forum.wxml</text>
+<view><image class='head' src='{{imageurl}}'></image></view>
+<view class='index-article'  > 
+    <view  class="index-line" >
+    <view class='index-writer'>
+        <view><image class="head-port" src="{{head_url}}"></image></view>  
+      <view class='index-name'>
+        <view>姓名：{{head_title}}</view>
+        <view>时间：点1</view>
+      </view>  
+    </view>
+    <view >
+          <textarea 
+  class="content" placeholder="shuru1" auto-focus />
+  <view class="index-post">
+    <view>分享</view>
+    <view>评论</view>
+    <view>收藏</view>
+  </view>
+  </view>
+ </view>
+</view>
+<view class='publish' hover-class="index-pub">发布+</view>
