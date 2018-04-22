@@ -1,13 +1,38 @@
 {
-  "pages":[
+  "pages": [
+    "pages/myInfo/myInfo",
     "pages/index/index",
-    "pages/addCgi/addCgi"
+    "pages/addCgi/addCgi",
+    "pages/forum/forum"
   ],
-  "window":{
-    "backgroundColor":"#F6F6F6",
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "Wafer Quick Start",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath":"images/index.png",
+        "selectedIconPath":"images/index_selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/forum/forum",
+        "iconPath": "images/forum.png",
+        "selectedIconPath": "images/forum_selected.png",
+        "text": "论坛"
+      },
+      {
+        "pagePath": "pages/myInfo/myInfo",
+        "iconPath": "images/myinfo.png",
+        "selectedIconPath": "images/myinfo_selected.png",
+        "text": "我的"
+      }
+    ],
+    "selectedColor":"#1f9e83"
   }
 }
