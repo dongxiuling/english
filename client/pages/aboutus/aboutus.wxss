@@ -1,0 +1,12 @@
+/* pages/aboutus/aboutus.wxss */
+view{
+  border: 1px solid #ccc;
+  width: 90%;
+  height: 400rpx;
+  margin: 200rpx auto;
+  font-size: 28rpx;
+  padding: 25rpx 25rpx;
+}
+text{
+  line-height: 50rpx;
+}

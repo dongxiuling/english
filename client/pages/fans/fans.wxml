@@ -1,0 +1,6 @@
+<!--pages/fans/fans.wxml-->
+<view class='fans_container'>
+    <image class='fans_icon' src='../../images/myinfo.png'></image>
+    <text class='fans_name'>阿呆</text>
+    <button class='fans_state'>已关注</button>
+</view>

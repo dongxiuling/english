@@ -1,0 +1,27 @@
+/* pages/fans/fans.wxss */
+.fans_container{
+  height: 200rpx;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  padding: 25rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+.fans_icon{
+  width: 100rpx;
+  height: 100rpx;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  margin-right:20rpx; 
+}
+.fans_name{
+  font-size: 32rpx;
+}
+.fans_state{
+  width: 200rpx;
+  font-size: 28rpx;
+  position: absolute;
+  right: 20rpx;
+}
