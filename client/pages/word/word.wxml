@@ -1,0 +1,42 @@
+<view>
+  <view class='head' id='header'>
+        <icon type='search' size='13'></icon>
+        <input placeholder='查询中文或英文'></input>
+        <text id='cancel' bindtap='backIndex'>取消</text>
+  </view>
+
+  <view class='wrapper' id='commit'>
+        <view id='content-line'>
+          <text class='title' id='word'>word</text>
+          <image id='trumIcon'src='../../images/trum.png'></image>
+        </view>
+        <text id='cont'>{{cont}}</text>
+  </view>
+
+  <view class='wrapper' id='commit'>
+    <view id='content-line'>
+          <text class='title' id='mean'>例句</text>
+          <image id='rightIcon' src='../../images/right.png'></image>
+    </view>
+    <view id='content-line'>
+          <text id='word-one'>{{wordOne}}</text>
+    </view>
+          <text id='word-two'>{{wordTwo}}</text>
+    
+  </view>
+
+  <view class='wrapper' id='commit'>
+      <view id='content-line'>
+        <image id='bookIcon'src='../../images/book.png'></image>
+        <text class='title' id='book'>笔记</text>
+        <image id='rightIcon'src='../../images/right.png' bindtap='goText'></image>
+      </view>
+        <text id='cont'>{{contt}}</text>
+        <view id='auther'>作者:{{auther}}</view>
+        <image id='starIcon'src='../../images/star.png'></image>
+  </view>
+  <view class='wrapper'>
+      <text class='go' id='goOne' bindtap='goCreate'>去翻译</text>
+      <text class='go' id='goTwo'>去发音</text>
+  </view>
+</view>

@@ -1,9 +1,14 @@
 {
   "pages": [
-    "pages/myInfo/myInfo",
     "pages/index/index",
+    "pages/myInfo/myInfo",
     "pages/addCgi/addCgi",
-    "pages/forum/forum"
+    "pages/forum/forum",
+    "pages/createNote/createNote",
+    "pages/word/word",
+    "pages/issue/issue",
+    "pages/put_art/put_art",
+    "pages/text/text"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -16,8 +21,8 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath":"images/index.png",
-        "selectedIconPath":"images/index_selected.png",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index_selected.png",
         "text": "首页"
       },
       {
@@ -33,6 +38,6 @@
         "text": "我的"
       }
     ],
-    "selectedColor":"#1f9e83"
+    "selectedColor": "#1f9e83"
   }
 }

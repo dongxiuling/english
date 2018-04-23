@@ -1,9 +1,10 @@
 //index.js
 //获取应用实例
-
+const app = getApp();
 
 Page({
   data: {
+   
    rank:[
      {
       list:"1",
@@ -49,7 +50,8 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    userInfo: {}   
+    userInfo: {},
+    searchText: '' 
   },
   
   bindFormSubmit: function (e) {
@@ -64,17 +66,31 @@ Page({
       icon:"loading",
       duration:500
     })
-    wx.request({
-      url:API_URL,
-      data:{},
-      header:{
-        'Content-Type':'application/json'
-      },
-      success:function(res){
-       
-      }
+    
+  },
+  //事件处理函数
+
+
+
+
+  //获取输入框的值
+  getText:function(e){
+    this.setData({
+      searchText: e.detail.value
+    })
+  },
+  //跳转单词详情页
+  toWord:function(){  
+    if(this.data.searchText != ''){
+      var searchContent = this.data.searchText;
+      wx.navigateTo({
+        url: '../word/word?searchContent='+searchContent,
+      })
+    }   
+  },
+  toPut_art:function(){
+    wx.navigateTo({
+      url: '../put_art/put_art',
     })
   }
-  //事件处理函数
- 
 })

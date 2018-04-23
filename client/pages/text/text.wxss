@@ -1,0 +1,68 @@
+page{
+  background: #eeeeee
+}
+.wrapper{
+   width: 690rpx;
+   margin: 0 auto;
+}
+#content-line{
+  border-bottom:1rpx solid #e1e1e1;
+}
+#commit{
+  height: 250rpx;
+  border: 1rpx solid #e1e1e1;
+  background: #fff;
+  margin-top:30rpx;
+}
+.title{
+  color: #209e85;
+  font-size: 50rpx;
+  margin-left: 20rpx
+}
+#trumIcon{
+  width: 40rpx;
+  height: 40rpx;
+  float: right;
+  margin-top: 13rpx;
+  margin-right: 13rpx;
+  padding-left:10rpx;
+  border-left: 3rpx solid #e1e1e1;
+}
+.title{
+  color: #209e85;
+  font-size: 50rpx;
+  margin-left: 20rpx
+}
+#starIcon{
+  width: 30rpx;
+  height: 30rpx;
+  float: right;
+  margin-right:10rpx;
+  padding-bottom: 30rpx
+}
+#cont{
+  color: #a7a7a7;
+  font-size: 30rpx;
+  padding-left:20rpx;
+  padding-right: 20rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+
+#auther{
+  color: grey;
+  font-size: 30rpx;
+  padding-left:20rpx;
+  margin-top: 50rpx;
+}
+#pensilIcon{
+  width: 60rpx;
+  height: 60rpx;
+  float: right;
+  margin: 50rpx;
+}

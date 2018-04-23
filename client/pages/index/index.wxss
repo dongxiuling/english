@@ -3,7 +3,7 @@
     width: 100%;
 } 
 swiper{
-  height: 80px;
+  height: 160rpx;
 } 
 
 /**index.wxss**/
@@ -13,18 +13,21 @@ swiper{
 .df search_arr{
   display: flex;
   align-items: center;
+ 
 }
 .search_arr {  
-  border: 1px solid #d0d0d0;  
+  border: 2rpx solid #d0d0d0;  
   border-radius: 10rpx;  
   margin-left: 20rpx;  
   margin-top:10rpx;
+  background: #eee;
 }  
 .search_arr input{  
   margin-left: 60rpx;  
   height: 55rpx;
   padding-top:5rpx;
-  border-radius: 5px;  
+  border-radius: 20rpx; 
+  font-size: 30rpx; 
 }  
 .bc_text {  
   line-height: 68rpx;  
@@ -33,7 +36,7 @@ swiper{
 }  
   
 .sousuo { 
-    margin-top:10rpx;
+  margin-top:10rpx;
   margin-left: 15rpx;  
   width: 15%;
   line-height: 58rpx;  
@@ -41,37 +44,38 @@ swiper{
   text-align: center;  
   border: 1px solid #d0d0d0;  
   border-radius: 10rpx;
+  font-size: 30rpx;
   color:#333;  
 }  
 .page_row{  
   display: flex;  
   flex-direction: row;
-  margin-top:1rpx;  
+  margin-top:2rpx;  
 }  
 .searchcion {  
   margin: 12rpx 10rpx 10rpx 10rpx;  
   position: absolute;  
   left:25rpx;  
   z-index: 2;  
-  width: 20px;  
-  height: 20px;  
+  width: 40rpx;  
+  height: 40rpx;  
   text-align: center;  
 }  
 .find{
-  background: #ff6700;
+  background: #209e85;
   color: #fff;
 }
 
 /* 排行榜 */
 .ranking-list{
-  height: 40px;
+  height: 80rpx;
   width: 100%;
-  line-height: 40px;
+  line-height: 80rpx;
   text-align: center;
- 
+  margin-top:20rpx;
    background: #209E85;
    color: #fff;
-   font-size: 18px;
+   font-size: 36rpx;
 }
 .rank{
  
@@ -85,25 +89,25 @@ swiper{
   align-items: center;
 }
 .top-list{
-  line-height: 30px;
+  line-height: 60rpx;
   font-family: Microsoft JhengHei;
-  font-size: 10px;
+  font-size: 24rpx;
   font-weight: 900;
   color: orange;
 }
 .top image{
-  width: 25px;
-  height: 25px;
+  width: 50rpx;
+  height: 50rpx;
   border-radius: 50%;
-  margin-left: 15px;
+  margin-left: 30rpx;
 }
 .top-name{
-  font-size: 12px;
-  margin-left: 8px;
+  font-size: 24rpx;
+  margin-left: 16rpx;
 }
 .top-money{
-  
-  margin-left: 120px;
+  font-size: 30rpx;
+  margin-left: 240rpx;
 }
 /* 排行榜结束 */
 
@@ -124,27 +128,29 @@ swiper{
  
 }
 .index-name{
-  font-size: 12px;
+  font-size: 24rpx;
   display: flex;
   flex-direction: column;
-  padding-top: 31px;
+  padding-top: 62rpx;
 }
 
 .index-title{
-  font-weight:600;
+  margin-left:20rpx;
+  font-size: 40rpx;
+  font-weight:500;
 }
 .head-port{
-  width: 50px;
-  height: 50px;
- margin: 15px 10px 0 15px;
+  width: 100rpx;
+  height: 100rpx;
+ margin: 30rpx 20rpx 0 30rpx;
 }
 
 .content{
   width: 90%;
-  height:150px;
+  height:220rpx;
  border-radius: 10rpx;  
   margin-left: 5%;
-   margin-top:80px;
+   margin-top:160rpx;
   
 }
 .center{
@@ -154,21 +160,21 @@ swiper{
 .index-post{
   display: flex;
    justify-content: flex-end;
-   padding-right: 15px;
+   padding-right: 30rpx;
    
 }
 .index-post view{
-  width: 40px;
-  height:30px;
-  font-size: 12px;
-  margin: 5px 2px 5px 0;
+  width: 80rpx;
+  height:60rpx;
+  font-size: 24rpx;
+  margin: 10rpx 4rpx 10rpx 0;
   text-align: center;
-  line-height: 30px;
-   border: 1px solid #d0d0d0;  
+  line-height: 60rpx;
+   border: 2rpx solid #d0d0d0;  
   border-radius: 10rpx;  
 }
 .index-line{
-  border-bottom: 1px solid #d0d0d0;
+  border-bottom: 2rpx solid #d0d0d0;
 }
 .index-bottom{
   text-align: center;

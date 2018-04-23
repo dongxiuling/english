@@ -1,6 +1,6 @@
 <view><image class='head' src='{{imageurl}}'></image></view>
 <view class='index-article'  > 
-    <view  class="index-line" >
+    <view  class="index-line" bindtap='toPut_art' >
     <view class='index-writer'>
         <view><image class="head-port" src="{{head_url}}"></image></view>  
       <view class='index-name'>
@@ -10,13 +10,13 @@
     </view>
     <view >
           <textarea 
-  class="content" placeholder="shuru1" auto-focus />
+  class="content" placeholder="shuru1"  disabled='true'/>
   <view class="index-post">
-    <view>分享</view>
-    <view>评论</view>
-    <view>收藏</view>
+    <view hover-class='find'>分享</view>
+    <view hover-class='find' bindtap='toPut_art'>评论</view>
+    <view hover-class='find'>收藏</view>
   </view>
   </view>
  </view>
 </view>
-<view class='publish' hover-class="index-pub">发布+</view>
+<view class='publish' hover-class="index-pub" bindtap='toPublish'>发布+</view>

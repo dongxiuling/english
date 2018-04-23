@@ -12,14 +12,14 @@
 </swiper>  
 <!-- 轮播图 结束-->
 <!-- 搜索 -->
-<view class='page_row' bindtap="suo">  
+<view class='page_row'>  
   <view class="search">  
     <view class="df search_arr">  
-      <icon class="searchcion" size='20' type='search'></icon>  
-      <input class="" placeholder="请输入关键字" value="{{searchValue}}"/>  
+      <icon class="searchcion" size='18' type='search'></icon>  
+      <input class="" bindinput="getText" placeholder="请输入中文或英文" value="{{searchValue}}"/>  
     </view>  
   </view>  
-  <view hover-class="find" class='sousuo'>搜索</view>  
+  <view hover-class="find" class='sousuo' bindtap='toWord'>搜索</view>  
 </view>
 <!-- 搜索结束 -->
 <view class="ranking-list">英语达人排行榜</view>
@@ -35,7 +35,7 @@
 </view>
 </view>
 <text class="index-title">最新文章</text>
-<view class='index-article'  > 
+<view class='index-article'  bindtap='toPut_art'> 
     <view  class="index-line" wx:for="{{items}}" wx:for-item="item">
     <view class='index-writer'>
         <view><image class="head-port" src="{{item.url}}"></image></view>  
@@ -46,11 +46,11 @@
     </view>
     <view >
           <textarea 
-  class="content" placeholder="shuru1" auto-focus />
+  class="content" placeholder="shuru1"  disabled='true'/>
   <view class="index-post">
-    <view>分享</view>
-    <view>评论</view>
-    <view>收藏</view>
+    <view hover-class='find'>分享</view>
+    <view hover-class='find' bindtap='toPut_art'>评论</view>
+    <view hover-class='find'>收藏</view>
   </view>
   </view>
  </view>

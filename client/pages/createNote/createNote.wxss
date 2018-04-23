@@ -1,0 +1,14 @@
+.create{
+  width: 80%;
+  border: 2rpx solid #ccc;
+  font-size: 30rpx;
+  text-indent: 40rpx;
+}
+.finish{
+  width:140rpx;
+  height:80rpx;
+  line-height: 80rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
