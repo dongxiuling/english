@@ -1,0 +1,110 @@
+/* pages/private_message/alter/alter.wxss */
+page
+{
+  background: #ccc;
+}
+.head
+{
+  height: 100rpx;
+  background: #fff;
+  display: flex;
+  flex-direction:row; 
+  align-items: center;
+  text-align: center;
+  border-bottom: 2px solid #ccc;
+}
+.icon-back
+{
+  margin-left:16rpx; 
+  float: left;
+  font-size: 52rpx; 
+  color: #ccc;
+  flex: 1;
+  margin: 0;
+}
+.title
+{
+  flex: 5;
+  font-size:40rpx;
+}
+icon
+{
+  flex: 1;
+}
+.body
+{
+  width: 100%;
+  padding:30rpx 20rpx 50rpx 20rpx;
+  display: flex;
+  flex-direction: column; 
+  background: #fff;
+}
+.logo
+{
+  flex: 2;
+  display: flex;
+  flex-direction:row;
+  align-items: center; 
+}
+image
+{
+  height: 240rpx;
+  width: 240rpx;
+  border-radius: 50%;
+  margin-left:50rpx; 
+}
+.alter-logo
+{
+   flex: 1;
+}
+.form
+{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  margin-top:50rpx;  
+}
+.input
+{
+  flex: 1;
+  display: flex;
+  flex-direction:row; 
+  text-align: center;
+  height: 100rpx;
+}
+input
+{
+  border-bottom: 1px solid #ccc;
+  flex: 4
+}
+input.focus
+{
+  border-bottom:2px solid #1f9e83; 
+}
+label
+{
+  display: block;
+  flex: 1;
+  text-align: center;
+  margin-right:30rpx; 
+}
+.intel
+{
+  display: flex;
+  flex-direction: row;
+}
+#intel
+{
+  flex: 3;
+  height:240rpx;
+  width: 440rpx; 
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.picker
+{
+  flex: 1;
+  height:75rpx;
+  display: flex;
+  text-align: center;
+}

@@ -1,0 +1,86 @@
+/* pages/money/gords/gords.wxss */
+page
+{
+  background: #ccc;
+}
+.head
+{
+  height: 100rpx;
+  background: #fff;
+  display: flex;
+  flex-direction:row; 
+  align-items: center;
+  text-align: center;
+  border-bottom: 2px solid #ccc;
+}
+.icon-back
+{
+  margin-left:16rpx; 
+  float: left;
+  font-size: 52rpx; 
+  color: #ccc;
+  flex: 1;
+  margin: 0;
+}
+.title
+{
+  flex: 5;
+  font-size:40rpx;
+  text-align: center
+}
+.hide
+{
+  flex: 1;
+}
+.body
+{
+  background: #fff;
+  display: flex;
+  flex-direction:column;
+  align-items: center; 
+  padding: 50rpx 50rpx;
+}
+.gord
+{
+  flex: 1;
+  width: 100%;
+  padding: 30rpx 30rpx;
+  display: flex;
+  flex-direction:row; 
+  align-items: center;
+}
+.logo
+{
+  flex: 2;
+  width: 200rpx;
+  height: 200rpx;
+  text-align: left;
+}
+.detel
+{
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  text-indent: 2rem;
+}
+.name
+{
+  flex: 1;
+}
+.privce
+{
+  flex: 1;
+  color: #1f9e83;
+  font-size:0.8em; 
+}
+.duihuan
+{
+  flex: 1;
+  background: #1f9e83;
+  color: #fff;
+  border-radius:50%;
+  height: 100rpx; 
+  width: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+}

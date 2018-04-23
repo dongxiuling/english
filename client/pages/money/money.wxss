@@ -1,0 +1,100 @@
+/* pages/money/money.wxss */
+page
+{
+  background: #ccc;
+}
+.head
+{
+  height: 100rpx;
+  background: #fff;
+  display: flex;
+  flex-direction:row; 
+  align-items: center;
+  text-align: center;
+  border-bottom: 2px solid #ccc;
+}
+.icon-back
+{
+  margin-left:16rpx; 
+  float: left;
+  font-size: 52rpx; 
+  color: #ccc;
+  flex: 1;
+  margin: 0;
+}
+.title
+{
+  flex: 5;
+  font-size:40rpx;
+}
+.hide
+{
+  flex: 1;
+}
+.body
+{
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.money
+{
+  width: 100%;
+  height: 150rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom:10rpx solid #ccc; 
+}
+.mymoney
+{
+  flex: 1;
+  text-align: right;
+}
+.num
+{
+  flex: 1;
+  color: #1f9e83;
+}
+.quduihuan
+{
+  display: block;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius:50%;
+  border: 2px solid #ccc;
+  background: #1f9e83;
+  color: #fff;
+  flex: 1;
+  text-align: center;
+  margin-right:50rpx; 
+}
+.rule
+{
+  padding: 150rpx 50rpx  100rpx;
+  display: flex;
+  flex-direction:column;
+  align-items: center; 
+}
+.rules
+{
+  flex: 1;
+  height: 75rpx;
+  line-height: 75rpx;
+}
+.gord
+{
+  padding: 0rpx 30rpx  50rpx;
+  display: flex;
+  flex-direction:column;
+  align-items: center; 
+}
+.gords
+{
+  display: block;
+  flex: 1;
+  height: 100rpx;
+  line-height: 100rpx;
+}

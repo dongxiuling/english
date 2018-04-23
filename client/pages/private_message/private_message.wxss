@@ -1,0 +1,115 @@
+/* pages/private_message/private_message.wxss */
+.head
+{
+  width:100%;
+  height: 500rpx;
+  background-size:cover; 
+  background-position:0 0; 
+  overflow: hidden;
+}
+.title
+{
+  margin-top:24rpx; 
+  position: relative;
+  overflow: hidden;
+}
+.iconfont
+{
+  color: #fff;
+  font-size: 52rpx;
+}
+.icon-back
+{
+  margin-left:16rpx; 
+  float: left;
+}
+.icon-pinglun
+{
+  position: absolute;
+  right: 24rpx;
+}
+.logo
+{
+  background-size:cover;
+  background-position:center center;
+  width: 240rpx;
+  height: 240rpx;
+  border-radius:50%;
+  margin: 50rpx auto 30rpx;   
+}
+.id
+{
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 
+}
+.message
+{
+  width: 100%;
+  background: #ccc;
+  overflow: hidden;
+}
+.message-top
+{
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.article
+{
+  flex: 1;
+  height: 75rpx;
+  line-height: 75rpx;
+}
+.note
+{
+  flex: 1;
+  height: 75rpx;
+  line-height: 75rpx;
+}
+.guanzhu
+{
+  flex: 1;
+  height: 75rpx;
+  line-height: 75rpx;
+}
+.fans
+{
+  flex: 1;
+  height: 75rpx;
+  line-height: 75rpx;
+}
+.number
+{
+  color: #1f9e83;
+  text-align: center;
+  height: 75rpx;
+  line-height: 75rpx;
+}
+.message-bottom
+{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #fff;
+  margin: 20rpx 0rpx 20rpx;
+}
+.box
+{
+  flex: 1;
+  padding: 20rpx 50rpx;
+}
+.result
+{
+  float: right;
+}
+#intel
+{
+  flex: 3;
+  text-align: center;
+}

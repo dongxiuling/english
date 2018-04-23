@@ -1,0 +1,56 @@
+<!--pages/private_message/alter/alter.wxml-->
+<form  bindsubmit="formSubmit" bindreset="formReset">
+<view class='head'>
+<navigator class='iconfont icon-back' url='../../private_message/private_message'></navigator>
+<text class="title">修改我的资料</text>
+<button type='mini' form-type='submit' plain='true' style='border:0px;'>
+<icon type='success_no_circle' class='sure' size='24' color='#ccc'/>
+</button>
+</view>
+<view class='body'>
+  <view class='logo'>
+      <image src='../../../images/logo.jpg'></image>
+      <text class='alter-logo'></text>
+      <text class='alter-logo' bindtap='choose'>修改头像</text>
+  </view>
+  <view class='form'>
+    <view class='input'>
+      <label for='name'>昵称</label>
+      <input id='name' type='text' value='5607542'  bindfocus="focus"  bindblur='blur' class=''></input>
+    </view>
+    <view class="section" >  
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode = "selector">  
+        <view class="picker">
+          <label for='sex'>性别</label>
+          <input id='birthday' value='{{objectArray[index]}}'></input>  
+        </view>  
+      </picker>  
+    </view> 
+    <view class="section">  
+      <picker mode="date" value="{{date}}" start="1978-01-01" end="2017-1-23" bindchange="bindDateChange">  
+      <view class="picker">  
+       <label for='birthday'>生日</label>
+       <input id='birthday' value=' {{dates}}'></input>
+      </view>  
+      </picker>  
+    </view>
+    <view class="section" >  
+      <picker bindchange="bindPickerChange" value="{{l_index}}" range="{{location}}" mode = "selector">  
+        <view class="picker">
+          <label for='loaction'>地区</label>
+      <input id='location' type='text' value='{{location[l_index]}}'  bindfocus="focus"  bindblur='blur' class=''></input>
+        </view>  
+      </picker>  
+    </view>    
+    <view class='input'>
+      <label for='school'>学校</label>
+      <input id='school' type='text' value='东北林业大学'     bindfocus="focus"  bindblur='blur' class=''></input>
+    </view>
+    <view class='intel'>
+      <label for='intel'>简介</label>
+      <textarea id='intel' >爱自己，爱生活</textarea>
+    </view>
+  </view>
+</view>
+</form>
+

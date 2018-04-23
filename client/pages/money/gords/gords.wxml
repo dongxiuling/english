@@ -1,0 +1,16 @@
+<!--pages/money/gords/gords.wxml-->
+<view class='head'>
+<navigator class='iconfont icon-back' url='../money'></navigator>
+<text class="title">我的余额<text style='color:#1f9e83'>{{money}}</text></text>
+<text class='hide'></text>
+</view>
+<view class='body'>
+   <view class='gord' wx:for='{{index}}'>
+      <image class='logo' src="{{imageUrl[index]}}"></image>
+      <view class='detel'>
+          <text class='name'>{{name[index]}}</text>
+          <text class='privce'>{{privce[index]}}金币</text>
+      </view>
+      <text class='duihuan'>兑换</text>
+   </view>
+</view>

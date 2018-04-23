@@ -1,0 +1,51 @@
+<!--pages/private_message/private_message.wxml-->
+<view class='head' style="background-image:url('../../images/private-bg.jpg')">
+  <view class='title'>
+    <navigator class='iconfont icon-back'></navigator>
+    <navigator class='iconfont icon-pinglun' url='alter/alter'></navigator>
+  </view>
+  <view class='logo' style="background-image:url('../../images/logo.jpg')"></view>
+  <text class='id'>5606152</text>
+</view>
+<view class='message'>
+  <view class='message-top'>
+     <text class='article'>文章</text>
+     <text class='note'>笔记</text>
+     <text class='guanzhu'>关注</text>
+     <text class='fans'>粉丝</text>
+  </view>
+  <view class='message-top jieguo'>
+     <text class='article number'>0</text>
+     <text class='note number'>0</text>
+     <text class='guanzhu number'>0</text>
+     <text class='fans number'>0</text>
+  </view>
+  <view class='message-bottom'>
+    <view class='box'>
+     <text class='sex'>性别</text>
+     <text class='result'>男</text>
+    </view>
+     <view class='box'>
+     <text class='sex'>性别</text>
+     <text class='result'>男</text>
+    </view>
+     <view class='box'>
+     <text class='birthday'>生日</text>
+     <text class='result'>1998-12-30</text>
+    </view>
+     <view class='box'>
+     <text class='location'>地区</text>
+     <text class='result'>山东</text>
+    </view>
+     <view class='box'>
+     <text class='school'>学校</text>
+     <text class='result'>东北林业大学</text>
+    </view>
+    <view class='box'>
+     <text class='Intel'>个人简介</text>
+    </view>
+    <view class='box' id='intel'>
+     <text class='intel'>爱自己，爱生活</text>
+    </view>
+  </view>
+</view>
