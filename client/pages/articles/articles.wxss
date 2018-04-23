@@ -1,47 +1,12 @@
 /* pages/articles/articles.wxss */
-/* 头部 */
-.header{
-  width: 750rpx;
-  height: 120rpx;
-  background: #ffffff;
-  border-bottom:1rpx solid #a0a0a0; 
-  position:fixed;
-  overflow: hidden;
-  z-index: 2; 
-}
-.back{
-  width: 120rpx;
-  height: 80rpx;
-  text-align: center;
-  line-height: 80rpx;
-  position: fixed;
-  left: 0rpx;
-  top:20rpx; 
-  background: #ffffff;
-}
-.back text{
-  font-size: 50rpx;
-}
-.title{
-  width: 120rpx;
-  height: 80rpx;
-  text-align: center;
-  line-height: 80rpx;
-  position: fixed;
-  left: 325rpx;
-  top:20rpx; 
-}
 /* 文章 */
 .art_list{
   background: #eeeeee;
 }
 .art{
   padding: 0 25rpx;
-  margin-top:40rpx;
+  margin:20rpx 0;
   background: #ffffff;
-}
-.art1{
-  margin-top:121rpx;
 }
 .cont{
   width: 700rpx;
@@ -58,6 +23,7 @@
 }
 .tab text{
   font-size: 30rpx;
+  color: #848484;
 }
 /* 图标字体 */
 @font-face {

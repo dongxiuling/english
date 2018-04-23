@@ -1,10 +1,4 @@
 <!--pages/articles/articles.wxml-->
-<view class='header'>
-  <view id='back' name='back' class='back'>
-    <text class="iconfont icon-fanhui"></text>
-  </view>
-  <view class='title'>文章</view>
-</view>
 <scroll-view class='art_list' scroll-y='true'>
   <!-- <view class='art' wx:for="{{arts}}"> 
     <view class='cont'>
@@ -22,7 +16,7 @@
       </view>
     </view>
   </view> -->
-  <view class='art art1'>
+  <view class='art'>
     <view class='cont'>
       <text>Do you like study English</text>
     </view>
