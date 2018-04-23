@@ -1,0 +1,98 @@
+/* pages/put_note/put_note.wxss */
+/* 头部 */
+.header{
+  width: 750rpx;
+  height: 120rpx;
+  background: #ffffff;
+  border-bottom:1rpx solid #a0a0a0; 
+  position:fixed;
+  overflow: hidden;
+  z-index: 2; 
+}
+.back{
+  width: 120rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  position: fixed;
+  left: 0rpx;
+  top:20rpx; 
+  background: #ffffff;
+}
+.back text{
+  font-size: 50rpx;
+}
+/* 用户信息 */
+.user{
+  height: 150rpx;
+  margin: 0rpx 25rpx 25rpx;
+  padding-top:150rpx; 
+  overflow: hidden;
+}
+.user image{
+  height: 150rpx;
+  width: 120rpx;
+  float: left;
+}
+.user_info{
+  padding-left:120rpx; 
+}
+.user_info view{
+  height: 75rpx;
+  line-height: 75rpx;
+} 
+/* 发布笔记 */
+.put{
+  margin: 0rpx 25rpx 25rpx;
+}
+.write{
+  border: 1rpx solid #a0a0a0;
+}
+.tab_list{
+  background: #ffffff;
+  overflow: hidden;
+}
+.tab{
+  width: 120rpx;
+  height: 60rpx;
+  float: right;
+}
+.tab text{
+  font-size: 35rpx;
+}
+/* 评论 */
+.comment{
+  margin: 0rpx 25rpx 25rpx;
+}
+.comment view{
+  font-size: 50rpx;
+  font-weight: bold;
+}
+.comment button{
+  margin-top: 10rpx;
+}
+/* 图标字体 */
+@font-face {
+  font-family: 'iconfont';  /* project id 441255 */
+  src: url('//at.alicdn.com/t/font_441255_i8r3a74p581l9pb9.eot');
+  src: url('//at.alicdn.com/t/font_441255_i8r3a74p581l9pb9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_441255_i8r3a74p581l9pb9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_441255_i8r3a74p581l9pb9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_441255_i8r3a74p581l9pb9.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-msnui-share:before { content: "\e677"; }
+
+.icon-pinglun:before { content: "\e7d2"; }
+
+.icon-fanhui:before { content: "\e610"; }
+
+.icon-dianzan:before { content: "\e668"; }

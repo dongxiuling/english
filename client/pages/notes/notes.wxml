@@ -1,0 +1,73 @@
+<!--pages/notes/notes.wxml-->
+<view class='header'>
+  <view id='back' name='back' class='back'>
+    <text class="iconfont icon-fanhui"></text>
+  </view>
+  <view class='title'>笔记</view>
+</view>
+<scroll-view class='note_list' scroll-y='true'>
+  <!-- <view class='note' wx:for="{{notes}}"> 
+    <view class='cont'>
+      <text>{{item.content}}</text>
+    </view>
+    <view class='tab_list'>
+      <view class='tab'>
+        <text class="iconfont icon-dianzan">赞</text>
+      </view>
+      <view class='tab'>
+        <text class="iconfont icon-pinglun">评论</text>
+      </view>
+      <view class='tab'>
+        <text class="iconfont icon-msnui-share">分享</text>
+      </view>
+    </view>
+  </view> -->
+  <view class='note note1'>
+    <view class='cont'>
+      <text>I like study English</text>
+    </view>
+    <view class='tab_list'>
+      <view class='tab'>
+        <text class="iconfont icon-dianzan">赞</text>
+      </view>
+      <view class='tab'>
+        <text class="iconfont icon-pinglun">评论</text>
+      </view>
+      <view class='tab'>
+        <text class="iconfont icon-msnui-share">分享</text>
+      </view>
+    </view>
+  </view>  
+  <view class='note'>
+    <view class='cont'>
+      <text>I like study English</text>
+    </view>
+    <view class='tab_list'>
+      <view class='tab'>
+        <text class="iconfont icon-dianzan">赞</text>
+      </view>
+      <view class='tab'>
+        <text class="iconfont icon-pinglun">评论</text>
+      </view>
+      <view class='tab'>
+        <text class="iconfont icon-msnui-share">分享</text>
+      </view>
+    </view>
+  </view>  
+  <view class='note'>
+    <view class='cont'>
+      <text>I like study English</text>
+    </view>
+    <view class='tab_list'>
+      <view class='tab'>
+        <text class="iconfont icon-dianzan">赞</text>
+      </view>
+      <view class='tab'>
+        <text class="iconfont icon-pinglun">评论</text>
+      </view>
+      <view class='tab'>
+        <text class="iconfont icon-msnui-share">分享</text>
+      </view>
+    </view>
+  </view> 
+</scroll-view>
