@@ -109,6 +109,11 @@ page{
   color:#666;
 
 }
+.article-img image{
+  width:200rpx;
+  height:200rpx;
+  margin-right:10rpx;
+}
 /* 发布人 */
 
 .tab_list{
