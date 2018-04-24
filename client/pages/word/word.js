@@ -1,4 +1,3 @@
-
 var md5 =  require('../../utils/md5.js');
 const app = getApp();
 Page({
@@ -23,12 +22,15 @@ Page({
     var salt = (new Date).getTime();
     var query = options.searchContent;
     var from = '';
-    var to = 'en';
+    var to = '';
     var str1 = appKey + query + salt + key;
     var str2 = encodeURI(str1);
-    var sign = md5.hexMD5(str2);
+
+    var sign = md5.hex_md5(str2);
+
+    console.log(sign);
     wx.request({
-      url: 'http://openapi.youdao.com/api',
+      url: 'https://openapi.youdao.com/api',
       
       data: {
         q: query,
