@@ -117,5 +117,15 @@ Page({
       fail: function (res) { },
       complete: function (res) { },
     })
+  },
+  to_private_message:function(){
+    wx.navigateTo({
+      url: '../private_message/private_message',
+    })
+  },
+  to_money: function () {
+    wx.navigateTo({
+      url: '../money/money',
+    })
   }
 })

@@ -1,6 +1,6 @@
 <!--pages/myInfo/myInfo.wxml-->
 <view class='info-container'>
-  <view class='left-content'>
+  <view class='left-content' bindtap='to_private_message'>
      <image src='../../images/myinfo.png' class='touxiang'></image>
   </view>
   <view class='right-content'>
@@ -13,7 +13,7 @@
       <image src='qiandao.png'></image>
       <text class='qiandao'>打卡0天</text>
   </view>
-  <view class='money-right-content'>
+  <view class='money-right-content' bindtap='to_money'>
     <image src='coin.png'></image>
     <text class='coin'>金币0个</text>
   </view>
