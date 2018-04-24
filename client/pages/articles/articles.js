@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
+    imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg'
   },
 
   /**
@@ -62,5 +63,11 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  toPut_art: function () {
+    wx.navigateTo({
+      url: '../put_art/put_art',
+    })
   }
 })
