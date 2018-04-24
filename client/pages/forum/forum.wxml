@@ -10,7 +10,7 @@
             </view>  
         </view>
     </view>
-    <view class="article-content">
+    <view class="article-content" bindtap='toPut_art'>
       <view>文章内容</view>
       <view class='article-img'>
         <image src="{{head_url}}"></image>
@@ -42,7 +42,7 @@
             </view>  
         </view>
     </view>
-    <view class="article-content">文章内容</view>
+    <view class="article-content" bindtap='toPut_art'>文章内容</view>
     <view class='tab_list'>
         <view class='tab'>
           <text class="iconfont icon-dianzan">赞</text>

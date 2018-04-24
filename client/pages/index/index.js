@@ -23,14 +23,14 @@ Page({
    items:[
      {
        url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-       title:"jipengfei",
+       title:"季鹏飞",
      },
      {
-       title: "hujihui",
+       title: "胡绩辉",
        url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
      },
      {
-       title: "hcsss",
+       title: "蔡围棋",
        url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
      }
      ],
