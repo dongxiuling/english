@@ -1,27 +1,22 @@
 {
   "pages": [
-<<<<<<< Updated upstream
-=======
-    "pages/login/login",
-    "pages/myInfo/myInfo",
-    "pages/attention/attention",
->>>>>>> Stashed changes
     "pages/index/index",
+    "pages/attention/attention",
     "pages/myInfo/myInfo",
     "pages/addCgi/addCgi",
     "pages/forum/forum",
-<<<<<<< Updated upstream
     "pages/createNote/createNote",
     "pages/word/word",
     "pages/issue/issue",
     "pages/put_art/put_art",
-    "pages/text/text"
-=======
+    "pages/text/text",
     "pages/fans/fans",
     "pages/help/help",
-    "pages/aboutus/aboutus"
-   
->>>>>>> Stashed changes
+    "pages/aboutus/aboutus",
+    "pages/articles/articles",
+    "pages/money/money",
+    "pages/private_message/private_message",
+    "pages/notes/notes"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
