@@ -61,18 +61,23 @@
   border-bottom: 1rpx solid #f2f2f2;
 }
 button{
-  margin: 10rpx 25rpx 10rpx;
-  background: #eeeeee;
-  color: #848484;
+  width: 100%;
+  background: #209E85;
+  color: #ffffff;
+  position: fixed;
+  left:0; 
+  bottom:0;  
+  z-index: 2;
 }
 .com_area{
   background: #f2f2f2;
+  margin-bottom: 80rpx;
 }
 .comment{
   display: flex;
   flex-direction:column;
   padding-bottom:25rpx;
-  margin-bottom:10rpx;  
+  margin-top:10rpx;  
   overflow: hidden;
   background: #ffffff;
 }
@@ -100,6 +105,7 @@ button{
 }
 .com_cont{
   margin-left:25rpx; 
+  font-size: 32rpx;
 }
 .com_tab{
   width: 100rpx;

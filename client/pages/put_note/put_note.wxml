@@ -7,7 +7,7 @@
   </view> 
 </view>
 <view class='put'>
-  <textarea class='write' bindtap='put_cont'>我爱学习</textarea>
+  <view class='write' bindtap='put_cont'>我爱学习 我爱学习 我爱学习 我爱学习 我爱学习</view>
   <view class='img' bindtap='put_img'>
       <image src="{{head_url}}"></image>
       <image src="{{head_url}}"></image>
@@ -25,7 +25,6 @@
   </view>
 </view>
 <view class='com_title'>评论区</view>
-<button class='iconfont icon-bi'>评 论</button>
 <scroll-view class='com_area'>
   <view class='comment'>
     <view class='com_user'>
@@ -67,3 +66,4 @@
     </view>
   </view>
 </scroll-view>
+<button class='iconfont icon-bi'>评 论</button>
