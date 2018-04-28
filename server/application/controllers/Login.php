@@ -1,23 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-use QCloud_WeApp_SDK\Auth\LoginService as LoginService;
-use QCloud_WeApp_SDK\Constants as Constants;
+
 
 class Login extends CI_Controller {
-    public function index() {
-        $result = LoginService::login();
-        
-        if ($result['loginState'] === Constants::S_AUTH) {
-            $this->json([
-                'code' => 0,
-                'data' => $result['userinfo']
-            ]);
-        } else {
-            $this->json([
-                'code' => -1,
-                'error' => $result['error']
-            ]);
-        }
-    }
+  public function add_user(){
+    $user_name = $this->input->get('user_name');
+    $user_logo = $this->input->get('user_logo');
+    $this->load->model('login_model');
+    $uid = $this->login_model->do_add_user($user_name,$user_logo);
+    echo $uid;
+  }
 }
+
+
+
+?>
