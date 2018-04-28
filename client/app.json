@@ -16,7 +16,8 @@
     "pages/articles/articles",
     "pages/money/money",
     "pages/private_message/private_message",
-    "pages/notes/notes"
+    "pages/notes/notes",
+    "pages/put_note/put_note"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
