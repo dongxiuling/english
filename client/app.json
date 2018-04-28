@@ -1,22 +1,19 @@
 {
   "pages": [
+    "pages/login/login",
+    
+    "pages/myInfo/myInfo",
+   
+    "pages/help/help",
     "pages/index/index",
     "pages/attention/attention",
-    "pages/myInfo/myInfo",
     "pages/addCgi/addCgi",
     "pages/forum/forum",
-    "pages/createNote/createNote",
-    "pages/word/word",
-    "pages/issue/issue",
-    "pages/put_art/put_art",
-    "pages/text/text",
     "pages/fans/fans",
-    "pages/help/help",
     "pages/aboutus/aboutus",
-    "pages/articles/articles",
     "pages/money/money",
     "pages/private_message/private_message",
-    "pages/notes/notes"
+    "pages/money/gords/gords"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
