@@ -1,22 +1,85 @@
 <view><image class='head' src='{{imageurl}}'></image></view>
-<view class='index-article'  > 
-    <view  class="index-line" bindtap='toPut_art' >
-    <view class='index-writer'>
-        <view><image class="head-port" src="{{head_url}}"></image></view>  
-      <view class='index-name'>
-        <view>姓名：{{head_title}}</view>
-        <view>时间：点1</view>
-      </view>  
+<view>
+  <view class='index-article'  >
+    <view class="index-line" bindtap='toPut_art' >
+        <view class='index-writer'>
+            <view><image class="head-port" src="{{head_url}}"></image></view>  
+            <view class='index-name'>
+              <view>张小三{{head_title}}</view>
+              <view class="atricle-time">1天前</view>
+            </view>  
+        </view>
     </view>
-    <view >
-          <textarea 
-  class="content" placeholder="shuru1"  disabled='true'/>
-  <view class="index-post">
-    <view hover-class='find'>分享</view>
-    <view hover-class='find' bindtap='toPut_art'>评论</view>
-    <view hover-class='find'>收藏</view>
+    <view class="article-content" bindtap='toPut_art'>
+      <view>文章内容</view>
+      <view class='article-img'>
+        <image src="{{head_url}}"></image>
+        <image src="{{head_url}}"></image>
+        <image src="{{head_url}}"></image>
+        <image src="{{head_url}}"></image>
+        <image src="{{head_url}}"></image>
+      </view>
+    </view>
+    <view class='tab_list'>
+        <view class='tab'>
+          <text class="iconfont icon-dianzan">赞</text>
+        </view>
+        <view class='tab'>
+          <text class="iconfont icon-pinglun">评论</text>
+        </view>
+        <view class='tab'>
+          <text class="iconfont icon-msnui-share">分享</text>
+        </view>
+      </view>
   </view>
+  <view class='index-article'  >
+    <view class="index-line" bindtap='toPut_art' >
+        <view class='index-writer'>
+            <view><image class="head-port" src="{{head_url}}"></image></view>  
+            <view class='index-name'>
+              <view>张小三{{head_title}}</view>
+              <view class="atricle-time">1天前</view>
+            </view>  
+        </view>
+    </view>
+    <view class="article-content" bindtap='toPut_art'>文章内容</view>
+    <view class='tab_list'>
+        <view class='tab'>
+          <text class="iconfont icon-dianzan">赞</text>
+        </view>
+        <view class='tab'>
+          <text class="iconfont icon-pinglun">评论</text>
+        </view>
+        <view class='tab'>
+          <text class="iconfont icon-msnui-share">分享</text>
+        </view>
+      </view>
   </view>
- </view>
+  <view class='index-article'  >
+    <view class="index-line" bindtap='toPut_art' >
+        <view class='index-writer'>
+            <view><image class="head-port" src="{{head_url}}"></image></view>  
+            <view class='index-name'>
+              <view>张小三{{head_title}}</view>
+              <view class="atricle-time">1天前</view>
+            </view>  
+        </view>
+    </view>
+    <view class="article-content">文章内容</view>
+    <view class='tab_list'>
+        <view class='tab'>
+          <text class="iconfont icon-dianzan">赞</text>
+        </view>
+        <view class='tab'>
+          <text class="iconfont icon-pinglun">评论</text>
+        </view>
+        <view class='tab'>
+          <text class="iconfont icon-msnui-share">分享</text>
+        </view>
+      </view>
+  </view>
+
+  
 </view>
+
 <view class='publish' hover-class="index-pub" bindtap='toPublish'>发布+</view>

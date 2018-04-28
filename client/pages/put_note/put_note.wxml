@@ -1,20 +1,20 @@
 <!--pages/put_note/put_note.wxml-->
-<!-- <view class='user'>
-  <image src='{{../../images/xxx.jpg}}'></image>  
-  <view class='user_info'> 
-    <view>发布人{{name}}</view>
-    <view class='time'>发布时间{{time}}</view> 
-  </view> 
-</view> -->
 <view class='user'>
-  <image src='../../images/a.jpeg'></image>  
+  <image src='{{head_url}}'></image>  
   <view class='user_info'> 
     <view>发布人</view>
-    <view class='time'>发布时间</view> 
+    <view class='time'>发布时间</view>  
   </view> 
 </view>
 <view class='put'>
-  <textarea class='write'>我爱学习</textarea>
+  <view class='write' bindtap='put_cont'>我爱学习 我爱学习 我爱学习 我爱学习 我爱学习</view>
+  <view class='img' bindtap='put_img'>
+      <image src="{{head_url}}"></image>
+      <image src="{{head_url}}"></image>
+      <image src="{{head_url}}"></image>
+      <image src="{{head_url}}"></image> 
+      <image src="{{head_url}}"></image>
+  </view>
   <view class='tab_list'>
       <view class='tab'>
         <text class="iconfont icon-dianzan">赞</text>
@@ -25,34 +25,45 @@
   </view>
 </view>
 <view class='com_title'>评论区</view>
+<scroll-view class='com_area'>
+  <view class='comment'>
+    <view class='com_user'>
+      <image src='{{head_url}}'></image>
+      <view class='com_user_info'> 
+        <view>发布人</view>
+        <view class='time'>发布时间</view> 
+      </view> 
+    </view>
+    <view class='com_cont'>好好学习，天天向上</view>
+    <view class='com_tab'>
+        <text class="iconfont icon-dianzan">赞</text>
+    </view>
+  </view>
+  <view class='comment'>
+    <view class='com_user'>
+      <image src='{{head_url}}'></image>
+      <view class='com_user_info'> 
+        <view>发布人</view>
+        <view class='time'>发布时间</view> 
+      </view> 
+    </view>
+    <view class='com_cont'>好好学习，天天向上</view>
+    <view class='com_tab'>
+        <text class="iconfont icon-dianzan">赞</text>
+    </view>
+  </view>
+  <view class='comment'>
+    <view class='com_user'>
+      <image src='{{head_url}}'></image>
+      <view class='com_user_info'> 
+        <view>发布人</view>
+        <view class='time'>发布时间</view> 
+      </view> 
+    </view>
+    <view class='com_cont'>好好学习，天天向上</view>
+    <view class='com_tab'>
+        <text class="iconfont icon-dianzan">赞</text>
+    </view>
+  </view>
+</scroll-view>
 <button class='iconfont icon-bi'>评 论</button>
-<view class='comment'>
-  <view class='com_user'>
-    <image src='../../images/a.jpeg'></image>
-    <view class='com_user_info'> 
-      <view>发布人</view>
-      <view class='time'>发布时间</view> 
-    </view> 
-  </view>
-  <view>好好学习，天天向上</view>
-</view>
-<view class='comment'>
-  <view class='com_user'>
-    <image src='../../images/a.jpeg'></image>
-    <view class='com_user_info'> 
-      <view>发布人</view>
-      <view class='time'>发布时间</view> 
-    </view> 
-  </view>
-  <view>好好学习，天天向上</view>
-</view>
-<view class='comment'>
-  <view class='com_user'>
-    <image src='../../images/a.jpeg'></image>
-    <view class='com_user_info'> 
-      <view>发布人</view>
-      <view class='time'>发布时间</view> 
-    </view> 
-  </view>
-  <view>好好学习，天天向上</view>
-</view>

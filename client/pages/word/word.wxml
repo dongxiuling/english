@@ -7,8 +7,8 @@
 
   <view class='wrapper' id='commit'>
         <view id='content-line'>
-          <text class='title' id='word'>word</text>
-          <image id='trumIcon'src='../../images/trum.png'></image>
+          <text class='title' id='word'>{{word}}</text>
+          <image id='trumIcon'src='../../images/trum.png' bindtap='audioPlay'></image>
         </view>
         <text id='cont'>{{cont}}</text>
   </view>
@@ -37,6 +37,6 @@
   </view>
   <view class='wrapper'>
       <text class='go' id='goOne' bindtap='goCreate'>去翻译</text>
-      <text class='go' id='goTwo'>去发音</text>
+      <text class='go' id='goTwo' bindtouchstart='start' bindtouchend='end'>去发音</text>
   </view>
 </view>

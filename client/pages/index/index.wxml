@@ -12,47 +12,63 @@
 </swiper>  
 <!-- 轮播图 结束-->
 <!-- 搜索 -->
-<view class='page_row'>  
-  <view class="search">  
-    <view class="df search_arr">  
-      <icon class="searchcion" size='18' type='search'></icon>  
-      <input class="" bindinput="getText" placeholder="请输入中文或英文" value="{{searchValue}}"/>  
-    </view>  
-  </view>  
-  <view hover-class="find" class='sousuo' bindtap='toWord'>搜索</view>  
-</view>
+  <view class='head' id='header'>
+        <icon type='search' size='18'></icon>
+        <input bindinput="getText" placeholder="请输入中文或英文" value="{{searchValue}}"></input>
+        <text id='cancel' bindtap='toWord'>搜索</text>
+  </view>
 <!-- 搜索结束 -->
-<view class="ranking-list">英语达人排行榜</view>
-<view wx:for="{{rank}}">
-<view class="rank">
-  <view  class="top">
-    <text class='top-list' font-style='italic'>{{item.list}}</text>
-     <image  src="{{item.url}}"></image> 
-    <text class='top-name'>{{item.name}}</text>
-    <view class="top-money">金币</view>
-  </view>
-  
+<view class="ranking-list">
+  <i class="iconfont icon-paihangbang-"></i>
+  英语达人排行榜
 </view>
-</view>
-<text class="index-title">最新文章</text>
-<view class='index-article'  bindtap='toPut_art'> 
-    <view  class="index-line" wx:for="{{items}}" wx:for-item="item">
-    <view class='index-writer'>
-        <view><image class="head-port" src="{{item.url}}"></image></view>  
-      <view class='index-name'>
-        <view>姓名：{{item.title}}</view>
-        <view>时间：点1</view>
-      </view>  
+<view class="ranking-content">
+  <view class="rank"  wx:for="{{rank}}">
+    <view  class="top">
+      <i class="iconfont icon-jinpairongyu jinpai{{item.list}}"></i>
+      <image  src="{{item.url}}"></image> 
+      <text class='top-name'>{{item.name}}</text>
+      <view class="top-money">1000金币</view>
     </view>
-    <view >
-          <textarea 
-  class="content" placeholder="shuru1"  disabled='true'/>
-  <view class="index-post">
-    <view hover-class='find'>分享</view>
-    <view hover-class='find' bindtap='toPut_art'>评论</view>
-    <view hover-class='find'>收藏</view>
+    
   </view>
-  </view>
- </view>
+</view>
+<view class="ranking-list">
+  <i class="iconfont icon-custom-news"></i>
+  最新文章
+</view>
+<view>
+  <view class='index-article'  bindtap='toPut_art' wx:for="{{items}}" wx:for-item="item" >
+    <view bindtap='toPut_art' >
+        <view class='index-writer'>
+            <view><image class="head-port" src="{{item.url}}"></image></view>  
+            <view class='index-name'>
+              <view>{{item.title}}{{head_title}}</view>
+              <view class="atricle-time">1天前</view>
+            </view>  
+        </view>
+    </view>
+    <view class="article-content">
+      <view>文章内容</view>
+      <view class='article-img'>
+        <image src="{{item.url}}"></image>
+        <image src="{{item.url}}"></image>
+        <image src="{{item.url}}"></image>
+        <image src="{{item.url}}"></image>
+        <image src="{{item.url}}"></image>
+      </view>
+    </view>
+    <view class='tab_list'>
+        <view class='tab'>
+          <text class="iconfont icon-dianzan">赞</text>
+        </view>
+        <view class='tab'>
+          <text class="iconfont icon-pinglun" bindtap='toPut_art'>评论</text>
+        </view>
+        <view class='tab'>
+          <text class="iconfont icon-msnui-share">分享</text>
+        </view>
+      </view>
+  </view> 
 </view>
 <view class="index-bottom">到底啦</view>

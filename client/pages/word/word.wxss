@@ -22,7 +22,7 @@ page{
 .head input{
    float:left;
    font-size: 24rpx;
-   width: 80%;
+   width: 75%;
    padding-left: 40rpx;
    margin-left:10rpx; 
    border: 1rpx solid #ccc;
@@ -44,7 +44,7 @@ page{
   line-height: 100rpx;
   color: #919191;
   font-size: 30rpx;
-  margin-right: 20rpx;
+  margin-right: 30rpx;
 }
 /*搜索框结束*/
 
