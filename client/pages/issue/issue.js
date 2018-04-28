@@ -4,7 +4,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    title:"",
+    content:""
   },
 
   /**
@@ -62,9 +63,44 @@ Page({
   onShareAppMessage: function () {
     
   },
+  chooseImg:function(){
+    wx.chooseImage({
+      success: function(res) {
+        console.log(res);
+        wx.uploadFile({
+          url: 'https://6kxrdzrv.qcloud.la',
+          filePath: res.tempFilePaths[0],
+          name: 'file',
+          success:function(res){
+            console.log(res)
+          }
+        })
+       
+      },
+    })
+  },
+  getTitle:function(e){
+    this.setData({
+      title:e.detail.value
+    });
+  },
+  getContent:function(e){
+    this.setData({
+    content:e.detail.value
+    });
+  },
   toForum: function () {
+    
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/',
+      data:{
+        title:this.data.title,
+        content:this.data.content,
+        imgUrl:this.data.imgUrl
+      }
+    })
     wx.switchTab({
-      url: '../forum/forum',
+      url: '../forum/forum?',
     })
   }
 })
