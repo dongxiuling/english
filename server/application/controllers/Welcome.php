@@ -22,4 +22,10 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+	public function my_articles()
+	{
+		$this->load->model('art_model');
+		$arts = $this->art_model->find_all();
+		echo json_encode($arts);
+	}
 }
