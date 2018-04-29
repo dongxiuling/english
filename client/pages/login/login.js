@@ -44,7 +44,12 @@ Page({
                   success: function (res) {
                     //console.log(res.data);
                     wx.setStorageSync('uid', res.data);
-
+                    wx.switchTab({
+                      url: '../index/index',
+                      success: function(res) {},
+                      fail: function(res) {},
+                      complete: function(res) {},
+                    })
                   }
                 })
               }
@@ -52,7 +57,12 @@ Page({
 
 
           } else {
-
+            wx.switchTab({
+              url: '../index/index',
+              success: function (res) { },
+              fail: function (res) { },
+              complete: function (res) { },
+            })
           }
         }
       })
