@@ -11,7 +11,7 @@ class Article_model extends CI_Model {
     }
     public function do_select(){
        $pdo = DB::getInstance();
-        $sql = "select * from articles,t_user where articles.user_id";
+        $sql = "select * from articles";
         $stmt = $pdo->prepare($sql);
         $stmt -> execute();
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
