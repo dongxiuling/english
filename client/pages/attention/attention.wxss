@@ -24,4 +24,6 @@
   font-size: 28rpx;
   position: absolute;
   right: 20rpx;
+  top:50%;
+  margin-top: -30rpx;
 }
