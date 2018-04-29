@@ -38,10 +38,10 @@
   最新文章
 </view>
 <view>
-  <view class='index-article'  bindtap='toPut_art' wx:for="{{items}}" wx:for-item="item" >
+  <view class='index-article'  bindtap='toPut_art' wx:for="{{articleInfo}}" wx:for-item="item" >
     <view bindtap='toPut_art' >
         <view class='index-writer'>
-            <view><image class="head-port" src="{{item.url}}"></image></view>  
+            <view><image class="head-port" src="{{item.img_url}}"></image></view>  
             <view class='index-name'>
               <view>{{item.title}}{{head_title}}</view>
               <view class="atricle-time">1天前</view>
