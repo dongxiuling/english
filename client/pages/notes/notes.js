@@ -16,7 +16,7 @@ Page({
   onLoad: function (options) {
       var that = this;
       wx.request({
-        url: 'https://6kxrdzrv.qcloud.la/Welcome/my_note',
+        url: 'https://6kxrdzrv.qcloud.la/Welcome/my_notes',
         responseType: 'text',
         data: [
           id1 => 1,
