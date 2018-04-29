@@ -68,19 +68,25 @@ Page({
     var that = this;
     wx.chooseImage({
       success: function(res) {
-        console.log(res);
+        console.log(res.tempFilePaths[0]);
         that.setData({
           imgUrl:res.tempFilePaths[0]
         })
         //console.log(that.data.filePath)
-        wx.uploadFile({
-          url: 'https://6kxrdzrv.qcloud.la',
-          filePath: res.tempFilePaths[0],
-          name: 'file',
+        wx.saveFile({
+          tempFilePath: res.tempFilePaths[0],
           success:function(res){
-            console.log(res)
+            wx.uploadFile({
+              url: 'https://6kxrdzrv.qcloud.la',
+              filePath: res.savedFilePath,
+              name: 'file',
+              success: function (res) {
+                console.log(res)
+              }
+            })
           }
         })
+        
        
       },
     })
