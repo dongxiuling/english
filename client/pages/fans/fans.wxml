@@ -1,6 +1,6 @@
 <!--pages/fans/fans.wxml-->
-<view class='fans_container'>
+<view class='fans_container' wx:for="{{fans}}">
     <image class='fans_icon' src='../../images/myinfo.png'></image>
-    <text class='fans_name'>阿呆</text>
+    <text class='fans_name'>{{item.user_name}}</text>
     <button class='fans_state'>已关注</button>
 </view>
