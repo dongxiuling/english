@@ -51,15 +51,26 @@ Page({
     interval: 5000,
     duration: 1000,
     userInfo: {},
-    searchText: '' 
+    searchText: '',
+    articleInfo:''
   },
   
   bindFormSubmit: function (e) {
     console.log(e.detail.value.textarea)
   },
   onLoad:function(){
+    var that = this;
     wx.pageScrollTo({
       scrollTop: 0
+    }),
+    
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
+      success:function(res){
+        that.setData({
+          articleInfo:res.data
+        });
+      }
     })
     wx.showToast({
       title: '加载中...',
@@ -69,7 +80,8 @@ Page({
     
   },
   //事件处理函数
-
+  //请求数据
+  
 
 
 
