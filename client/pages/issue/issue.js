@@ -6,7 +6,8 @@ Page({
   data: {
     title:"",
     content:"",
-    imgUrl:""
+    imgUrl:"",
+    filePath:""
   },
 
   /**
@@ -72,24 +73,18 @@ Page({
         that.setData({
           imgUrl:res.tempFilePaths[0]
         })
-        //console.log(that.data.filePath)
-        wx.saveFile({
-          tempFilePath: res.tempFilePaths[0],
-          success:function(res){
+        console.log(that.data.imgUrl);
+       
             wx.uploadFile({
-              url: 'https://6kxrdzrv.qcloud.la',
-              filePath: res.savedFilePath,
+              url: 'https://6kxrdzrv.qcloud.la/Article/upFile',
+              filePath: that.data.imgUrl,
               name: 'file',
               success: function (res) {
-                console.log(res)
+                console.log(res);
               }
             })
           }
         })
-        
-       
-      },
-    })
   },
   getTitle:function(e){
     this.setData({

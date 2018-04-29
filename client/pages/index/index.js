@@ -59,6 +59,7 @@ Page({
         that.setData({
           articleInfo:res.data
         });
+        console.log(res.data);
       }
     })
     wx.showToast({
@@ -66,6 +67,7 @@ Page({
       icon:"loading",
       duration:500
     })
+   
     
   },
   //事件处理函数
