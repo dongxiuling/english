@@ -4,36 +4,8 @@ const app = getApp();
 
 Page({
   data: {
-   
-   rank:[
-     {
-      list:"1",
-      name:"季鹏飞",
-        url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-     },{
-       list: "2",
-       name: "季鹏飞",
-         url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-     },{
-       list: "3",
-       name: "季鹏飞",
-       url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-     }
-   ],
-   items:[
-     {
-       url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-       title:"季鹏飞",
-     },
-     {
-       title: "胡绩辉",
-       url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-     },
-     {
-       title: "蔡围棋",
-       url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-     }
-     ],
+   rank:{},
+
    imgUrls: [
      {
        link: '../../image/head.png',
@@ -59,11 +31,28 @@ Page({
     console.log(e.detail.value.textarea)
   },
   onLoad:function(){
+    if(wx.getStorageSync('uid')){
+
+    }else{
+      wx.redirectTo({
+        url: '../login/login',
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
+    }
     var that = this;
     wx.pageScrollTo({
       scrollTop: 0
     }),
-    
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/user/select_coin',
+      success:function(res){
+          that.setData({
+            rank:res.data
+          })
+      }
+    })
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
       success:function(res){

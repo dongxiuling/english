@@ -23,12 +23,13 @@
   英语达人排行榜
 </view>
 <view class="ranking-content">
+ 
   <view class="rank"  wx:for="{{rank}}">
     <view  class="top">
-      <i class="iconfont icon-jinpairongyu jinpai{{item.list}}"></i>
-      <image  src="{{item.url}}"></image> 
+      <i class="iconfont icon-jinpairongyu jinpai{{index+1}}"></i>
+      <image  src="{{item.logo_url}}"></image> 
       <text class='top-name'>{{item.name}}</text>
-      <view class="top-money">1000金币</view>
+      <view class="top-money">{{item.coin}}金币</view>
     </view>
     
   </view>

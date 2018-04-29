@@ -1,11 +1,11 @@
 <!--pages/myInfo/myInfo.wxml-->
 <view class='info-container'>
   <view class='left-content' bindtap='to_private_message'>
-     <image src='{{userInfo.avatarUrl}}' class='touxiang'></image>
+     <image src='{{userInfo.logo_url}}' class='touxiang'></image>
   </view>
   <view class='right-content'>
-     <text class='name'>{{userInfo.nickName}}</text>
-     <text class='number'>{{userInfo.uid}}</text>
+     <text class='name'>{{userInfo.user_name}}</text>
+     <text class='number'>{{userInfo.user_id}}</text>
   </view>
 </view>
 <view class='money'>
@@ -15,7 +15,7 @@
   </view>
   <view class='money-right-content' bindtap='to_money'>
     <image src='coin.png'></image>
-    <text class='coin'>金币0个</text>
+    <text class='coin'>金币{{userInfo.coin}}个</text>
   </view>
 </view>
 <view class='my_product'>
