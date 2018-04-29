@@ -1,13 +1,22 @@
 <view class='issue-head'>
  
 
-  <view class="issue-title">
+ <view class="issue-title">
         <icon class="iconfont icon-write"></icon>  
-        <input  placeholder="写个标题吧..." value="{{title}}"/>  
+        <input  placeholder="写个标题吧..." value="{{title}}" bindinput='getTitle'/>  
      </view>
    <textarea
-  class="content"  placeholder="小猪佩奇身上纹" />
-  <view class='iconfont icon-photo'></view>
+  class="content"  placeholder="小猪佩奇身上纹" bindinput='getContent'/>
+  <view class='iconfont icon-photo' bindtap='chooseImg'></view>
 </view>
 <view class="issue-pub">发布</view>
+
+
+
+
+ 
+  
+  
+  
+  
 
