@@ -28,4 +28,10 @@ class Welcome extends CI_Controller {
 		$arts = $this->art_model->find_all();
 		echo json_encode($arts);
 	}
+	public function my_notes()
+	{
+		$this->load->model('note_model');
+		$notes = $this->note_model->find_all();
+		echo json_encode($notes);
+	}
 }
