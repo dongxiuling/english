@@ -16,11 +16,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var uid = wx.getStorageSync('uid');
-    console.log(uid);
-    if(uid){
-      console.log(uid);
-    }else{
+    // var uid = wx.getStorageSync('uid');
+    // console.log(uid);
+    // if(uid){
+    //   console.log(uid);
+    // }else{
       wx.login({
         success: function (res) {
           if (res.code) {
@@ -66,7 +66,7 @@ Page({
           }
         }
       })
-    }
+    //}
  
 }
 })
