@@ -1,14 +1,14 @@
 <!--pages/articles/articles.wxml-->
   <scroll-view class='art_list' scroll-y='true'>
     <view class='art' wx:for='{{articles}}'>
-      <view class='cont' bindtap='toPut_art'>
+      <view class='cont' id='{{item.article_id}}' bindtap='toPut_art'>
         <view>{{item.content}}</view>
         <view class='img'>
           <image src="{{item.img_url}}"></image>
         </view>
       </view>
       <view class='tab_list'>
-        <view class='time' bindtap='toPut_art'>
+        <view class='time'>
           {{item.date}}
         </view>
         <view class='tab'>

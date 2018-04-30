@@ -5,15 +5,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-    imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
+     head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
+     imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
+    articleInfo:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Article/select_allArticle',
+      success: function (res) {
+        that.setData({
+          articleInfo: res.data
+        });
+        console.log(res.data);
+      }
+    })
   },
 
   /**

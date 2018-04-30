@@ -24,14 +24,28 @@ class Welcome extends CI_Controller {
 	}
 	public function my_articles()
 	{
+    $id = $this->input->get('id');
 		$this->load->model('art_model');
-		$arts = $this->art_model->find_all();
+		$arts = $this->art_model->find_all($id);
 		echo json_encode($arts);
 	}
 	public function my_notes()
 	{
+    $id = $this->input->get('id');
 		$this->load->model('note_model');
-		$notes = $this->note_model->find_all();
+		$notes = $this->note_model->find_all($id);
 		echo json_encode($notes);
+	}
+  public function this_article(){
+		$id = $this->input->get('article_id');
+		$this->load->model('art_model');
+		$art = $this->art_model->find_this($id);
+		echo json_encode($art);
+	}
+  public function this_note(){
+		$id = $this->input->get('note_id');
+		$this->load->model('note_model');
+		$note = $this->note_model->find_this($id);
+		echo json_encode($note);
 	}
 }

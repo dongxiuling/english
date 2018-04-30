@@ -42,15 +42,15 @@
   <view class='index-article'  bindtap='toPut_art'  wx:for="{{articleInfo}}" wx:for-item="item" >
     <view bindtap='toPut_art' >
         <view class='index-writer'>
-            <view><image class="head-port" src=""></image></view>  
+            <view><image class="head-port" src="{{item.logo_url}}"></image></view>  
             <view class='index-name'>
               <view>{{item.title}}{{head_title}}</view>
-              <view class="atricle-time">1天前</view>
+              <view class="atricle-time">{{item.date}}</view>
             </view>  
         </view>
     </view>
     <view class="article-content">
-      <view>文章内容</view>
+      <view>{{item.content}}</view>
       <view class='article-img'>
         <image src="{{item.img_url}}"></image>  
       </view>

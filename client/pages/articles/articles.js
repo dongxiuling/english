@@ -14,15 +14,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.data.id = parseInt(options.id); 
     var that = this;
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Welcome/my_articles',
       responseType:'text',
-      data:[
-        id1=>1,
-        id2=>2,
-        id3=>3
-      ],
+      data: { id: that.data.id},
       success:function(res){
         that.setData({
           articles:res.data
@@ -80,9 +77,9 @@ Page({
   
   },
 
-  toPut_art: function () {
+  toPut_art: function (e) {
     wx.navigateTo({
-      url: '../put_art/put_art',
+      url: '../put_art/put_art?id=' + e.currentTarget.id,
     })
   }
 })
