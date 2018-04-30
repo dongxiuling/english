@@ -17,9 +17,15 @@ class Article extends CI_Controller {
       echo json_encode($res);
     }
 
+    public function select_allArticle(){
+      $this ->load ->model('Article_model');
+      $res = $this ->Article_model ->do_selectALL();
+      echo json_encode($res);
+    }
+
     public function upFile(){           
             $path = "./upload/";
-            if (isset($_POST)) {
+            if (isset($_GET)) {
                 $name = $_FILES['file']['name'];
                 $name_tmp = $_FILES['file']['tmp_name'];
                 $type = strtolower(substr(strrchr($name, '.'), 1));
@@ -35,5 +41,4 @@ class Article extends CI_Controller {
     }
     }
 
-}
 ?>

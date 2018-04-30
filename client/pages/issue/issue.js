@@ -74,14 +74,14 @@ Page({
           imgUrl:res.tempFilePaths[0]
         })
         wx.uploadFile({
-              url: 'https://6kxrdzrv.qcloud.la/Article/upFile',
-              filePath: that.data.imgUrl,
-              name: 'file',
-              success: function (data) {
-                that.setData({
-                  filePath:data.data
+            url: 'https://6kxrdzrv.qcloud.la/Article/upFile',
+            filePath: that.data.imgUrl,
+            name: 'file',
+            success: function (data) {
+            let str = 'https://6kxrdzrv.qcloud.la/' + data.data.replace('./', '');
+              that.setData({
+                  filePath: str
                 });
-                console.log(that.data.filePath)
               }
             })
           }
@@ -107,7 +107,7 @@ Page({
         filePath:that.data.filePath
       },
     })
-    console.log(that.data);
+    
     wx.switchTab({
       url: '../forum/forum',
     })
