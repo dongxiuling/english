@@ -10,8 +10,8 @@
 </view>
 <view class='money'>
   <view class='money-left-content'>
-      <image src='qiandao.png'></image>
-      <text class='qiandao'>打卡0天</text>
+      <image src='qiandao.png' bindtap='qiandao'></image>
+      <text class='qiandao' bindtap='qiandao'>打卡{{userInfo.day}}天</text>
   </view>
   <view class='money-right-content' bindtap='to_money'>
     <image src='coin.png'></image>

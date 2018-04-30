@@ -1,4 +1,5 @@
 // pages/myInfo/myInfo.js
+var uid = wx.getStorageSync('uid');
 Page({
 
   /**
@@ -11,7 +12,8 @@ Page({
     //   nickName: "",//用户昵称
     //   uid:""
     // }
-    userInfo:{}
+    userInfo:{},
+    prevtime:''
   },
 
   /**
@@ -19,7 +21,7 @@ Page({
    */
   onLoad: function (options) { 
     var that=this; 
-    var uid = wx.getStorageSync('uid');
+  
     //console.log(uid);
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/user/select_user',
@@ -94,6 +96,44 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  qiandao:function(){
+    var that = this;
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+  
+    var now = year + '-' + month + '-' + day;
+    if (now == this.data.prevtime){
+      wx.showModal({
+        content: '您今天已经打过卡了，明天再来吧',
+      })
+    }else{
+      wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/user/add_day',
+        data:{
+          uid:uid
+        },
+        success:function(res){
+          wx.showModal({
+            content: '打卡成功，学习贵在坚持',
+          }),
+          that.setData({
+            userInfo: res.data[0]
+          })
+          
+        }
+      })
+    
+    }
+    this.setData({
+      prevtime:now
+    })
+
+ 
+  
+    
   },
   to_attention:function(){
     wx.navigateTo({
