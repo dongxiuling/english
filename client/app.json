@@ -15,7 +15,9 @@
     "pages/aboutus/aboutus",
     "pages/articles/articles",
     "pages/money/money",
+    "pages/money/gords/gords",
     "pages/private_message/private_message",
+    "pages/private_message/alter/alter",
     "pages/notes/notes",
     "pages/put_note/put_note"
   ],
