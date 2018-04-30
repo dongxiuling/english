@@ -22,7 +22,7 @@ class Article extends CI_Controller {
       $res = $this ->Article_model ->do_selectALL();
       echo json_encode($res);
     }
-
+    
     public function upFile(){           
             $path = "./upload/";
             if (isset($_GET)) {
