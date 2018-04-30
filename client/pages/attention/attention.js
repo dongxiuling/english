@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-      attention:{}
+      attention:{},
+      show:''
   },
 
   /**
@@ -20,6 +21,17 @@ Page({
         uid: uid
       },
       success:function(res){
+        if(res.data.length != 0){
+          that.setData({
+            show:'false'
+          })
+        
+        }else{
+          that.setData({
+            show: 'true'
+          })
+       
+        }
         that.setData({
           attention:res.data
         })

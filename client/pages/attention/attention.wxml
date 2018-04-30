@@ -1,7 +1,8 @@
 <!--pages/attention/attention.wxml-->
-
+<view class='tip' wx:if="{{show == 'true'}}">您暂时还没有关注过任何人哦</view> 
 <view class='attention_container' wx:for="{{attention}}">
-    <image class='friend_icon' src='../../images/myinfo.png'></image>
+   
+    <image class='friend_icon' src='{{item.logo_url}}'></image>
     <text class='friend_name'>{{item.user_name}}</text>
     <form bindsubmit='delete'>
         <input value='{{item.follow_id}}' hidden='true' name='follow_id'></input>
