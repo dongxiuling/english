@@ -13,5 +13,11 @@ class User extends CI_Controller {
       $res = $this->user_model->do_select_coin();
       echo json_encode($res);
     }
+    public function add_day(){
+      $uid = $this->input->get('uid');
+      $this->load->model('user_model');
+      $res = $this->user_model->do_add_day($uid);
+      echo json_encode($res);
+    }
 }
 ?>

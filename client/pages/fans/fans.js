@@ -1,11 +1,12 @@
 // pages/fans/fans.js
 Page({
-
+ 
   /**
    * 页面的初始数据
    */
   data: {
-    fans:{}
+    fans:{},
+    show: ''
   },
 
   /**
@@ -20,6 +21,17 @@ Page({
         uid: uid
       },
       success: function (res) {
+        if (res.data.length != 0) {
+          that.setData({
+            show: 'false'
+          })
+
+        } else {
+          that.setData({
+            show: 'true'
+          })
+
+        }
         that.setData({
           fans: res.data
         })

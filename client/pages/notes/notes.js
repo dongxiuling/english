@@ -14,15 +14,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      this.data.id = parseInt(options.id);
       var that = this;
       wx.request({
         url: 'https://6kxrdzrv.qcloud.la/Welcome/my_notes',
         responseType: 'text',
-        data: [
-          id1 => 1,
-          id2 => 2,
-          id3 => 3
-        ],
+        data: {id:that.data.id},
         success: function (res) {
         that.setData({
           notes: res.data
@@ -80,9 +77,9 @@ Page({
   
   },
 
-  toPut_note: function () {
+  toPut_note: function (e) {
     wx.navigateTo({
-      url: '../put_note/put_note',
+      url: '../put_note/put_note?id=' + e.currentTarget.id,
     })
   }
 })

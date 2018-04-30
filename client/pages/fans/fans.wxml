@@ -1,6 +1,7 @@
 <!--pages/fans/fans.wxml-->
+<view class='tip' wx:if="{{show == 'true'}}">您暂时还没有关注过任何人哦</view> 
 <view class='fans_container' wx:for="{{fans}}">
-    <image class='fans_icon' src='../../images/myinfo.png'></image>
+    <image class='fans_icon' src='{{item.logo_url}}'></image>
     <text class='fans_name'>{{item.user_name}}</text>
     <button class='fans_state'>已关注</button>
 </view>

@@ -1,23 +1,19 @@
 <!--pages/put_art/put_art.wxml-->
-<view class='user'>
-  <image src='{{head_url}}'></image>  
-  <view class='user_info'> 
+<view class='user' wx:for='{{article}}'>
+  <image src='{{head_url}}'></image>
+  <view class='user_info'>
     <view>发布人</view>
-    <view class='time'>发布时间</view>  
-  </view> 
+    <view class='time'>{{item.date}}</view>
+  </view>
 </view>
-<view class='put'>
-  <view class='write' bindtap='put_cont'>我爱学习 我爱学习 我爱学习 我爱学习 我爱学习</view>
+<view class='put' wx:for='{{article}}'>
+  <view class='write' bindtap='put_cont'>{{item.content}}</view>
   <view class='img' bindtap='put_img'>
-      <image src="{{head_url}}"></image>
-      <image src="{{head_url}}"></image>
-      <image src="{{head_url}}"></image>
-      <image src="{{head_url}}"></image> 
-      <image src="{{head_url}}"></image>
+      <image src="{{item.img_url}}"></image>
   </view>
   <view class='tab_list'>
       <view class='tab'>
-        <text class="iconfont icon-dianzan">赞</text>
+        <text class="iconfont icon-dianzan">{{item.hits}}赞</text>
       </view>
       <view class='tab'>
         <text class="iconfont icon-msnui-share">分享</text>

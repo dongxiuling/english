@@ -17,5 +17,12 @@ class User_model extends CI_Model {
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
+  public function do_add_day($uid){;
+    $pdo = DB::getInstance();
+    $sql = "update t_user set day = day+1,coin = coin+1 where user_id =".$uid;
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    return DB::select('t_user', ['*'],'user_id='.$uid);
+  }
 }
 ?>

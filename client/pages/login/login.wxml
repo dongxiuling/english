@@ -1,3 +1,2 @@
 <!--pages/login/login.wxml-->
-<image src='{{userInfo.avatarUrl}}'></image>
-<view>用户名：{{userInfo.nickName}}</view>
+

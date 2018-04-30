@@ -31,16 +31,6 @@ Page({
     console.log(e.detail.value.textarea)
   },
   onLoad:function(){
-    if(wx.getStorageSync('uid')){
-
-    }else{
-      wx.redirectTo({
-        url: '../login/login',
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
-      })
-    }
     var that = this;
     wx.pageScrollTo({
       scrollTop: 0
@@ -59,7 +49,6 @@ Page({
         that.setData({
           articleInfo:res.data
         });
-        console.log(res.data);
       }
     })
     wx.showToast({
@@ -67,7 +56,6 @@ Page({
       icon:"loading",
       duration:500
     })
-   
     
   },
   //事件处理函数

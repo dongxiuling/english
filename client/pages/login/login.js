@@ -1,5 +1,5 @@
 // pages/login/login.js
-Page({
+Page({ 
 
   /**
    * 页面的初始数据
@@ -16,14 +16,23 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var loginStatus = true; 
     // var uid = wx.getStorageSync('uid');
     // console.log(uid);
     // if(uid){
     //   console.log(uid);
     // }else{
-      wx.login({
-        success: function (res) {
-          if (res.code) {
+    if (wx.getStorageSync('uid')){
+      wx.switchTab({
+        url: '../index/index',
+        success: function (res) { },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    }else{
+    
+        wx.login({
+          success: function (res) {
             wx.getUserInfo({
               success: function (res) {
                 //console.log(res.userInfo.avatarUrl);
@@ -44,19 +53,20 @@ Page({
                   success: function (res) {
                     //console.log(res.data);
                     wx.setStorageSync('uid', res.data);
-                    wx.switchTab({
-                      url: '../index/index',
-                      success: function(res) {},
-                      fail: function(res) {},
-                      complete: function(res) {},
-                    })
+
                   }
                 })
-              }
+              },
+
             });
 
 
-          } else {
+
+          },
+          fail:function(){
+            loginStatus=false;
+          },
+          complete: function () {
             wx.switchTab({
               url: '../index/index',
               success: function (res) { },
@@ -64,8 +74,11 @@ Page({
               complete: function (res) { },
             })
           }
-        }
-      })
+        })
+      
+     
+    }
+      
     //}
  
 }

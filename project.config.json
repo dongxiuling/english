@@ -12,5 +12,38 @@
 	},
 	"appid": "wxe10d985d2b1e7019",
 	"projectname": "english11",
-	"condition": {}
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 1,
+			"list": [
+				{
+					"id": 0,
+					"name": "private",
+					"pathName": "pages/private_message/private_message",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "2222",
+					"pathName": "pages/money/money",
+					"query": ""
+				}
+			]
+		}
+	}
 }

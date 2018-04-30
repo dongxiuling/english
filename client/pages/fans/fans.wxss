@@ -25,3 +25,9 @@
   position: absolute;
   right: 20rpx;
 }
+.tip{
+  color: #ccc;
+  font-size: 32rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}

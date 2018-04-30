@@ -6,14 +6,27 @@ Page({
    */
   data: {
     head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-    imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg'
+    imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
+    article_id: [],
+    article: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.data.article_id = options.id;
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/this_article',
+      responseType: 'text',
+      data: { article_id: that.data.article_id },
+      success: function (res) {
+        that.setData({
+          article: res.data
+        })
+      }
+    })
   },
 
   /**
