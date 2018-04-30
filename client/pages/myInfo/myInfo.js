@@ -128,16 +128,16 @@ Page({
     })
   },
   to_articles: function () {
-    wx.navigateTo({
-      url: '../articles/articles',
+    wx.navigateTo({ 
+      url: '../articles/articles?id=' + wx.getStorageSync('uid'),
       success: function (res) { },
       fail: function (res) { },
-      complete: function (res) { },
+      complete: function (res) { wx.getStorage('uid')},
     })
   },
   to_notes: function () {
     wx.navigateTo({
-      url: '../notes/notes',
+      url: '../notes/notes?id=' + wx.getStorageSync('uid'),
       success: function (res) { },
       fail: function (res) { },
       complete: function (res) { },

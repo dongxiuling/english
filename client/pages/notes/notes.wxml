@@ -1,14 +1,14 @@
 <!--pages/notes/notes.wxml-->
 <scroll-view class='note_list' scroll-y='true'>
     <view class='note' wx:for='{{notes}}'>
-      <view class='cont' bindtap='toPut_note'>
+      <view class='cont' id='{{item.note_id}}' bindtap='toPut_note'>
         <view>{{item.content}}</view>
         <view class='img'>
           <image src="{{item.img_url}}"></image>
         </view>
       </view>
       <view class='tab_list'>
-        <view class='time' bindtap='toPut_note'>
+        <view class='time'>
         {{item.date}}
         </view>
         <view class='tab'>
