@@ -1,5 +1,5 @@
 <!--pages/myInfo/myInfo.wxml-->
-<view class='info-container'>
+<view class='info-container'> 
   <view class='left-content' bindtap='to_private_message'>
      <image src='{{userInfo.logo_url}}' class='touxiang'></image>
   </view>

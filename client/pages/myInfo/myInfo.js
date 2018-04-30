@@ -1,5 +1,5 @@
 // pages/myInfo/myInfo.js
-var uid = wx.getStorageSync('uid');
+
 Page({
 
   /**
@@ -12,7 +12,13 @@ Page({
     //   nickName: "",//用户昵称
     //   uid:""
     // }
-    userInfo:{},
+    userInfo:{
+      // logo_url: 'myinfo.png',//用户头像  
+      // user_name: '登录',//用户昵称
+      // user_id: '暂无ID',
+      // day: 0,
+      // coin: 0
+    },
     prevtime:''
   },
 
@@ -20,23 +26,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) { 
-    var that=this; 
-  
+    var that = this;
+    var uid = wx.getStorageSync('uid');
+      wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/user/select_user',
+        data: {
+          uid: uid
+        },
+        dataType: 'json',
+        //responseType:'text', 
+        success: function (res) {
+
+          that.setData({
+            userInfo: res.data[0]
+          })
+
+
+
+        }
+      });
+    
     //console.log(uid);
-    wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/user/select_user',
-      data:{
-        uid:uid
-      },
-      dataType: 'json',
-      //responseType:'text', 
-      success: function (res) { 
-        //console.log(res);
-        that.setData({
-          userInfo:res.data[0]
-        }) 
-      } 
-    }); 
+   
     // wx.getUserInfo({ 
     //   success: function (res) {
     //     //console.log(res.userInfo.avatarUrl);
@@ -60,7 +71,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+   
   },
 
   /**
@@ -98,6 +109,7 @@ Page({
   
   },
   qiandao:function(){
+    var uid = wx.getStorageSync('uid');
     var that = this;
     var date = new Date();
     var year = date.getFullYear();
@@ -192,5 +204,10 @@ Page({
     wx.navigateTo({
       url: '../money/money',
     })
-  }
+  },
+  // login:function(){
+  //   wx.redirectTo({
+  //     url: '../login/login',
+  //   })
+  // }
 })
