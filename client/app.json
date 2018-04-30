@@ -1,7 +1,9 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/attention/attention",
+    "pages/login/login",
     "pages/myInfo/myInfo",
     "pages/addCgi/addCgi",
     "pages/forum/forum",

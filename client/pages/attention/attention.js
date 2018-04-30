@@ -5,14 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+      attention:{},
+      show:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    var uid = wx.getStorageSync('uid');
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/attention/select_follow',
+      data:{
+        uid: uid
+      },
+      success:function(res){
+        if(res.data.length != 0){
+          that.setData({
+            show:'false'
+          })
+        
+        }else{
+          that.setData({
+            show: 'true'
+          })
+       
+        }
+        that.setData({
+          attention:res.data
+        })
+      }
+    })
   },
 
   /**
@@ -62,5 +86,36 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  delete:function(e){
+    var follow_id =e.detail.value.follow_id;
+    var uid = wx.getStorageSync('uid');
+    console.log(uid);
+    console.log(follow_id);
+    wx.showModal({
+      title: '温馨提示',
+      content: '取消关注',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/attention/delete_follow',
+            data:{
+              follow_id: follow_id,
+              uid:uid
+            },
+            success:function(){
+              wx.redirectTo({
+                url: './attention',
+                success: function(res) {},
+                fail: function(res) {},
+                complete: function(res) {},
+              })
+            }
+          })
+        } else if (res.cancel) {
+          
+        }
+      }
+    })
   }
 })

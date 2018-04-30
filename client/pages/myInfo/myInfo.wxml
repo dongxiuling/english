@@ -1,21 +1,21 @@
 <!--pages/myInfo/myInfo.wxml-->
-<view class='info-container'>
+<view class='info-container'> 
   <view class='left-content' bindtap='to_private_message'>
-     <image src='../../images/myinfo.png' class='touxiang'></image>
+     <image src='{{userInfo.logo_url}}' class='touxiang'></image>
   </view>
   <view class='right-content'>
-     <text class='name'>透明</text>
-     <text class='number'>666666</text>
+     <text class='name'>{{userInfo.user_name}}</text>
+     <text class='number'>{{userInfo.user_id}}</text>
   </view>
 </view>
 <view class='money'>
   <view class='money-left-content'>
-      <image src='qiandao.png'></image>
-      <text class='qiandao'>打卡0天</text>
+      <image src='qiandao.png' bindtap='qiandao'></image>
+      <text class='qiandao' bindtap='qiandao'>打卡{{userInfo.day}}天</text>
   </view>
   <view class='money-right-content' bindtap='to_money'>
     <image src='coin.png'></image>
-    <text class='coin'>金币0个</text>
+    <text class='coin'>金币{{userInfo.coin}}个</text>
   </view>
 </view>
 <view class='my_product'>
@@ -29,9 +29,6 @@
       <text>></text>
     </view>
     <view class='help_item' bindtap='to_aboutus'>关于我们
-     <text>></text>
-    </view>
-    <view class='help_item'>退出登录
      <text>></text>
     </view>
 </view>

@@ -1,4 +1,4 @@
-var md5 =  require('../../utils/md5.js');
+var md5 = require('../../utils/myMd5.js');
 const recorderManager = wx.getRecorderManager();
 const innerAudioContext = wx.createInnerAudioContext();
 const app = getApp();
@@ -29,10 +29,8 @@ Page({
     var from = '';
     var to = '';
     var str1 = appKey + query + salt + key;
-    var str2 = encodeURI(str1);
-    var sign = md5.hex_md5(str2);
+    var sign = md5(str1);
 
-    
     wx.request({
       url: 'https://openapi.youdao.com/api',     
       data: {

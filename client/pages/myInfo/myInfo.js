@@ -1,23 +1,61 @@
 // pages/myInfo/myInfo.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+
+    // userInfo: {
+    //   avatarUrl: "",//用户头像  
+    //   nickName: "",//用户昵称
+    //   uid:""
+    // }
+    userInfo:{
+      // logo_url: 'myinfo.png',//用户头像  
+      // user_name: '登录',//用户昵称
+      // user_id: '暂无ID',
+      // day: 0,
+      // coin: 0
+    },
+    prevtime:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    // wx.request({
-    //   url: 'https://6kxrdzrv.qcloud.la/user/select_user',
-    //   //dataType:'json',
-    //   responseType:'text',
-    //   success:function(res){
-    //     console.log(res);
+  onLoad: function (options) { 
+    var that = this;
+    var uid = wx.getStorageSync('uid');
+      wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/user/select_user',
+        data: {
+          uid: uid
+        },
+        dataType: 'json',
+        //responseType:'text', 
+        success: function (res) {
+
+          that.setData({
+            userInfo: res.data[0]
+          })
+
+
+
+        }
+      });
+    
+    //console.log(uid);
+   
+    // wx.getUserInfo({ 
+    //   success: function (res) {
+    //     //console.log(res.userInfo.avatarUrl);
+    //     that.setData({
+    //       'userInfo.avatarUrl': res.userInfo.avatarUrl,
+    //       'userInfo.nickName': res.userInfo.nickName,
+    //       'userInfo.uid':uid
+    //     });
     //   }
     // })
   },
@@ -33,7 +71,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+   
   },
 
   /**
@@ -70,6 +108,45 @@ Page({
   onShareAppMessage: function () {
   
   },
+  qiandao:function(){
+    var uid = wx.getStorageSync('uid');
+    var that = this;
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+  
+    var now = year + '-' + month + '-' + day;
+    if (now == this.data.prevtime){
+      wx.showModal({
+        content: '您今天已经打过卡了，明天再来吧',
+      })
+    }else{
+      wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/user/add_day',
+        data:{
+          uid:uid
+        },
+        success:function(res){
+          wx.showModal({
+            content: '打卡成功，学习贵在坚持',
+          }),
+          that.setData({
+            userInfo: res.data[0]
+          })
+          
+        }
+      })
+    
+    }
+    this.setData({
+      prevtime:now
+    })
+
+ 
+  
+    
+  },
   to_attention:function(){
     wx.navigateTo({
       url: '../attention/attention',
@@ -103,16 +180,16 @@ Page({
     })
   },
   to_articles: function () {
-    wx.navigateTo({
-      url: '../articles/articles',
+    wx.navigateTo({ 
+      url: '../articles/articles?id=' + wx.getStorageSync('uid'),
       success: function (res) { },
       fail: function (res) { },
-      complete: function (res) { },
+      complete: function (res) { wx.getStorage('uid')},
     })
   },
   to_notes: function () {
     wx.navigateTo({
-      url: '../notes/notes',
+      url: '../notes/notes?id=' + wx.getStorageSync('uid'),
       success: function (res) { },
       fail: function (res) { },
       complete: function (res) { },
@@ -127,5 +204,10 @@ Page({
     wx.navigateTo({
       url: '../money/money',
     })
-  }
+  },
+  // login:function(){
+  //   wx.redirectTo({
+  //     url: '../login/login',
+  //   })
+  // }
 })

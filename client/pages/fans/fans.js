@@ -1,18 +1,42 @@
 // pages/fans/fans.js
 Page({
-
+ 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    fans:{},
+    show: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    var uid = wx.getStorageSync('uid');
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/fans/select_fans',
+      data: {
+        uid: uid
+      },
+      success: function (res) {
+        if (res.data.length != 0) {
+          that.setData({
+            show: 'false'
+          })
+
+        } else {
+          that.setData({
+            show: 'true'
+          })
+
+        }
+        that.setData({
+          fans: res.data
+        })
+      }
+    })
   },
 
   /**

@@ -4,36 +4,8 @@ const app = getApp();
 
 Page({
   data: {
-   
-   rank:[
-     {
-      list:"1",
-      name:"季鹏飞",
-        url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-     },{
-       list: "2",
-       name: "季鹏飞",
-         url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-     },{
-       list: "3",
-       name: "季鹏飞",
-       url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-     }
-   ],
-   items:[
-     {
-       url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-       title:"季鹏飞",
-     },
-     {
-       title: "胡绩辉",
-       url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-     },
-     {
-       title: "蔡围棋",
-       url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-     }
-     ],
+   rank:{},
+
    imgUrls: [
      {
        link: '../../image/head.png',
@@ -51,15 +23,33 @@ Page({
     interval: 5000,
     duration: 1000,
     userInfo: {},
-    searchText: '' 
+    searchText: '',
+    articleInfo:''
   },
   
   bindFormSubmit: function (e) {
     console.log(e.detail.value.textarea)
   },
   onLoad:function(){
+    var that = this;
     wx.pageScrollTo({
       scrollTop: 0
+    }),
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/user/select_coin',
+      success:function(res){
+          that.setData({
+            rank:res.data
+          })
+      }
+    })
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
+      success:function(res){
+        that.setData({
+          articleInfo:res.data
+        });
+      }
     })
     wx.showToast({
       title: '加载中...',
@@ -69,7 +59,8 @@ Page({
     
   },
   //事件处理函数
-
+  //请求数据
+  
 
 
 

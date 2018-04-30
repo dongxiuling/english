@@ -23,12 +23,13 @@
   英语达人排行榜
 </view>
 <view class="ranking-content">
+ 
   <view class="rank"  wx:for="{{rank}}">
     <view  class="top">
-      <i class="iconfont icon-jinpairongyu jinpai{{item.list}}"></i>
-      <image  src="{{item.url}}"></image> 
+      <i class="iconfont icon-jinpairongyu jinpai{{index+1}}"></i>
+      <image src="{{item.logo_url}}"></image> 
       <text class='top-name'>{{item.name}}</text>
-      <view class="top-money">1000金币</view>
+      <view class="top-money">{{item.coin}}金币</view>
     </view>
     
   </view>
@@ -38,24 +39,20 @@
   最新文章
 </view>
 <view>
-  <view class='index-article'  bindtap='toPut_art' wx:for="{{items}}" wx:for-item="item" >
+  <view class='index-article'  bindtap='toPut_art'  wx:for="{{articleInfo}}" wx:for-item="item" >
     <view bindtap='toPut_art' >
         <view class='index-writer'>
-            <view><image class="head-port" src="{{item.url}}"></image></view>  
+            <view><image class="head-port" src="{{item.logo_url}}"></image></view>  
             <view class='index-name'>
               <view>{{item.title}}{{head_title}}</view>
-              <view class="atricle-time">1天前</view>
+              <view class="atricle-time">{{item.date}}</view>
             </view>  
         </view>
     </view>
     <view class="article-content">
-      <view>文章内容</view>
+      <view>{{item.content}}</view>
       <view class='article-img'>
-        <image src="{{item.url}}"></image>
-        <image src="{{item.url}}"></image>
-        <image src="{{item.url}}"></image>
-        <image src="{{item.url}}"></image>
-        <image src="{{item.url}}"></image>
+        <image src="{{item.img_url}}"></image>  
       </view>
     </view>
     <view class='tab_list'>

@@ -5,7 +5,9 @@ Page({
    */
   data: {
     title:"",
-    content:""
+    content:"",
+    imgUrl:"",
+    filePath:""
   },
 
   /**
@@ -64,20 +66,26 @@ Page({
     
   },
   chooseImg:function(){
+    var that = this;
     wx.chooseImage({
       success: function(res) {
-        console.log(res);
+        console.log(res.tempFilePaths[0]);
+        that.setData({
+          imgUrl:res.tempFilePaths[0]
+        })
         wx.uploadFile({
-          url: 'https://6kxrdzrv.qcloud.la',
-          filePath: res.tempFilePaths[0],
-          name: 'file',
-          success:function(res){
-            console.log(res)
+            url: 'https://6kxrdzrv.qcloud.la/Article/upFile',
+            filePath: that.data.imgUrl,
+            name: 'file',
+            success: function (data) {
+            let str = 'https://6kxrdzrv.qcloud.la/' + data.data.replace('./', '');
+              that.setData({
+                  filePath: str
+                });
+              }
+            })
           }
         })
-       
-      },
-    })
   },
   getTitle:function(e){
     this.setData({
@@ -90,17 +98,18 @@ Page({
     });
   },
   toForum: function () {
-    
+    var that = this;
     wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/',
+      url: 'https://6kxrdzrv.qcloud.la/Article/insert_article',
       data:{
-        title:this.data.title,
-        content:this.data.content,
-        imgUrl:this.data.imgUrl
-      }
+        title:that.data.title,
+        content:that.data.content,
+        filePath:that.data.filePath
+      },
     })
+    
     wx.switchTab({
-      url: '../forum/forum?',
+      url: '../forum/forum',
     })
   }
 })
