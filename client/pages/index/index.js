@@ -31,16 +31,6 @@ Page({
     console.log(e.detail.value.textarea)
   },
   onLoad:function(){
-    if(wx.getStorageSync('uid')){
-
-    }else{
-      wx.redirectTo({
-        url: '../login/login',
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
-      })
-    }
     var that = this;
     wx.pageScrollTo({
       scrollTop: 0
