@@ -11,4 +11,10 @@ class Note extends CI_Controller {
 		 $note = $this->note_model->do_note($content,$user_id);
 		 echo json_encode($note);
     }
+
+  public function select_note(){
+    $this ->load ->model('Note_model');
+    $res = $this -> Note_model ->do_select();
+    echo json_encode($res);
+  }
 }

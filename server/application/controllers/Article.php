@@ -6,8 +6,9 @@ class Article extends CI_Controller {
       $title = $this ->input ->get('title');
       $content = $this ->input ->get('content');
       $img_url = $this ->input ->get('filePath');
+      $user_id = $this ->input ->get('userId');
       $this ->load ->model('Article_model');
-      $res = $this ->Article_model ->do_insert($title,$content,$img_url);
+      $res = $this ->Article_model ->do_insert($title,$content,$img_url,$user_id);
       echo json_encode($res);
     }
 
@@ -25,7 +26,7 @@ class Article extends CI_Controller {
     
     public function upFile(){           
             $path = "./upload/";
-            if (isset($_GET)) {
+            if (isset($_POST)) {
                 $name = $_FILES['file']['name'];
                 $name_tmp = $_FILES['file']['tmp_name'];
                 $type = strtolower(substr(strrchr($name, '.'), 1));
@@ -37,6 +38,8 @@ class Article extends CI_Controller {
                     echo 'fail';
                 }
             }
+           
+        
            
     }
     }

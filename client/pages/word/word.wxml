@@ -30,14 +30,14 @@
   <view class='go' bindtap='changeShowVoice'>语音笔记</view>
   </view>
  
-  <view class='wrapper note'  wx:if="{{show}}" id='commit'>
+  <view class='wrapper note'  wx:if="{{show}}" id='commit' wx:for='{{noteFile}}'>
       <view id='content-line'>
         <image id='bookIcon'src='../../images/book.png'></image>
         <text class='title' id='book'>笔记</text>
         <image id='rightIcon'src='../../images/right.png' bindtap='goText'></image>
       </view>
-        <text id='cont'>{{contt}}</text>
-        <view id='auther'>作者:{{auther}}</view>
+        <text id='cont'>{{item.content}}</text>
+        <view id='auther'>作者:{{item.user_name}}</view>
         <image id='starIcon'src='../../images/star.png'></image>
   </view>
   <view class='wrapper voice' wx:if="{{show==false}}" id='commit' wx:for='{{voiceFile}}'>

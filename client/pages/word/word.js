@@ -64,6 +64,15 @@ Page({
       }
     }),
       wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
+        success:function(res){
+          that.setData({
+            noteFile:res.data
+          });
+        }
+
+      })
+      wx.request({
         url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
         success: function (res) {
           console.log(res);
