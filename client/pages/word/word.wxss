@@ -150,7 +150,15 @@ page{
   margin-right:10rpx;
   padding-bottom: 30rpx
 }
+#playVoice{
+  width: 40rpx;
+  height:40rpx;
+  margin-left: 20rpx;
+}
 /*笔记结束*/
+.range{
+  overflow: hidden;
+}
 .go{
   width: 200rpx;
   height: 80rpx;
@@ -161,6 +169,8 @@ page{
   border-radius: 15rpx;
   text-align: center;
   margin-top: 50rpx;
+  float: left;
+  margin-right: 40rpx;
 }
 #goOne{
   float: left;

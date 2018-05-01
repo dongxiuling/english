@@ -14,6 +14,7 @@ Page({
     cont:'笔记',
     contt:'desc',
     auther:'all',
+    show:true,
     audioSrc:'',
     sentence:{}
   },
@@ -31,7 +32,7 @@ Page({
     var to = '';
     var str1 = appKey + query + salt + key;
     var sign = md5(str1);
-    console.log(query);
+  
     wx.request({
       url: 'https://openapi.youdao.com/api',     
       data: {
@@ -61,7 +62,17 @@ Page({
           sentence:res.data
         })
       }
-    })
+    }),
+      wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
+        success: function (res) {
+          console.log(res);
+          that.setData({
+            voiceFile: res.data
+          });
+        }
+      })
+
      
    
   },
@@ -131,6 +142,18 @@ Page({
     wx.navigateTo({
       url: '../text/text',
     })
+  },
+  changeShow: function () {
+    this.setData({
+      show: true
+    })
+    // console.log(this.data.show);
+  },
+  changeShowVoice: function () {
+    this.setData({
+      show: false
+    })
+    console.log(this.data.show);
   },
   //播放语音
   audioPlay:function(){

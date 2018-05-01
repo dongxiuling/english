@@ -24,6 +24,9 @@ Page({
       },
       success: function (res) {
        console.log(res.data);
+       wx.navigateTo({
+         url: '../word/word',
+       })
       
       }
     })
