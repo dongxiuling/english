@@ -8,7 +8,11 @@ Page({
     head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
     imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
     article_id: [],
-    article: []
+    article: [],
+    comments: [],
+    com_cont:'',
+    uid:'',
+    releaseFocus: false
   },
 
   /**
@@ -24,6 +28,16 @@ Page({
       success: function (res) {
         that.setData({
           article: res.data
+        })
+      }
+    });
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/art_com',
+      responseType: 'text',
+      data: { article_id: that.data.article_id },
+      success: function (res) {
+        that.setData({
+          comments: res.data
         })
       }
     })
@@ -76,5 +90,87 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  zan: function (e) {
+    this.data.id = this.data.article_id;
+    var that = this;
+    wx.getStorage({
+      key: that.data.id,
+      success: function (res) {
+        if (res.data == 'true') {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/zan2',
+            responseType: 'text',
+            data: {
+              id: that.data.id,
+            },
+            success: function (res) {
+              wx.setStorage({ key: that.data.id, data: 'false' });
+              that.setData({
+                article: res.data
+              })
+            }
+          })
+        } else {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/cancel2',
+            responseType: 'text',
+            data: {
+              id: that.data.id,
+            },
+            success: function (res) {
+              wx.setStorage({ key: that.data.id, data: 'true' });
+              that.setData({
+                article: res.data
+              })
+            }
+          })
+        }
+      },
+      fail: function (res) {
+        wx.request({
+          url: 'https://6kxrdzrv.qcloud.la/Welcome/zan2',
+          responseType: 'text',
+          data: {
+            id: that.data.id,
+          },
+          success: function (res) {
+            wx.setStorage({ key: that.data.id, data: 'false' });
+            that.setData({
+              article: res.data
+            })
+          }
+        })
+      }
+    })
+  },
+  bindReply: function (e) {
+    this.setData({
+      releaseFocus: true
+    })
+  },
+  com_input:function(e){
+    this.setData({
+      com_cont: e.detail.value
+    })
+  },
+  ping:function (){
+    this.data.uid=parseInt(wx.getStorageSync('uid'));
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/ping',
+      responseType: 'text',
+      data: { 
+        article_id: that.data.article_id,
+        uid: that.data.uid,
+        cont: that.data.com_cont
+      },
+      success: function (res) {
+        that.setData({
+          comments: res.data
+        })
+      }
+    })
   }
 })

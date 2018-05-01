@@ -54,6 +54,14 @@
   font-size: 35rpx;
   color: #848484;
 }
+.tab .gray{
+  font-size: 35rpx;
+  color: #848484;
+}
+.tab .green{
+  font-size: 35rpx;
+  color: #209E85; 
+}
 /* 评论 */
 .com_title{
   color: #848484;
@@ -65,8 +73,8 @@ button{
   background: #209E85;
   color: #ffffff;
   position: fixed;
-  left:0; 
-  bottom:0;  
+  left: 0;
+  bottom: 0;
   z-index: 2;
 }
 .com_area{
