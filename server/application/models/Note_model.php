@@ -18,4 +18,11 @@ class Note_model extends CI_Model {
         $stmt -> execute();
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function do_note($content,$user_id){
+        DB::insert('note', [
+           'content' => $content,
+           'user_id' => $user_id
+       ]);
+    }
 }

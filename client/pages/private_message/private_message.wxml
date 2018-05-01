@@ -2,7 +2,7 @@
 <view class='head' style="background-image:url('../../images/private-bg.jpg')">
   <view class='title'>
     <navigator class='iconfont icon-back'></navigator>
-    <navigator class='iconfont icon-pinglun' url='alter/alter'></navigator>
+    <navigator class='iconfont icon-pinglun' url='alter/alter' ></navigator>
   </view>
   <view class='logo' style="background-image:url('../../images/logo.jpg')"></view>
   <text class='id'>5606152</text>
@@ -22,8 +22,8 @@
   </view>
   <view class='message-bottom'>
     <view class='box'>
-     <text class='sex'>性别</text>
-     <text class='result'>男</text>
+     <text class='sex'>姓名</text>
+     <text class='result'>小胡胡</text>
     </view>
      <view class='box'>
      <text class='sex'>性别</text>

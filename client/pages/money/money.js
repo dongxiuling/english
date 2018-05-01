@@ -5,14 +5,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    num:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var user_id = 50025;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/money/slec',
+      data:
+      {
+        user_id: '1',
+      },
+      success: function (res) {
+        console.log(res);
+      }
+
+    });
   },
 
   /**

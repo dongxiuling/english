@@ -1,19 +1,41 @@
 // pages/createNote/createNote.js
+var user = wx.getStorageSync('uid');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+     content:""
+  },
+  do_note: function (e) {
+    this.setData({
+      content: e.detail.value
+    })
+  },
+  finish: function () {
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Note/add_note',
+    
+      data: {
+        content: that.data.content,
+        user_id:user
+      },
+      success: function (res) {
+       console.log(res.data);
+      
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+     
   },
+ 
 
   /**
    * 生命周期函数--监听页面初次渲染完成

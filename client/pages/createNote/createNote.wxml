@@ -1,5 +1,5 @@
 <!--pages/createNote/createNote.wxml-->
 <view class='create'>
-<textarea class='creataNote' placeholder='笔记、用法、技巧，只要你觉得有帮助的都可以。。。。' auto-focus='true'></textarea>
+<textarea class='creataNote' placeholder='笔记、用法、技巧，只要你觉得有帮助的都可以。。。。' auto-focus='true'   bindinput="do_note"></textarea>
 </view>
-<button class='finish'>完成</button>
+<button class='finish' bindtap='finish'>完成</button>

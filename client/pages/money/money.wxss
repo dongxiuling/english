@@ -1,7 +1,10 @@
 /* pages/money/money.wxss */
 page
 {
+  height: 100%;
   background: #ccc;
+  display: flex;
+  flex-direction:column; 
 }
 .head
 {
@@ -37,6 +40,7 @@ page
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 }
 .money
 {
