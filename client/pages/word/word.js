@@ -14,7 +14,8 @@ Page({
     cont:'笔记',
     contt:'desc',
     auther:'all',
-    audioSrc:''
+    audioSrc:'',
+    sentence:{}
   },
 
   /**
@@ -30,7 +31,7 @@ Page({
     var to = '';
     var str1 = appKey + query + salt + key;
     var sign = md5(str1);
-
+    console.log(query);
     wx.request({
       url: 'https://openapi.youdao.com/api',     
       data: {
@@ -48,6 +49,17 @@ Page({
           audioSrc: res.data.speakUrl,
           cont:res.data.translation
         });
+      }
+    });
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/sentence/select_sentence',
+      data:{
+        word:query
+      },
+      success:function(res){
+        that.setData({
+          sentence:res.data
+        })
       }
     })
      

@@ -12,7 +12,7 @@ Page({
     //   nickName: "",//用户昵称
     //   uid:""
     // }
-    userInfo:{
+    userInfo:{ 
       // logo_url: 'myinfo.png',//用户头像  
       // user_name: '登录',//用户昵称
       // user_id: '暂无ID',

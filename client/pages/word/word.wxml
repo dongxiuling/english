@@ -13,15 +13,16 @@
         <text id='cont'>{{cont}}</text>
   </view>
 
-  <view class='wrapper' id='commit'>
+  <view class='wrapper' id='sentence_box'>
     <view id='content-line'>
           <text class='title' id='mean'>例句</text>
           <image id='rightIcon' src='../../images/right.png'></image>
     </view>
-    <view id='content-line'>
-          <text id='word-one'>{{wordOne}}</text>
+    <view id='content-line' wx:for='{{sentence}}'>
+          <view class='sentence'>{{item.sentence}}</view>
+          <view class='sentence'>{{item.translation}}</view>
     </view>
-          <text id='word-two'>{{wordTwo}}</text>
+         
     
   </view>
 
