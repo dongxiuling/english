@@ -8,7 +8,7 @@ class Note extends CI_Controller {
      $content = $this->input->get("content");
      $user_id = $this->input->get("user_id");
      $this->load->model('note_model');
-		 $notes = $this->note_model->do_note($content,$user_id);
-		  echo json_encode($notes);
+		 $note = $this->note_model->do_note($content,$user_id);
+		 echo json_encode($note);
     }
 }
