@@ -9,17 +9,8 @@
       </view>
       <view class='tab_list'>
         <view class='time'>
-        {{item.date}}
-        </view>
-        <view class='tab'>
-          <text class="iconfont icon-dianzan">{{item.hits}}赞</text>
-        </view>
-        <view class='tab'>
-          <text class="iconfont icon-pinglun">评论</text>
-        </view>
-        <view class='tab'>
-          <text class="iconfont icon-msnui-share">分享</text>
+          {{item.date}}
         </view>
       </view>
-    </view> 
-</scroll-view>
+    </view>
+  </scroll-view>
