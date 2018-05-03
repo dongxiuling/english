@@ -92,12 +92,6 @@ class Welcome extends CI_Controller {
     $com = $this->com_model->find_this($id);
 		echo json_encode($com);
   }
-  public function note_com(){
-    $id = $this->input->get('note_id');
-    $this->load->model('com_model');
-    $com = $this->com_model->find_this2($id);
-		echo json_encode($com);
-  }
   public function ping(){
     $id = $this->input->get('article_id');
     $uid = $this->input->get('uid');

@@ -155,20 +155,22 @@ Page({
       com_cont: e.detail.value
     })
   },
-  ping:function (){
-    this.data.uid=parseInt(wx.getStorageSync('uid'));
+  ping: function () {
+    this.data.uid = parseInt(wx.getStorageSync('uid'));
     var that = this;
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Welcome/ping',
       responseType: 'text',
-      data: { 
+      data: {
         article_id: that.data.article_id,
         uid: that.data.uid,
         cont: that.data.com_cont
       },
       success: function (res) {
         that.setData({
-          comments: res.data
+          comments: res.data,
+          releaseFocus: false,
+          com_cont: ''
         })
       }
     })

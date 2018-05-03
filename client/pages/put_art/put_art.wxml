@@ -46,8 +46,9 @@
   cursor-spacing="15"
   auto-height="true"
   focus="{{releaseFocus}}"
-  placeholder="回复 {{releaseName}}"
-  bindinput='com_input'>
+  placeholder="回复"
+  bindinput='com_input'
+  value='{{com_cont}}'>
   </textarea>
   <view class="submit" bindtap='ping'>发送</view>
 </view>

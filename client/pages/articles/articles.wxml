@@ -15,7 +15,7 @@
           <text class="iconfont icon-dianzan {{item.flag}}" data-id='{{item.article_id}}'>{{item.hits}}赞
           </text>
         </view>
-        <view class='tab'>
+        <view class='tab' id='{{item.article_id}}' bindtap='toPut_art'>
           <text class="iconfont icon-pinglun">评论</text>
         </view>
         <view class='tab'>
