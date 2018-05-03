@@ -11,8 +11,9 @@
         <view class='time'>
           {{item.date}}
         </view>
-        <view class='tab'>
-          <text class="iconfont icon-dianzan">{{item.hits}}赞</text>
+        <view class='tab' bindtap='zan'>
+          <text class="iconfont icon-dianzan {{item.flag}}" data-id='{{item.article_id}}'>{{item.hits}}赞
+          </text>
         </view>
         <view class='tab'>
           <text class="iconfont icon-pinglun">评论</text>
@@ -23,3 +24,4 @@
       </view>
     </view>
   </scroll-view>
+<view class='publish'    hover-class="index-pub" bindtap='toPublish'>发布+</view>

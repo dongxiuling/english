@@ -43,7 +43,34 @@ page{
 }
 .tab text{
   font-size: 30rpx;
-  color: #848484;
+  color: #848484; 
+}
+.tab .gray{
+  font-size: 30rpx;
+  color: #848484; 
+}
+.tab .green{
+  font-size: 30rpx;
+  color: #209E85; 
+}
+/* 发布 */
+.publish{
+  width:100rpx;
+  height:100rpx;
+  border:2rpx solid white;
+  border-radius:50%;
+  text-align:center;
+  line-height:100rpx;
+  z-index:2;
+  background:#209E85;
+  font-size:30rpx;
+  color:white;
+  position:fixed;
+  bottom:40rpx;
+  right:10rpx;
+}
+.index-pub{
+  opacity: 0.5;
 }
 /* 图标字体 */
 @font-face {

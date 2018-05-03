@@ -2,7 +2,7 @@
 <view class='user' wx:for='{{article}}'>
   <image src='{{head_url}}'></image>
   <view class='user_info'>
-    <view>发布人</view>
+    <view>自己</view>
     <view class='time'>{{item.date}}</view>
   </view>
 </view>
@@ -13,7 +13,7 @@
   </view>
   <view class='tab_list'>
       <view class='tab'>
-        <text class="iconfont icon-dianzan">{{item.hits}}赞</text>
+        <text class="iconfont icon-dianzan {{item.flag}}" bindtap='zan'>{{item.hits}}赞</text>
       </view>
       <view class='tab'>
         <text class="iconfont icon-msnui-share">分享</text>
@@ -22,44 +22,33 @@
 </view>
 <view class='com_title'>评论区</view>
 <scroll-view class='com_area'>
-  <view class='comment'>
+  <view class='comment' wx:for='{{comments}}'>
     <view class='com_user'>
       <image src='{{head_url}}'></image>
       <view class='com_user_info'> 
-        <view>发布人</view>
-        <view class='time'>发布时间</view> 
+        <view>{{item.user_name}}</view>
+        <view class='time'>{{item.date}}</view> 
       </view> 
     </view>
-    <view class='com_cont'>好好学习，天天向上</view>
+    <view class='com_cont'>{{item.content}}</view>
     <view class='com_tab'>
-        <text class="iconfont icon-dianzan">赞</text>
-    </view>
-  </view>
-  <view class='comment'>
-    <view class='com_user'>
-      <image src='{{head_url}}'></image>
-      <view class='com_user_info'> 
-        <view>发布人</view>
-        <view class='time'>发布时间</view> 
-      </view> 
-    </view>
-    <view class='com_cont'>好好学习，天天向上</view>
-    <view class='com_tab'>
-        <text class="iconfont icon-dianzan">赞</text>
-    </view>
-  </view>
-  <view class='comment'>
-    <view class='com_user'>
-      <image src='{{head_url}}'></image>
-      <view class='com_user_info'> 
-        <view>发布人</view>
-        <view class='time'>发布时间</view> 
-      </view> 
-    </view>
-    <view class='com_cont'>好好学习，天天向上</view>
-    <view class='com_tab'>
-        <text class="iconfont icon-dianzan">赞</text>
+        <text class="iconfont icon-dianzan">{{item.hits}}赞</text>
     </view>
   </view>
 </scroll-view>
-<button class='iconfont icon-bi'>评 论</button>
+<button class='iconfont icon-bi' bindtap='bindReply'>评 论</button>
+<view class="release" hidden="{{!releaseFocus}}">
+  <textarea class="text"
+  placeholder-class="input_null"
+  fixed="true"
+  maxlength="-1"
+  show-confirm-bar="false"
+  cursor-spacing="15"
+  auto-height="true"
+  focus="{{releaseFocus}}"
+  placeholder="回复 {{releaseName}}"
+  bindinput='com_input'>
+  </textarea>
+  <view class="submit" bindtap='ping'>发送</view>
+</view>
+
