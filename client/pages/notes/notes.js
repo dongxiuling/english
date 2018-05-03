@@ -7,8 +7,9 @@ Page({
   data: {
     head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
     imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-    notes: {},
-    uid: [],
+    notes: [],
+    voice: [],
+    uid: '',
     the_id: ''
   },
 
@@ -16,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.uid[0] = parseInt(options.id);
+    this.data.uid = parseInt(options.id);
     this.data.id = parseInt(options.id);
     this.data.the_id = parseInt(options.id);
     var that = this;
@@ -27,6 +28,16 @@ Page({
       success: function (res) {
         that.setData({
           notes: res.data
+        })
+      }
+    })
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/my_voice',
+      responseType: 'text',
+      data: { id: that.data.id },
+      success: function (res) {
+        that.setData({
+          voice: res.data
         })
       }
     })
@@ -96,60 +107,60 @@ Page({
       url: '../put_note/put_note?id=' + e.currentTarget.id,
     })
   },
-  zan: function (e) {
-    this.data.id = e.target.dataset.id;
-    var that = this;
-    wx.getStorage({
-      key: e.target.dataset.id,
-      success: function (res) {
-        if (res.data == 'true') {
-          wx.request({
-            url: 'https://6kxrdzrv.qcloud.la/Welcome/zan3',
-            responseType: 'text',
-            data: {
-              id: that.data.id,
-              uid: that.data.uid[0]
-            },
-            success: function (res) {
-              wx.setStorage({ key: e.target.dataset.id, data: 'false' });
-              that.setData({
-                notes: res.data
-              })
-            }
-          })
-        } else {
-          wx.request({
-            url: 'https://6kxrdzrv.qcloud.la/Welcome/cancel3',
-            responseType: 'text',
-            data: {
-              id: that.data.id,
-              uid: that.data.uid[0]
-            },
-            success: function (res) {
-              wx.setStorage({ key: e.target.dataset.id, data: 'true' });
-              that.setData({
-                notes: res.data
-              })
-            }
-          })
-        }
-      },
-      fail: function (res) {
-        wx.request({
-          url: 'https://6kxrdzrv.qcloud.la/Welcome/zan3',
-          responseType: 'text',
-          data: {
-            id: that.data.id,
-            uid: that.data.uid[0]
-          },
-          success: function (res) {
-            wx.setStorage({ key: e.target.dataset.id, data: 'false' });
-            that.setData({
-              notes: res.data
-            })
-          }
-        })
-      }
-    })
-  }
+  // zan: function (e) {
+  //   this.data.id = e.target.dataset.id;
+  //   var that = this;
+  //   wx.getStorage({
+  //     key: e.target.dataset.id,
+  //     success: function (res) {
+  //       if (res.data == 'true') {
+  //         wx.request({
+  //           url: 'https://6kxrdzrv.qcloud.la/Welcome/zan3',
+  //           responseType: 'text',
+  //           data: {
+  //             id: that.data.id,
+  //             uid: that.data.uid
+  //           },
+  //           success: function (res) {
+  //             wx.setStorage({ key: e.target.dataset.id, data: 'false' });
+  //             that.setData({
+  //               notes: res.data
+  //             })
+  //           }
+  //         })
+  //       } else {
+  //         wx.request({
+  //           url: 'https://6kxrdzrv.qcloud.la/Welcome/cancel3',
+  //           responseType: 'text',
+  //           data: {
+  //             id: that.data.id,
+  //             uid: that.data.uid
+  //           },
+  //           success: function (res) {
+  //             wx.setStorage({ key: e.target.dataset.id, data: 'true' });
+  //             that.setData({
+  //               notes: res.data
+  //             })
+  //           }
+  //         })
+  //       }
+  //     },
+  //     fail: function (res) {
+  //       wx.request({
+  //         url: 'https://6kxrdzrv.qcloud.la/Welcome/zan3',
+  //         responseType: 'text',
+  //         data: {
+  //           id: that.data.id,
+  //           uid: that.data.uid
+  //         },
+  //         success: function (res) {
+  //           wx.setStorage({ key: e.target.dataset.id, data: 'false' });
+  //           that.setData({
+  //             notes: res.data
+  //           })
+  //         }
+  //       })
+  //     }
+  //   })
+  // }
 })

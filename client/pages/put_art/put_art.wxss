@@ -116,13 +116,21 @@ button{
   font-size: 32rpx;
 }
 .com_tab{
-  width: 100rpx;
+  width: 120rpx;
   height: 50rpx;
   margin-left:650rpx; 
 }
 .com_tab text{
   font-size: 30rpx;
   color: #848484;
+}
+.com_tab .gray{
+  font-size: 30rpx;
+  color: #848484;
+}
+.com_tab .green{
+  font-size: 30rpx;
+  color: #209E85; 
 }
 .input_null{
 color: #C9C9C9;

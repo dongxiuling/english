@@ -2,18 +2,18 @@
 <view class='user' wx:for='{{article}}'>
   <image src='{{head_url}}'></image>
   <view class='user_info'>
-    <view>自己</view>
+    <view>{{item.title}}</view>
     <view class='time'>{{item.date}}</view>
   </view>
 </view>
 <view class='put' wx:for='{{article}}'>
-  <view class='write' bindtap='put_cont'>{{item.content}}</view>
-  <view class='img' bindtap='put_img'>
+  <view class='write'>{{item.content}}</view>
+  <view class='img'>
       <image src="{{item.img_url}}"></image>
   </view>
   <view class='tab_list'>
-      <view class='tab'>
-        <text class="iconfont icon-dianzan {{item.flag}}" bindtap='zan'>{{item.hits}}赞</text>
+      <view class='tab' bindtap='zan'>
+        <text class="iconfont icon-dianzan {{item.flag}}">{{item.hits}}赞</text>
       </view>
       <view class='tab'>
         <text class="iconfont icon-msnui-share">分享</text>
@@ -31,8 +31,8 @@
       </view> 
     </view>
     <view class='com_cont'>{{item.content}}</view>
-    <view class='com_tab'>
-        <text class="iconfont icon-dianzan">{{item.hits}}赞</text>
+    <view class='com_tab' bindtap='zan_com' id='{{item.comment_id}}'>
+        <text class="iconfont icon-dianzan {{item.flag}}">{{item.hits}}赞</text>
     </view>
   </view>
 </scroll-view>

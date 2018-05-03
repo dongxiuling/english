@@ -7,7 +7,7 @@ Page({
   data: {
     head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
     imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-    article_id: [],
+    article_id: '',
     article: [],
     comments: [],
     com_cont:'',
@@ -94,19 +94,25 @@ Page({
 
   zan: function (e) {
     this.data.id = this.data.article_id;
+    this.data.uid = parseInt(wx.getStorageSync('uid'));
     var that = this;
-    wx.getStorage({
-      key: that.data.id,
-      success: function (res) {
-        if (res.data == 'true') {
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/judge',
+      responseType: 'text',
+      data: {
+        id: that.data.id,
+        uid: that.data.uid
+      },
+      complete: function (res) {
+        if (res.data == '') {
           wx.request({
             url: 'https://6kxrdzrv.qcloud.la/Welcome/zan2',
             responseType: 'text',
             data: {
               id: that.data.id,
+              uid: that.data.uid
             },
             success: function (res) {
-              wx.setStorage({ key: that.data.id, data: 'false' });
               that.setData({
                 article: res.data
               })
@@ -118,30 +124,15 @@ Page({
             responseType: 'text',
             data: {
               id: that.data.id,
+              uid: that.data.uid
             },
             success: function (res) {
-              wx.setStorage({ key: that.data.id, data: 'true' });
               that.setData({
                 article: res.data
               })
             }
           })
         }
-      },
-      fail: function (res) {
-        wx.request({
-          url: 'https://6kxrdzrv.qcloud.la/Welcome/zan2',
-          responseType: 'text',
-          data: {
-            id: that.data.id,
-          },
-          success: function (res) {
-            wx.setStorage({ key: that.data.id, data: 'false' });
-            that.setData({
-              article: res.data
-            })
-          }
-        })
       }
     })
   },
@@ -172,6 +163,53 @@ Page({
           releaseFocus: false,
           com_cont: ''
         })
+      }
+    })
+  },
+  zan_com: function (e) {
+    this.data.id = this.data.article_id;
+    this.data.cid = e.currentTarget.id;
+    this.data.uid = parseInt(wx.getStorageSync('uid'));
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/judge2',
+      responseType: 'text',
+      data: {
+        cid: that.data.cid,
+        uid: that.data.uid
+      },
+      complete: function (res) {
+        if (res.data == '') {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/zan3',
+            responseType: 'text',
+            data: {
+              id: that.data.id,
+              cid: that.data.cid,
+              uid: that.data.uid
+            },
+            success: function (res) {
+              that.setData({
+                comments: res.data
+              })
+            }
+          })
+        } else {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/cancel3',
+            responseType: 'text',
+            data: {
+              id: that.data.id,
+              cid: that.data.cid,
+              uid: that.data.uid
+            },
+            success: function (res) {
+              that.setData({
+                comments: res.data
+              })
+            }
+          })
+        }
       }
     })
   }

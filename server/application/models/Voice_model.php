@@ -16,9 +16,12 @@ class Voice_model extends CI_Model {
         $stmt -> execute();
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
-   
-    
-
-    
+    public function find_all($data){
+          $pdo = DB::getInstance();
+          $sql = "select * from voice where voice.user_id=".$data;
+          $stmt = $pdo->prepare($sql);
+          $stmt -> execute();
+          return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>

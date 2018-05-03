@@ -5,8 +5,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{ 
-    
-		$this->load->view('welcome_message');
+    $this->load->view('welcome_message');
 	}
 	public function my_articles()
 	{
@@ -22,6 +21,13 @@ class Welcome extends CI_Controller {
 		$notes = $this->note_model->find_all($id);
 		echo json_encode($notes);
 	}
+  public function my_voice()
+	{
+    $id = $this->input->get('id');
+		$this->load->model('voice_model');
+		$voice = $this->voice_model->find_all($id);
+		echo json_encode($voice);
+	}
   public function this_article(){
 		$id = $this->input->get('article_id');
 		$this->load->model('art_model');
@@ -34,6 +40,13 @@ class Welcome extends CI_Controller {
 		$note = $this->note_model->find_this($id);
 		echo json_encode($note);
 	}
+  public function judge(){
+    $id = $this->input->get('id');
+    $uid = $this->input->get('uid');
+		$this->load->model('hit_model');
+		$hit = $this->hit_model->judge_this($id,$uid);
+		echo json_encode($hit); 
+  }
   public function zan(){
 		$id = $this->input->get('id');
     $uid = $this->input->get('uid');
@@ -50,47 +63,23 @@ class Welcome extends CI_Controller {
 	}
   public function zan2(){
 		$id = $this->input->get('id');
+    $uid = $this->input->get('uid');
 		$this->load->model('art_model');
-		$art = $this->art_model->zan_this2($id);
+		$art = $this->art_model->zan_this2($id,$uid);
 		echo json_encode($art);
 	}
   public function cancel2(){
 		$id = $this->input->get('id');
+    $uid = $this->input->get('uid');
 		$this->load->model('art_model');
-		$art = $this->art_model->cancel_this2($id);
+		$art = $this->art_model->cancel_this2($id,$uid);
 		echo json_encode($art);
-	}
-  public function zan3(){
-		$id = $this->input->get('id');
-    $uid = $this->input->get('uid');
-		$this->load->model('note_model');
-		$note = $this->note_model->zan_this($id,$uid);
-		echo json_encode($note);
-	}
-  public function cancel3(){
-		$id = $this->input->get('id');
-    $uid = $this->input->get('uid');
-		$this->load->model('note_model');
-		$note = $this->note_model->cancel_this($id,$uid);
-		echo json_encode($note);
-	}
-  public function zan4(){
-		$id = $this->input->get('id');
-		$this->load->model('note_model');
-		$note = $this->note_model->zan_this2($id);
-		echo json_encode($note);
-	}
-  public function cancel4(){
-		$id = $this->input->get('id');
-		$this->load->model('note_model');
-		$note = $this->note_model->cancel_this2($id);
-		echo json_encode($note);
 	}
   public function art_com(){
     $id = $this->input->get('article_id');
     $this->load->model('com_model');
     $com = $this->com_model->find_this($id);
-		echo json_encode($com);
+		echo json_encode($com); 
   }
   public function ping(){
     $id = $this->input->get('article_id');
@@ -100,4 +89,27 @@ class Welcome extends CI_Controller {
     $com = $this->com_model->com_this($id,$uid,$cont);
 		echo json_encode($com);
   }
+  public function judge2(){
+    $cid = $this->input->get('cid');
+    $uid = $this->input->get('uid');
+		$this->load->model('hit2_model');
+		$hit = $this->hit2_model->judge_this($cid,$uid);
+		echo json_encode($hit); 
+  }
+  public function zan3(){
+    $id = $this->input->get('id');
+		$cid = $this->input->get('cid');
+    $uid = $this->input->get('uid');
+		$this->load->model('com_model');
+		$com = $this->com_model->zan_this($id,$cid,$uid);
+		echo json_encode($com);
+	}
+  public function cancel3(){
+    $id = $this->input->get('id');
+		$cid = $this->input->get('cid');
+    $uid = $this->input->get('uid');
+		$this->load->model('com_model');
+		$com = $this->com_model->cancel_this($id,$cid,$uid);
+		echo json_encode($com);
+	}
 }

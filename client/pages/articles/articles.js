@@ -8,17 +8,17 @@ Page({
     head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
     imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
     articles:{},
-    uid:[],
-    the_id:''
+    uid:'',
+    the_id:'',
+    flag:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.uid[0] = parseInt(options.id);
+    this.data.uid = parseInt(options.id);
     this.data.id = parseInt(options.id); 
-    this.data.the_id = parseInt(options.id);
     var that = this;
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Welcome/my_articles',
@@ -47,7 +47,7 @@ Page({
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Welcome/my_articles',
       responseType:'text',
-      data: { id: that.data.the_id},
+      data: { id: that.data.id},
       success:function(res){
         that.setData({
           articles:res.data
@@ -97,28 +97,33 @@ Page({
     })
   },
   toPut_art: function (e) {
+    var that = this;
     wx.navigateTo({
-      url: '../put_art/put_art?id=' + e.currentTarget.id,
+      url: '../put_art/put_art?id=' + e.currentTarget.id
     })
   },
   zan:function(e){
-    this.data.id = e.target.dataset.id;
+    this.data.the_id= e.target.dataset.id;
     var that = this;
-    wx.getStorage({ 
-      key: e.target.dataset.id,
-      success:function(res){
-        if(res.data=='true'){
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/judge',
+      responseType: 'text',
+      data: {
+        id: that.data.the_id,
+        uid: that.data.uid
+      },
+      complete: function (res) {
+        if(res.data == ''){
           wx.request({
             url: 'https://6kxrdzrv.qcloud.la/Welcome/zan',
             responseType: 'text',
             data: {
-              id: that.data.id,
-              uid: that.data.uid[0]
+              id: that.data.the_id,
+              uid: that.data.uid
             },
             success: function (res) {
-              wx.setStorage({ key: e.target.dataset.id, data: 'false' });
               that.setData({
-                articles:res.data
+                articles: res.data
               })
             }
           })
@@ -127,34 +132,17 @@ Page({
             url: 'https://6kxrdzrv.qcloud.la/Welcome/cancel',
             responseType: 'text',
             data: {
-              id: that.data.id,
-              uid: that.data.uid[0]
+              id: that.data.the_id,
+              uid: that.data.uid
             },
             success: function (res) {
-              wx.setStorage({ key: e.target.dataset.id, data: 'true' });
               that.setData({
-                articles: res.data            
+                articles: res.data
               })
             }
-          })
+          })        
         }
-      },
-      fail:function(res){
-        wx.request({
-          url: 'https://6kxrdzrv.qcloud.la/Welcome/zan',
-          responseType: 'text',
-          data: {
-            id: that.data.id,
-            uid: that.data.uid[0]
-          },
-          success: function (res) {
-            wx.setStorage({ key: e.target.dataset.id, data: 'false' });
-            that.setData({
-              articles: res.data
-            })
-          }
-        })
       }
-    })
+    })      
   }
 })
