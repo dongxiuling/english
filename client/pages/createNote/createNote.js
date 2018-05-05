@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-     content:""
+     content:"",
+     word:'',
+     wordsId:''
   },
   do_note: function (e) {
     this.setData({
@@ -16,27 +18,44 @@ Page({
   finish: function () {
     var that = this;
     wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Note/add_note',
-    
-      data: {
-        content: that.data.content,
-        user_id:user
+      url: 'https://6kxrdzrv.qcloud.la/Words/insertWords',
+      data:{
+        words:that.data.word
       },
-      success: function (res) {
-       console.log(res.data);
-       wx.navigateTo({
-         url: '../word/word',
-       })
-      
+      success:function(res){
+        console.log(res);
+        that.setData({
+          wordsId:res.data
+        });
+        console.log(that.data.wordsId)
+        wx.request({
+          url: 'https://6kxrdzrv.qcloud.la/Note/add_note',
+          data: {
+            content: that.data.content,
+            user_id: user,
+            wordsId: res.data
+          },
+          success: function (res) {
+            console.log(res.data);
+            wx.navigateTo({
+              url: '../index/index',
+            })
+          }
+        })
       }
     })
+   
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     
+    var that = this;
+     that.setData({
+       word:options.words
+     });
+     console.log(that.data.word)
   },
  
 

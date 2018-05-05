@@ -8,6 +8,14 @@ class Words extends CI_Controller {
     $res = $this ->Words_model ->do_insert($name);
     echo json_encode($res);    
   }   
+
+  public function selectWords(){
+    $words_name = $this ->input ->get('name');
+    $this ->load ->model('Words_model');
+    $res = $this ->Words_model ->do_select($words_name);
+    echo json_encode($res);
+
+  }
     }
 
 ?>

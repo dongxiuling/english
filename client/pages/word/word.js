@@ -23,14 +23,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-   
+    var that = this;   
     var reg = new RegExp("[\\u4E00-\\u9FFF]+", "g");
     var appKey = '2f02f726dea1c7f3';
     var key = 'Jsba6T8JFxvYfXPUdEUEP7I8GwSjL3dJ';
     var salt = (new Date).getTime();
     var query = options.searchContent;
-    
+    that.setData({
+      word:options.searchContent
+    });
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/words/selectWords',
+      data:{
+        name:that.data.word
+      },
+      success:function(res){
+        console.log(res);
+        that.setData({
+          wordsId:res.data[0].words_id
+        });
+      }
+    })
     var from = '';
     var to = '';
     var str1 = appKey + query + salt + key;
@@ -52,13 +65,13 @@ Page({
           that.setData({
             word: res.data.query,
             audioSrc: res.data.tSpeakUrl,
-            cont: res.data.translation
+            cont: res.data.basic.explains
           });
         } else {
           that.setData({
             word: res.data.query,
             audioSrc: res.data.speakUrl,
-            cont: res.data.translation
+            cont: res.data.basic.explains
           });
         }
         
@@ -154,16 +167,14 @@ Page({
   },
   //跳转创建笔记页
   goCreate:function(){
+    var that = this;
+    var words = that.data.word;
     wx.navigateTo({
-      url: '../createNote/createNote',
+      url: '../createNote/createNote?words='+words,
     })
   },
   //跳转更多笔记页
-  goText:function(){
-    wx.navigateTo({
-      url: '../text/text',
-    })
-  },
+  
   changeShow: function () {
     this.setData({
       show: true
@@ -190,58 +201,7 @@ Page({
     })
   },
  
-  //去发音
-  /*
-  startVoice:function(){ 
-    const options = {
-      duration: 10000,
-      sampleRate: 44100,
-      numberOfChannels: 1,
-      encodeBitRate: 192000,
-      format: 'mp3',
-      frameSize: 50
-    }    
-    recorderManager.start(options);
-    recorderManager.onStart(() => {
-      console.log('recorder start')
-    }),
-    recorderManager.onError((res) => {
-        console.log("有错误");
-    })
-  },
-  stopVoice:function(){
-    recorderManager.stop();
-    recorderManager.onStop((res) => {
-      console.log(res.tempFilePath);
-    })
-  }*/
-  // startVoice: function () {
-  //   const options = {
-  //     duration: 10000,//指定录音的时长，单位 ms
-  //     sampleRate: 16000,//采样率
-  //     numberOfChannels: 1,//录音通道数
-  //     encodeBitRate: 96000,//编码码率
-  //     format: 'mp3',//音频格式，有效值 aac/mp3
-  //     frameSize: 50,//指定帧大小，单位 KB
-  //   }
-  //   //开始录音
-  //   recorderManager.start(options);
-  //   recorderManager.onStart((res) => {
-  //     console.log('recorder start',res);
-  //   });
-  //   //错误回调
-  //   recorderManager.onError((res) => {
-  //     console.log(res);
-  //   })
-  // },
-  // //停止录音
-  // stopVoice: function () {
-  //   recorderManager.stop();
-  //   recorderManager.onStop((res) => {
-  //     console.log('停止录音', res.tempFilePath);
-  //   })
-
-  // },
+  
 
   start: function () {
     const options = {
@@ -331,4 +291,39 @@ Page({
       console.log(res.errCode)
     })
   },
+
+
+  //收藏笔记
+  collection:function(e){
+    var that = this;
+    var aa = e.target.dataset.id;
+    var myNewNote = that.data.noteFile[aa];
+    var myContent = myNewNote.content;
+    var user = 20180034;
+    var style = 'green';
+  console.log(that.data.noteFile);
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Note/add_note',
+      data:{
+        content:myContent,
+        user_id:user,
+        wordsId:that.data.wordsId
+      },
+      success:function(){
+        console.log(11);
+        wx.request({ 
+          url: 'https://6kxrdzrv.qcloud.la/CollectNote/insert',
+          data:{
+            note_id:myNewNote.note_id,
+            user_id:user,
+            flag:style
+          },
+          success:function(){
+            
+          }
+        
+        })
+      }
+    })
+  }
 })

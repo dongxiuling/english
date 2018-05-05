@@ -1,7 +1,7 @@
 <view><image class='head' src='{{imageurl}}'></image></view>
 <view>
   <view class='index-article'  wx:for="{{articleInfo}}">
-    <view class="index-line" bindtap='toPut_art' >
+    <view class="index-line" id='' bindtap='toPut_art' >
         <view class='index-writer'>
             <view><image class="head-port" src="{{item.logo_url}}"></image></view>  
             <view class='index-name'>
