@@ -13,15 +13,6 @@ page
   text-align: center;
   border-bottom: 2px solid #ccc;
 }
-.icon-back
-{
-  margin-left:16rpx; 
-  float: left;
-  font-size: 52rpx; 
-  color: #ccc;
-  flex: 1;
-  margin: 0;
-}
 .title
 {
   flex: 5;
@@ -72,6 +63,15 @@ page
   flex: 1;
   color: #1f9e83;
   font-size:0.8em; 
+}
+.number
+{
+ flex: 1;
+ font-size:0.8em; 
+}
+.number text
+{
+  color: #1f9e83;
 }
 .duihuan
 {

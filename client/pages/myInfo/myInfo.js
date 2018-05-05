@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    
     // userInfo: {
     //   avatarUrl: "",//用户头像  
     //   nickName: "",//用户昵称

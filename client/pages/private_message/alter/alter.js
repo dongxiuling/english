@@ -8,16 +8,14 @@ Page({
     dates: '2016-11-08',
     objectArray: ['男', '女'],
     location: ['山东', '上海', '北京', '天津', '新疆', '西藏', '四川', '青海', '云南', '海南', '香港', '台湾', '浙江', '江苏', '贵州', '河南', '河北', '澳门', '山西', '陕西'],
-    index: 0,
-    l_index:2
-  },
-  /*input聚焦的函数*/
-  focus:function()
-  {
-    var that=this;
-    that.className='focus';
-    console.log(555);
-    console.log(that);
+    imgUrl:"",
+    school:'',
+    introduce:"",
+    index:0,
+    name:'',
+    ll:2,
+    filePath: ""
+
   },
   //  点击日期组件确定事件  
   bindDateChange: function (e) {
@@ -27,38 +25,88 @@ Page({
     })
   },
   //  点击性别组件确定事件  
-  bindPickerChange: function (e) {
-    console.log(e.detail.value)
+  bindPickerChange1: function (e) {
     this.setData({
       index: e.detail.value
     })
   },
   //  点击城市组件确定事件  
-  bindPickerChange: function (e) {
-    console.log(e.detail.value)
+  bindPickerChange2: function (e) {
     this.setData({
-      l_index: e.detail.value
+      ll: e.detail.value
     })
   },
  //上传图片
- choose:function(e)
- {
-    var that=this;
+  choose: function () {
+    var that = this;
     wx.chooseImage({
-      count: 1, 
       success: function (res) {
-        var tempFilePaths = res.tempFilePaths;
-        upload(that, tempFilePaths);
+        console.log(res.tempFilePaths[0]);
+        that.setData({
+          imgUrl: res.tempFilePaths[0]
+        })
+        wx.uploadFile({
+          url: 'https://6kxrdzrv.qcloud.la/Article/upFile',
+          filePath: that.data.imgUrl,
+          name: 'file',
+          success: function (data) {
+            let str = 'https://6kxrdzrv.qcloud.la/' + data.data.replace('./', '');
+            that.setData({
+              filePath: str
+            });
+          }
+        })
       }
     })
- },
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+  var uid=wx.getStorageSync("uid");
+  var that=this;
+  wx.request({
+    url: 'https://6kxrdzrv.qcloud.la/user/select_user',
+    data: {
+      'uid': uid,
+    },
+    success:function(res)
+    {
+      that.setData({
+        imgUrl: res.data[0].logo_url,
+        school: res.data[0].school,
+        introduce: res.data[0].introduce,
+        index: res.data[0].sex,
+        ll: res.data[0].llocation,
+        dates:res.data[0].birthday,
+        name:res.data[0].user_name,
+      });
+    }
+  })
   },
-
+// 按钮事件
+  formSubmit: function (e) {
+    var that = this;
+    var uid=wx.getStorageSync("uid");
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/user/alter_user',
+      data: {
+        uid:uid,
+        imgUrl: that.data.filePath,
+        school: that.data.school,
+        introduce: that.data.introduce,
+        index: that.data.index,
+        ll: that.data.ll,
+        dates: that.data.dates,
+        name: that.data.name,
+      },
+      success: function (res) {
+        wx.navigateTo({
+          url: '../private_message',
+        })
+      }
+    })
+  },  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -106,47 +154,25 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+  // 获取值
+  blurschool:function(e)
+  {
+    console.log(e.detail.value)
+    this.setData({
+      school:e.detail.value,
+    });
+  },
+  blurname: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      name: e.detail.value,
+    });
+  },
+  blurintel: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      introduce: e.detail.value,
+    });
+  },
 })
-function upload(page, path) {
-  wx.showToast({
-    icon: "loading",
-    title: "正在上传"
-  }),
-    wx.uploadFile({
-      url: constant.SERVER_URL + "/FileUploadServlet",
-      filePath: path[0],
-      name: 'file',
-      header: { "Content-Type": "multipart/form-data" },
-      formData: {
-        //和服务器约定的token, 一般也可以放在header中
-        'session_token': wx.getStorageSync('session_token')
-      },
-      success: function (res) {
-        console.log(res);
-        if (res.statusCode != 200) {
-          wx.showModal({
-            title: '提示',
-            content: '上传失败',
-            showCancel: false
-          })
-          return;
-        }
-        var data = res.data
-        page.setData({  //上传成功修改显示头像
-          src: path[0]
-        })
-      },
-      fail: function (e) {
-        console.log(e);
-        wx.showModal({
-          title: '提示',
-          content: '上传失败',
-          showCancel: false
-        })
-      },
-      complete: function () {
-        wx.hideToast();  //隐藏Toast
-      }
-    })
-}
