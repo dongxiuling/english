@@ -38,19 +38,17 @@
       </view>
         <text id='cont'>{{contt}}</text>
         <view id='auther'>作者:{{auther}}</view>
-        <image id='starIcon'src='../../images/star.png'></image>
   </view>
   <view class='wrapper voice' wx:if="{{show==false}}" id='commit' wx:for='{{voiceFile}}'>
       <view id='content-line'>
         <image id='bookIcon'src='../../images/book.png'></image>
-        <text class='title' id='book'>笔记111</text>
+        <text class='title' id='book'>笔记{{index+1}}</text>
         <image id='rightIcon' src='../../images/right.png' bindtap='goText'></image>
       </view>
         <text id='cont'>{{}}</text>
 
         <image src='../../images/trum.png' id='playVoice' bindtap='createVoice' data-id='{{index}}'></image>
         <view id='auther'>作者:{{item.user_name}}</view>
-        <image id='starIcon'src='../../images/star.png'></image>
   </view>
   <view class='wrapper'>
       <text class='go' id='goOne' bindtap='goCreate'>去翻译</text>

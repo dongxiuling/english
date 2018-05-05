@@ -1,16 +1,17 @@
 <!--pages/money/gords/gords.wxml-->
 <view class='head'>
-<navigator class='iconfont icon-back' url='../money'></navigator>
-<text class="title">我的余额<text style='color:#1f9e83'>{{money}}</text></text>
+<text class='hide'></text>
+<text class="title">我的余额:<text style='color:#1f9e83'>{{num}}金币</text></text>
 <text class='hide'></text>
 </view>
 <view class='body'>
-   <view class='gord' wx:for='{{index}}'>
-      <image class='logo' src="{{imageUrl[index]}}"></image>
+   <view class='gord' wx:for='{{goods}}' wx:for-item='item'style='{{item.number==0?"display:none":""}}'>
+      <image class='logo' src="{{item.img_url}}"></image>
       <view class='detel'>
-          <text class='name'>{{name[index]}}</text>
-          <text class='privce'>{{privce[index]}}金币</text>
+          <text class='name'>{{item.name}}</text>
+          <text class='privce'>{{item.price}}金币</text>
+          <text class='number'>剩余:<text>{{item.number}}</text></text>
       </view>
-      <text class='duihuan'>兑换</text>
+      <view class='duihuan' bindtap='bind' data-id='{{item.goods_id}}' data-num='{{item.number}}' data-price='{{item.price}}' data-yue='{{num}}'>兑换</view>
    </view>
 </view>

@@ -1,25 +1,22 @@
 <!--pages/private_message/alter/alter.wxml-->
 <form  bindsubmit="formSubmit" bindreset="formReset">
-<view class='head'>
-<navigator class='iconfont icon-back' url='../../private_message/private_message'></navigator>
-<text class="title">修改我的资料</text>
-<button type='mini' form-type='submit' plain='true' style='border:0px;'>
-<icon type='success_no_circle' class='sure' size='24' color='#ccc'/>
-</button>
-</view>
+<!-- <view class='head'>
+<navigator class='iconfont' url='../../private_message/private_message'></navigator>
+<text class="title"></text>
+</view> -->
 <view class='body'>
   <view class='logo'>
-      <image src='../../../images/logo.jpg'></image>
+      <image src='user.'></image>
       <text class='alter-logo'></text>
       <text class='alter-logo' bindtap='choose'>修改头像</text>
   </view>
   <view class='form'>
     <view class='input'>
       <label for='name'>昵称</label>
-      <input id='name' type='text' value='5607542'  bindfocus="focus"  bindblur='blur' class=''></input>
+      <input id='name' type='text' value='5607542'  bindfocus="focusname"  bindblur='blurname' class=''></input>
     </view>
     <view class="section" >  
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode = "selector">  
+      <picker bindchange="bindPickerChange1" value="{{index}}" range="{{objectArray}}" mode = "selector">  
         <view class="picker">
           <label for='sex'>性别</label>
           <input id='birthday' value='{{objectArray[index]}}'></input>  
@@ -35,22 +32,26 @@
       </picker>  
     </view>
     <view class="section" >  
-      <picker bindchange="bindPickerChange" value="{{l_index}}" range="{{location}}" mode = "selector">  
+      <picker bindchange="bindPickerChange2" value="{{ll}}" range="{{location}}" mode = "selector">  
         <view class="picker">
           <label for='loaction'>地区</label>
-      <input id='location' type='text' value='{{location[l_index]}}'  bindfocus="focus"  bindblur='blur' class=''></input>
+      <input id='location' type='text' value='{{location[ll]}}'  bindfocus="focus"  bindblur='blur' class=''></input>
         </view>  
       </picker>  
     </view>    
     <view class='input'>
       <label for='school'>学校</label>
-      <input id='school' type='text' value='东北林业大学'     bindfocus="focus"  bindblur='blur' class=''></input>
+      <input id='school' type='text' value='东北林业大学'     bindfocus="focusschool"  bindblur='blurschool' class=''></input>
     </view>
     <view class='intel'>
       <label for='intel'>简介</label>
-      <textarea id='intel' >爱自己，爱生活</textarea>
+      <textarea id='intel' bindblur='blurintel' focus='focusintel' value='爱自己，爱生活'></textarea>
     </view>
   </view>
+  <button type='mini' form-type='submit' plain='true' style='border:0px;background: #1f9e83;height: 90rpx;width: 50%;margin: 30rpx auto 10rpx;line-height:80rxp;' >
+<icon type='success_no_circle' class='sure' size='24' color='#ccc'/>
+</button>
 </view>
 </form>
+
 

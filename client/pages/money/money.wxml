@@ -1,13 +1,13 @@
 <!--pages/money/money.wxml-->
-<view class='head'>
+<!-- <view class='head'>
 <navigator class='iconfont icon-back' url=''></navigator>
 <text class="title">我的金币</text>
 <text class='hide'></text>
-</view>
+</view> -->
 <view class='body'>
    <view class='money'>
     <text class='mymoney'>我的金币:</text>
-    <text class='num'>20</text>
+    <text class='num'>{{num}}</text>
     <navigator class='quduihuan' url='gords/gords'>去兑换</navigator>
    </view>
    <view class='rule'>

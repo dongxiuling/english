@@ -19,5 +19,20 @@ class User extends CI_Controller {
       $res = $this->user_model->do_add_day($uid);
       echo json_encode($res);
     }
+    public function alter_user()
+    {
+      $uid = $this->input->get('uid');
+      $sex= $this->input->get('index');
+      $school= $this->input->get('school');
+      $introduce=$this->input->get('introduce');
+      $date=$this->input->get('dates');
+      $img=$this->input->get('imgUrl');
+      $ll=$this->input->get('ll');
+      $this->load->model("user_model");
+      $res=$this->user_model->do_alter_user($uid,$sex,$school,$introduce,$date,$name,$img,$ll);
+      echo json_encode($res);
+    }
+
+
 }
 ?>

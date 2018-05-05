@@ -5,14 +5,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+     article:"",
+     note:"",
+     follow:"",
+     fans:"",
+     user:"",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that =this;
+   var uid=wx.getStorageSync('uid');
+   console.log(uid);
+   wx.request({
+     url: 'https://6kxrdzrv.qcloud.la/message/select_message',
+     data:{
+       'user_id':uid,
+     },
+     success:function(res)
+     {
+       console.log(res.data);
+       that.setData({
+         'article': res.data[0][0].one,
+         'note': res.data[1][0].two*1 + res.data[2][0].three*1,
+         'follow': res.data[3][0].four,
+         'fans': res.data[4][0].five,
+         'user': res.data[5][0],
+       });
+     }
+   })
   },
 
   /**
