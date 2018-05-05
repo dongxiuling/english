@@ -7,13 +7,17 @@ Page({
   data: {
     head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
     imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-    articles:[]
+    articles:{},
+    uid:'',
+    the_id:'',
+    flag:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.data.uid = parseInt(options.id);
     this.data.id = parseInt(options.id); 
     var that = this;
     wx.request({
@@ -39,7 +43,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/my_articles',
+      responseType:'text',
+      data: { id: that.data.id},
+      success:function(res){
+        that.setData({
+          articles:res.data
+        })
+      }
+    })
   },
 
   /**
@@ -77,9 +91,58 @@ Page({
   
   },
 
-  toPut_art: function (e) {
+  toPublish: function () {
     wx.navigateTo({
-      url: '../put_art/put_art?id=' + e.currentTarget.id,
+      url: '../issue/issue',
     })
+  },
+  toPut_art: function (e) {
+    var that = this;
+    wx.navigateTo({
+      url: '../put_art/put_art?id=' + e.currentTarget.id
+    })
+  },
+  zan:function(e){
+    this.data.the_id= e.target.dataset.id;
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/judge',
+      responseType: 'text',
+      data: {
+        id: that.data.the_id,
+        uid: that.data.uid
+      },
+      complete: function (res) {
+        if(res.data == ''){
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/zan',
+            responseType: 'text',
+            data: {
+              id: that.data.the_id,
+              uid: that.data.uid
+            },
+            success: function (res) {
+              that.setData({
+                articles: res.data
+              })
+            }
+          })
+        }else{
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/cancel',
+            responseType: 'text',
+            data: {
+              id: that.data.the_id,
+              uid: that.data.uid
+            },
+            success: function (res) {
+              that.setData({
+                articles: res.data
+              })
+            }
+          })        
+        }
+      }
+    })      
   }
 })

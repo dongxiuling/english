@@ -43,7 +43,15 @@ page{
 }
 .tab text{
   font-size: 30rpx;
-  color: #848484;
+  color: #848484; 
+}
+.tab .gray{
+  font-size: 30rpx;
+  color: #848484; 
+}
+.tab .green{
+  font-size: 30rpx;
+  color: #209E85; 
 }
 /* 图标字体 */
 @font-face {

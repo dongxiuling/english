@@ -24,10 +24,13 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+   
+    var reg = new RegExp("[\\u4E00-\\u9FFF]+", "g");
     var appKey = '2f02f726dea1c7f3';
     var key = 'Jsba6T8JFxvYfXPUdEUEP7I8GwSjL3dJ';
     var salt = (new Date).getTime();
     var query = options.searchContent;
+    
     var from = '';
     var to = '';
     var str1 = appKey + query + salt + key;
@@ -45,11 +48,20 @@ Page({
       },
       success:function(res){
         console.log(res);
-        that.setData({
-          word:res.data.query,
-          audioSrc: res.data.speakUrl,
-          cont:res.data.translation
-        });
+        if (reg.test(query)) {
+          that.setData({
+            word: res.data.query,
+            audioSrc: res.data.tSpeakUrl,
+            cont: res.data.translation
+          });
+        } else {
+          that.setData({
+            word: res.data.query,
+            audioSrc: res.data.speakUrl,
+            cont: res.data.translation
+          });
+        }
+        
       }
     });
     wx.request({
@@ -63,6 +75,15 @@ Page({
         })
       }
     }),
+      wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
+        success:function(res){
+          that.setData({
+            noteFile:res.data
+          });
+        }
+
+      })
       wx.request({
         url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
         success: function (res) {
@@ -168,6 +189,7 @@ Page({
       console.log(res.errCode)
     })
   },
+ 
   //去发音
   /*
   startVoice:function(){ 
@@ -242,10 +264,71 @@ Page({
   },
   //停止录音
   end: function () {
+    var that = this;
     recorderManager.stop();
     recorderManager.onStop((res) => {
       console.log('停止录音', res.tempFilePath);
-    })
+      that.setData({
+        voicePath: res.tempFilePath
+      });
+      wx.showModal({
+        title: '提示',
+        content: '确定上传吗?',
+        success: function (res) {
+          var user = wx.getStorageSync('uid');
+          if (res.confirm) {
+            wx.request({
+              url: 'https://6kxrdzrv.qcloud.la/Words/insertWords',
+              data: {
+                words: that.data.word
+              },
+              success: function (res) {
+                that.setData({
+                  wordsId: res.data
+                });
+              }
+            })
+            wx.uploadFile({
+              url: 'https://6kxrdzrv.qcloud.la/Voice/upVoiceFile',
+              filePath: that.data.voicePath,
+              name: 'file',
+              success: function (data) {
+                let str = 'https://6kxrdzrv.qcloud.la/' + data.data.replace('./', '');
+                that.setData({
+                  upvoicePath: str
+                });
+                wx.request({
+                  url: 'https://6kxrdzrv.qcloud.la/Voice/insertVoice',
+                  data: {
+                    Voice_url: that.data.upvoicePath,
+                    user_id: user,
+                    wordsId: that.data.wordsId
+                  }
+                })
+              }
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
 
+    })
+  },
+
+  createVoice: function (e) {
+    var that = this;
+    var num = e.target.dataset.id;
+    const innerAudioContext = wx.createInnerAudioContext()
+    innerAudioContext.autoplay = true,
+
+      innerAudioContext.src = that.data.voiceFile[num].url,
+      innerAudioContext.onPlay(() => {
+        console.log('开始播放')
+      })
+    innerAudioContext.onError((res) => {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
   },
 })
