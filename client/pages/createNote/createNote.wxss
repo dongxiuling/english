@@ -1,14 +1,24 @@
 .create{
-  width: 80%;
+  width: 95%;
   border: 2rpx solid #ccc;
   font-size: 30rpx;
-  text-indent: 40rpx;
+  margin: 20rpx;
+  border-radius: 10rpx;
 }
+.createNote{
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:5;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+
 .finish{
-  width:140rpx;
+  width:240rpx;
   height:80rpx;
   line-height: 80rpx;
-  position: absolute;
-  right: 0;
-  top: 0;
+  background: #209e85;
+  color: #fff
 }

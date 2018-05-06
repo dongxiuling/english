@@ -20,6 +20,14 @@ class Words_model extends CI_Model {
 
     }
    
+   public function do_select($words_name){
+      $pdo = DB::getInstance();
+        $sql = "select  words_id from words where words.name = '$words_name'";
+        $stmt = $pdo->prepare($sql);
+        $stmt -> execute();
+         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        
+   }
 
     
 }

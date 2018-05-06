@@ -39,10 +39,10 @@
   最新文章
 </view>
 <view>
-  <view class='index-article'  bindtap='toPut_art'  wx:for="{{articleInfo}}" wx:for-item="item" >
-    <view bindtap='toPut_art' >
+  <view class='index-article'  bindtap='toPut_art'  wx:for="{{articleInfo}}" wx:for-item="item" id='{{item.article_id}}' data-id='{{item.user_id}}'>
+    <view  >
         <view class='index-writer'>
-            <view><image class="head-port" src="{{item.logo_url}}"></image></view>  
+            <view><image class="head-port" src="{{item.logo_url}}"></image></view> 
             <view class='index-name'>
               <view>{{item.title}}{{head_title}}</view>
               <view class="atricle-time">{{item.date}}</view>
