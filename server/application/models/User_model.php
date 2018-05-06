@@ -71,10 +71,10 @@ class User_model extends CI_Model {
   public function do_alter_user($uid,$sex,$school,$introduce,$date,$name,$img,$ll)
   {
      $pdo = DB::getInstance();
-    $sql1 = "update t_user set user_name = ".$name.",sex=".$sex.",school=".$school.",introduce=".$introduce.",birthday=".$date.",logo_url=".$img.",location=".$ll." where user_id =".$uid;
-    $stmt1 = $pdo->prepare($sql1);
-    $stmt1->execute();
-   return DB::select('t_user', ['*'],'user_id='.$uid);
+    $sql = "update t_user set user_name = '".$name."',sex='".$sex."',school='".$school."',introduce='".$introduce."',birthday='".$date."',logo_url='".$img."',location='".$ll."' where user_id =".$uid;
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    return $sql;
   }
 }
 ?>

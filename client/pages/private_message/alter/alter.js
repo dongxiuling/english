@@ -12,8 +12,10 @@ Page({
     school:'',
     introduce:"",
     index:0,
+    sex:"",
     name:'',
     ll:2,
+    place:'',
     filePath: ""
 
   },
@@ -76,34 +78,77 @@ Page({
         imgUrl: res.data[0].logo_url,
         school: res.data[0].school,
         introduce: res.data[0].introduce,
-        index: res.data[0].sex,
-        ll: res.data[0].llocation,
+        sex: res.data[0].sex,
+        place: res.data[0].location,
         dates:res.data[0].birthday,
         name:res.data[0].user_name,
       });
+      if(that.data.sex=='男')
+      {
+        that.setData({
+          index:0,
+        });
+      }
+      else{
+        that.setData({
+          index: 1,
+        });
+      }
+      for(var i=0;i<that.data.location.length;i++)
+      {
+        if (that.data.location[i] == that.data.place)
+        {
+          that.setData({
+            ll: i,
+          });
+        }
+      }
     }
   })
   },
 // 按钮事件
   formSubmit: function (e) {
     var that = this;
+    var img='';
     var uid=wx.getStorageSync("uid");
+    if (that.data.filePath=='')
+    {
+      img=that.data.imgUrl;
+    }
+    else{
+      img = that.data.filePath;
+    }
+    if (that.data.index == 0) {
+      that.setData({
+        sex: '男',
+      });
+    }
+    else {
+      that.setData({
+        sex:'女',
+      });
+    }
+    that.setData({
+      place:that.data.location[that.data.ll],
+    });
+    console.log(that.data);
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/user/alter_user',
       data: {
         uid:uid,
-        imgUrl: that.data.filePath,
+        imgUrl: img,
         school: that.data.school,
         introduce: that.data.introduce,
-        index: that.data.index,
-        ll: that.data.ll,
+        sex: that.data.sex,
+        place: that.data.place,
         dates: that.data.dates,
         name: that.data.name,
       },
       success: function (res) {
+        console.log(res.data);
         wx.navigateTo({
           url: '../private_message',
-        })
+        });
       }
     })
   },  
@@ -163,16 +208,20 @@ Page({
       school:e.detail.value,
     });
   },
-  blurname: function (e) {
+  focusname: function (e) {
+    var that = this;
     console.log(e.detail.value)
     this.setData({
       name: e.detail.value,
     });
+    console.log(that.data.name);
   },
   blurintel: function (e) {
+    var that=this;
     console.log(e.detail.value)
     this.setData({
       introduce: e.detail.value,
     });
+    console.log(that.data.introduce);
   },
 })

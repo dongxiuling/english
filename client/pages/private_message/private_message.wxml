@@ -45,7 +45,7 @@
      <text class='Intel'>个人简介</text>
     </view>
     <view class='box' id='intel'>
-     <text class='intel'>{{user.intoduce}}</text>
+     <text class='intel'>{{user.introduce}}</text>
     </view>
   </view>
 </view>

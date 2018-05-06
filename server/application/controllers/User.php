@@ -22,12 +22,13 @@ class User extends CI_Controller {
     public function alter_user()
     {
       $uid = $this->input->get('uid');
-      $sex= $this->input->get('index');
+      $sex= $this->input->get('sex');
       $school= $this->input->get('school');
       $introduce=$this->input->get('introduce');
       $date=$this->input->get('dates');
       $img=$this->input->get('imgUrl');
-      $ll=$this->input->get('ll');
+      $ll=$this->input->get('place');
+      $name=htmlspecialchars($this->input->get('name'));
       $this->load->model("user_model");
       $res=$this->user_model->do_alter_user($uid,$sex,$school,$introduce,$date,$name,$img,$ll);
       echo json_encode($res);

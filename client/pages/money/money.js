@@ -16,6 +16,7 @@ Page({
     //var user_id = 50025;
     var that=this;
     var uid = wx.getStorageSync('uid');
+    console.log(uid);
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/money/select_money',
       data:
