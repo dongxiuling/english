@@ -81,7 +81,7 @@ Page({
   },
   toPut_art:function(e){
     wx.navigateTo({
-      url: '../put_art/put_art?id=' + e.currentTarget.id+'&dataId =' +e.target.dataset.id,
+      url: '../put_art/put_art?id=' + e.currentTarget.id,
     })
   }
 })

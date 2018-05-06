@@ -50,8 +50,9 @@
 
         <image src='../../images/trum.png' id='playVoice' bindtap='createVoice' data-id='{{index}}'></image>
         <view id='auther'>作者:{{item.user_name}}</view>
-        <image id='starIcon' class='{{item.flag}}' src='../../images/star.png' bindtap='collection'
+        <image class='starIcon {{item.flag}}' src='../../images/star.png' bindtap='collectionVoice'
         data-id='{{index}}'></image>
+        <image  class='starIcon collect' wx:if='{{item.flag}}' src='../../images/collectNote.png' ></image>
   </view>
   <view class='wrapper'>
       <text class='go' id='goOne' bindtap='goCreate'>去翻译</text>

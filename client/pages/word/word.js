@@ -299,9 +299,9 @@ Page({
     var aa = e.target.dataset.id;
     var myNewNote = that.data.noteFile[aa];
     var myContent = myNewNote.content;
-    var user = 20180034;
+    var user = wx.getStorageSync('uid');
     var style = 'green';
-  console.log(that.data.noteFile);
+  
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Note/add_note',
       data:{
@@ -318,10 +318,42 @@ Page({
             user_id:user,
             flag:style
           },
-          success:function(){
-            
+          success:function(){           
+          }        
+        })
+      }
+    })
+  },
+  //收藏语音笔记
+  collectionVoice: function (e) {
+    var that = this;
+    console.log(that.data.voiceFile);
+   
+    var aa = e.target.dataset.id;
+    var myNewNote = that.data.voiceFile[aa];
+    var user = wx.getStorageSync('uid');
+    
+    var style = 'green';
+
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Voice/insertVoice',
+      data: {
+        Voice_url: myNewNote.url,
+        user_id: user,
+        wordsId: that.data.wordsId
+      },
+      success: function () {
+        console.log(11);
+        wx.request({
+          url: 'https://6kxrdzrv.qcloud.la/CollectNote/insertVoice',
+          data: {
+            voice_id: myNewNote.voice_id,
+            user_id: user,
+            flag: style
+          },
+          success: function () {
+            console.log(that.data.voiceFile.flag)
           }
-        
         })
       }
     })

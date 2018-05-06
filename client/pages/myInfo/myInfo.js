@@ -183,7 +183,7 @@ Page({
     wx.navigateTo({ 
       url: '../articles/articles?id=' + wx.getStorageSync('uid'),
       success: function (res) { },
-      fail: function (res) { },
+      fail: function (res) { }, 
       complete: function (res) { wx.getStorage('uid')},
     })
   },

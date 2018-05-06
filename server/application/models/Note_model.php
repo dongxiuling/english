@@ -6,7 +6,7 @@ use QCloud_WeApp_SDK\Mysql\Mysql as DB;
 class Note_model extends CI_Model {
     public function do_select(){
         $pdo = DB::getInstance();
-        $sql = "select aa.*,collectnote1.flag from (select note.note_id,note.content,t_user.user_id,words.words_id,note.date from note,t_user,words where note.user_id = t_user.user_id and note.words_id = words.words_id order by date desc) aa left join collectnote1 on aa.note_id =collectnote1.note_id";
+        $sql = "select aa.*,collectnote1.flag from (select note.note_id,t_user.user_name,note.content,t_user.user_id,words.words_id,note.date from note,t_user,words where note.user_id = t_user.user_id and note.words_id = words.words_id order by date desc) aa left join collectnote1 on aa.note_id =collectnote1.note_id";
         $stmt = $pdo->prepare($sql);
         $stmt -> execute();
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);

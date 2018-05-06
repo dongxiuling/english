@@ -79,9 +79,9 @@ Page({
       url: '../issue/issue',
     })
   },
-  toPut_art:function(){
+  toPut_art:function(e){
     wx.navigateTo({
-      url: '../put_art/put_art',
+      url: '../put_art/put_art?id='+e.currentTarget.id,
     })
   }
   

@@ -7,6 +7,7 @@ class Com_model extends CI_Model {
     public function find_this($data){
         $pdo = DB::getInstance();
         $sql = "select *,t.user_name from comment c,t_user t where t.user_id=c.user_id and c.reference=:id order by comment_id desc"; 
+        
         $stmt = $pdo->prepare($sql);
         $stmt -> execute(array(
             ':id' => $data

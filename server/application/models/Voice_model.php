@@ -11,7 +11,8 @@ class Voice_model extends CI_Model {
     }
     public function do_select(){
        $pdo = DB::getInstance();
-        $sql = "select * from voice,t_user,words where voice.user_id = t_user.user_id and voice.words_id = words.words_id order by date desc";
+        $sql = "select aa.*,collectvoice.flag from (select voice.voice_id,t_user.user_name,voice.url,t_user.user_id,words.words_id,voice.date from voice,t_user,words where voice.user_id = t_user.user_id and voice.words_id = words.words_id order by date desc) aa left join collectvoice on aa.voice_id =collectvoice.voice_id";
+       // select * from voice,t_user,words where voice.user_id = t_user.user_id and voice.words_id = words.words_id order by date desc
         $stmt = $pdo->prepare($sql);
         $stmt -> execute();
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
