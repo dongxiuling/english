@@ -29,6 +29,7 @@ Page({
         that.setData({
           article: res.data
         })
+        console.log(that.data.article);
       }
     });
     wx.request({

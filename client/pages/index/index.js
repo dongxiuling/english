@@ -49,6 +49,7 @@ Page({
         that.setData({
           articleInfo:res.data
         });
+        console.log(that.data.articleInfo)
       }
     })
     wx.showToast({
@@ -82,6 +83,25 @@ Page({
   toPut_art:function(e){
     wx.navigateTo({
       url: '../put_art/put_art?id=' + e.currentTarget.id,
+    })
+  },
+
+  admire:function(e){
+    console.log(this.data.articleInfo);
+    this.data.id = this.data.articleInfo[e.currentTarget.id].article_id;
+    this.data.uid = parseInt(wx.getStorageSync('uid'));
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/judge',
+      responseType: 'text',
+      data: {
+        id: that.data.id,
+        uid: that.data.uid
+      },
+      complete: function (res) {
+        console.log(res);
+        
+      }
     })
   }
 })

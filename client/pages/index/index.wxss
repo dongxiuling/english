@@ -6,7 +6,9 @@ swiper{
   height: 280rpx;
   box-shadow:0 1rpx 2rpx 2rpx rgba(0,0,0,0.1);
 } 
-
+.tab .green{
+  color: #209e85;
+}
 /**index.wxss**/
 .search{  
   width: 80%;  

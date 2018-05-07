@@ -57,10 +57,10 @@
     </view>
     <view class='tab_list'>
         <view class='tab'>
-          <text class="iconfont icon-dianzan" bindtap='admire'>赞</text>
+          <text class="iconfont icon-dianzan {{item.flag}}" id='{{index}}' bindtap='admire'>赞</text>
         </view>
         <view class='tab'>
-          <text class="iconfont icon-pinglun" bindtap='toPut_art'>评论</text>
+          <text class="iconfont icon-pinglun">评论</text>
         </view>
         
       </view>

@@ -16,7 +16,9 @@ Page({
     auther:'all',
     show:true,
     audioSrc:'',
-    sentence:{}
+    sentence:{},
+    numss:1,
+    wordsId:''
   },
 
   /**
@@ -37,17 +39,31 @@ Page({
       data:{
         name:that.data.word
       },
-      success:function(res){
-        console.log(res);
-        that.setData({
-          wordsId:res.data[0].words_id
-        });
-      }
+      success:function(res){  
+          that.setData({
+            wordsId: res.data[0].words_id
+          });
+        console.log(that.data.wordsId);  
+        wx.request({
+          url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
+          data: {
+            words_id: that.data.wordsId
+          },
+          success: function (res) {
+            console.log(that.data.wordsId);
+            that.setData({
+              noteFile: res.data
+            });
+          }
+        }) 
+      },     
     })
     var from = '';
     var to = '';
     var str1 = appKey + query + salt + key;
     var sign = md5(str1);
+    var iid = that.data.wordsId;
+    
   
     wx.request({
       url: 'https://openapi.youdao.com/api',     
@@ -88,17 +104,14 @@ Page({
         })
       }
     }),
-      wx.request({
-        url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
-        success:function(res){
-          that.setData({
-            noteFile:res.data
-          });
-        }
 
-      })
-      wx.request({
+    
+   
+    wx.request({
         url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
+        data:{
+          words_id: that.data.wordsId
+        },
         success: function (res) {
           console.log(res);
           that.setData({
@@ -185,7 +198,7 @@ Page({
     this.setData({
       show: false
     })
-    console.log(this.data.show);
+   
   },
   //播放语音
   audioPlay:function(){
