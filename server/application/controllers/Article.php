@@ -37,10 +37,17 @@ class Article extends CI_Controller {
                 } else {
                     echo 'fail';
                 }
-            }
-           
-        
-           
+            }           
+    }
+
+
+
+    public function Admire(){
+      $id = $this ->input ->get('id');
+      $uid = $this ->input ->get('uid');
+      $this ->load ->model('Article_midel');
+      $res = $this ->Article_model ->do_admire($id,$uid);
+      echo json_encode($res);
     }
     }
 

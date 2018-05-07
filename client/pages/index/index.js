@@ -24,7 +24,7 @@ Page({
     duration: 1000,
     userInfo: {},
     searchText: '',
-    articleInfo:''
+    article:''
   },
   
   bindFormSubmit: function (e) {
@@ -47,9 +47,9 @@ Page({
       url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
       success:function(res){
         that.setData({
-          articleInfo:res.data
+          article:res.data
         });
-        console.log(that.data.articleInfo)
+        console.log(that.data.article)
       }
     })
     wx.showToast({
@@ -61,7 +61,19 @@ Page({
   },
   //事件处理函数
   //请求数据
-  
+  onShow:function(){
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/my_articles',
+      responseType: 'text',
+      data: { id: that.data.id },
+      success: function (res) {
+        that.setData({
+          articles: res.data
+        })
+      }
+    })
+  },
 
 
 
@@ -88,7 +100,7 @@ Page({
 
   admire:function(e){
     console.log(this.data.articleInfo);
-    this.data.id = this.data.articleInfo[e.currentTarget.id].article_id;
+    this.data.id = this.data.article[e.currentTarget.id].article_id;
     this.data.uid = parseInt(wx.getStorageSync('uid'));
     var that = this;
     wx.request({
@@ -99,8 +111,35 @@ Page({
         uid: that.data.uid
       },
       complete: function (res) {
-        console.log(res);
-        
+        if (res.data == '') {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/zan2',
+            responseType: 'text',
+            data: {
+              id: that.data.id,
+              uid: that.data.uid
+            },
+            success: function (res) {
+              that.setData({
+                article: res.data
+              })
+            }
+          })
+        } else {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/cancel2',
+            responseType: 'text',
+            data: {
+              id: that.data.id,
+              uid: that.data.uid
+            },
+            success: function (res) {
+              that.setData({
+                article: res.data
+              })
+            }
+          })
+        }
       }
     })
   }
