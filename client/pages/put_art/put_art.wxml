@@ -15,9 +15,6 @@
       <view class='tab' bindtap='zan'>
         <text class="iconfont icon-dianzan {{item.flag}}">{{item.hits}}赞</text>
       </view>
-      <view class='tab'>
-        <text class="iconfont icon-msnui-share">分享</text>
-      </view>
   </view>
 </view>
 <view class='com_title'>评论区</view>
