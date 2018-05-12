@@ -18,9 +18,6 @@
         <view class='tab' id='{{item.article_id}}' bindtap='toPut_art'>
           <text class="iconfont icon-pinglun">评论</text>
         </view>
-        <view class='tab'>
-          <text class="iconfont icon-msnui-share">分享</text>
-        </view>
       </view>
     </view>
   </scroll-view>
