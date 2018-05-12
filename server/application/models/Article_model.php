@@ -12,14 +12,14 @@ class Article_model extends CI_Model {
     }
     public function do_select(){
        $pdo = DB::getInstance();
-        $sql = "select bb.*,hit.flag from (select * from articles,t_user where articles.author = t_user.user_id order by date desc limit 0,3) bb left join hit on bb.article_id = hit.reference";
+        $sql = "select bb.*,hit.flag from (select * from articles,t_user where articles.author = t_user.user_id order by date desc limit 0,3) bb left join hit on bb.article_id = hit.reference order by date desc";
         $stmt = $pdo->prepare($sql);
         $stmt -> execute();
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
     public function do_selectAll(){
        $pdo = DB::getInstance();
-        $sql = "select * from articles,t_user where articles.author = t_user.user_id order by date desc";
+        $sql = "select bb.*,hit.flag from (select * from articles,t_user where articles.author = t_user.user_id order by date desc) bb left join hit on bb.article_id = hit.reference order by date desc";
         $stmt = $pdo->prepare($sql);
         $stmt -> execute();
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);

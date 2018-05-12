@@ -1,6 +1,6 @@
 <view><image class='head' src='{{imageurl}}'></image></view>
 <view>
-  <view class='index-article'  wx:for="{{articleInfo}}">
+  <view class='index-article'  wx:for="{{article}}">
     <view class="index-line" id='' bindtap='toPut_art' >
         <view class='index-writer'>
             <view><image class="head-port" src="{{item.logo_url}}"></image></view>  
@@ -19,7 +19,7 @@
     </view>
     <view class='tab_list'>
         <view class='tab'>
-          <text class="iconfont icon-dianzan">赞</text>
+          <text class="iconfont icon-dianzan {{item.flag}}" id='{{index}}' catchtap='admire'>赞</text>
         </view>
         <view class='tab'>
           <text class="iconfont icon-pinglun">评论</text>

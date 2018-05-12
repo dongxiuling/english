@@ -1,3 +1,6 @@
+var app = getApp();
+
+
 Page({
 
   /**
@@ -113,6 +116,15 @@ Page({
     
     wx.switchTab({
       url: '../forum/forum',
+      success:function(){
+        wx.request({
+          url: 'https://6kxrdzrv.qcloud.la/Article/select_allArticle',
+          success:function(res){
+            app.data.article = res.data
+          }
+        })
+        
+      }
     })
   }
 })

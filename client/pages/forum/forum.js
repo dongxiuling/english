@@ -1,4 +1,5 @@
 // pages/forum/forum.js
+var app = getApp();
 Page({
 
   /**
@@ -7,7 +8,7 @@ Page({
   data: {
      head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
      imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-    articleInfo:""
+    article:""
   },
 
   /**
@@ -15,15 +16,22 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Article/select_allArticle',
-      success: function (res) {
-        that.setData({
-          articleInfo: res.data
-        });
-        console.log(res.data);
-      }
-    })
+    if(app.data.article){
+      that.setData({
+        article:app.data.article
+      })
+    }else{
+      wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/Article/select_allArticle',
+        success: function (res) {
+          that.setData({
+            article: res.data
+          });
+          console.log(res.data);
+        }
+      })
+    }
+    
   },
 
   /**
@@ -82,6 +90,62 @@ Page({
   toPut_art:function(e){
     wx.navigateTo({
       url: '../put_art/put_art?id='+e.currentTarget.id,
+    })
+  },
+  admire: function (e) {
+    console.log(this.data.article);
+    this.data.id = this.data.article[e.currentTarget.id].article_id;
+    this.data.uid = parseInt(wx.getStorageSync('uid'));
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/judge',
+      responseType: 'text',
+      data: {
+        id: that.data.id,
+        uid: that.data.uid
+      },
+      complete: function (res) {
+        console.log(res.data);
+        if (res.data == '') {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/zan2',
+            responseType: 'text',
+            data: {
+              id: that.data.id,
+              uid: that.data.uid
+            },
+            success: function (res) {
+              wx.request({
+                url: 'https://6kxrdzrv.qcloud.la/Article/select_allArticle',
+                success: function (res) {
+                  that.setData({
+                    article: res.data
+                  });
+                }
+              })
+            }
+          })
+        } else {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/cancel2',
+            responseType: 'text',
+            data: {
+              id: that.data.id,
+              uid: that.data.uid
+            },
+            success: function (res) {
+              wx.request({
+                url: 'https://6kxrdzrv.qcloud.la/Article/select_allArticle',
+                success: function (res) {
+                  that.setData({
+                    article: res.data
+                  });
+                }
+              })
+            }
+          })
+        }
+      }
     })
   }
   

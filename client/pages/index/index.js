@@ -26,7 +26,7 @@ Page({
     searchText: '',
     article:''
   },
-  
+   
   bindFormSubmit: function (e) {
     console.log(e.detail.value.textarea)
   },
@@ -99,7 +99,7 @@ Page({
   },
 
   admire:function(e){
-    console.log(this.data.articleInfo);
+    console.log(this.data.article);
     this.data.id = this.data.article[e.currentTarget.id].article_id;
     this.data.uid = parseInt(wx.getStorageSync('uid'));
     var that = this;
@@ -111,6 +111,7 @@ Page({
         uid: that.data.uid
       },
       complete: function (res) {
+        console.log(res.data);
         if (res.data == '') {
           wx.request({
             url: 'https://6kxrdzrv.qcloud.la/Welcome/zan2',
@@ -120,8 +121,13 @@ Page({
               uid: that.data.uid
             },
             success: function (res) {
-              that.setData({
-                article: res.data
+              wx.request({
+                url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
+                success:function(res){
+                  that.setData({
+                    article:res.data
+                  });
+                }
               })
             }
           })
@@ -134,8 +140,13 @@ Page({
               uid: that.data.uid
             },
             success: function (res) {
-              that.setData({
-                article: res.data
+              wx.request({
+                url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
+                success: function (res) {
+                  that.setData({
+                    article: res.data
+                  });
+                }
               })
             }
           })
