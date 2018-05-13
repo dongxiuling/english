@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+ 
 use QCloud_WeApp_SDK\Mysql\Mysql as DB;
 
 class Hit_model extends CI_Model {

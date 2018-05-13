@@ -26,8 +26,8 @@
     
   </view>
 <view class='wrapper range'>
-  <view class='go' bindtap='changeShow'>文字笔记</view>
-  <view class='go' bindtap='changeShowVoice'>语音笔记</view>
+  <view class='go' bindtap='changeShow' wx:if="{{noteFile}}">文字笔记</view>
+  <view class='go' bindtap='changeShowVoice' wx:if="{{noteFile}}">语音笔记</view>
   </view>
  
   <view class='wrapper note'  wx:if="{{show}}" id='commit' wx:for='{{noteFile}}'>
