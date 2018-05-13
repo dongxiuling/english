@@ -13,11 +13,14 @@ class Art_model extends CI_Model {
         ));
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
-    public function find_this($data){
+    public function find_this($data,$user){
         $pdo = DB::getInstance();
-        $sql = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id and  hit.user_id=articles.author where articles.article_id='.$data;
+        $sql = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id and  hit.user_id=:user where articles.article_id=:data';
         $stmt = $pdo->prepare($sql);
-        $stmt -> execute();
+        $stmt -> execute(array(
+          ':user'=>$user,
+          ':data'=>$data
+        ));
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
     public function zan_this($data,$user){
@@ -69,7 +72,7 @@ class Art_model extends CI_Model {
           ':id'=>$user,
           ':flag'=>'green'
         ));
-        $sql3 = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id and articles.author=hit.user_id where articles.article_id=:ref and articles.author=:id';
+        $sql3 = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id and hit.user_id=:id where articles.article_id=:ref';
         $stmt3 = $pdo->prepare($sql3);
         $stmt3 -> execute(array(
           ':ref'=>$data,
@@ -88,7 +91,7 @@ class Art_model extends CI_Model {
           ':ref'=>$data,
           ':id'=>$user
         ));
-        $sql3 = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id and articles.author=hit.user_id where articles.article_id=:ref and articles.author=:id';
+        $sql3 = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id and hit.user_id=:id where articles.article_id=:ref';
         $stmt3 = $pdo->prepare($sql3);
         $stmt3 -> execute(array(
           ':ref'=>$data,

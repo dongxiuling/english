@@ -30,8 +30,9 @@ class Welcome extends CI_Controller {
 	}
   public function this_article(){
 		$id = $this->input->get('article_id');
+    $uid = $this->input->get('uid'); 
 		$this->load->model('art_model');
-		$art = $this->art_model->find_this($id);
+		$art = $this->art_model->find_this($id,$uid);
 		echo json_encode($art);
 	}
   public function this_note(){

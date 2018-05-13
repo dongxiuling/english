@@ -13,14 +13,16 @@ class Article extends CI_Controller {
     }
 
     public function select_article(){
+      $uid = $this->input->get('uid');
       $this ->load ->model('Article_model');
-      $res = $this ->Article_model ->do_select();
+      $res = $this ->Article_model ->do_select($uid);
       echo json_encode($res);
     }
 
     public function select_allArticle(){
+      $uid = $this->input->get('uid');
       $this ->load ->model('Article_model');
-      $res = $this ->Article_model ->do_selectALL();
+      $res = $this ->Article_model ->do_selectALL($uid);
       echo json_encode($res);
     }
     

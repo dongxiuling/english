@@ -31,6 +31,7 @@ Page({
     console.log(e.detail.value.textarea)
   },
   onLoad:function(){
+    this.data.uid = parseInt(wx.getStorageSync('uid'));
     var that = this;
     wx.pageScrollTo({
       scrollTop: 0
@@ -45,11 +46,13 @@ Page({
     })
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
+      data:{
+        uid: that.data.uid
+      },
       success:function(res){
         that.setData({
           article:res.data
         });
-        console.log(that.data.article)
       }
     })
     wx.showToast({
@@ -64,13 +67,14 @@ Page({
   onShow:function(){
     var that = this;
     wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Welcome/my_articles',
-      responseType: 'text',
-      data: { id: that.data.id },
+      url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
+      data: {
+        uid: that.data.uid
+      },
       success: function (res) {
         that.setData({
-          articles: res.data
-        })
+          article: res.data
+        });
       }
     })
   },
@@ -99,7 +103,7 @@ Page({
   },
 
   admire:function(e){
-    console.log(this.data.article);
+    // console.log(this.data.article);
     this.data.id = this.data.article[e.currentTarget.id].article_id;
     this.data.uid = parseInt(wx.getStorageSync('uid'));
     var that = this;
@@ -111,7 +115,7 @@ Page({
         uid: that.data.uid
       },
       complete: function (res) {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data == '') {
           wx.request({
             url: 'https://6kxrdzrv.qcloud.la/Welcome/zan2',
@@ -123,6 +127,9 @@ Page({
             success: function (res) {
               wx.request({
                 url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
+                data: {
+                  uid: that.data.uid
+                },
                 success:function(res){
                   that.setData({
                     article:res.data
@@ -142,6 +149,9 @@ Page({
             success: function (res) {
               wx.request({
                 url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
+                data: {
+                  uid: that.data.uid
+                },
                 success: function (res) {
                   that.setData({
                     article: res.data

@@ -20,16 +20,19 @@ Page({
    */
   onLoad: function (options) {
     this.data.article_id = options.id;
+    this.data.uid = parseInt(wx.getStorageSync('uid'));
     var that = this;
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Welcome/this_article',
       responseType: 'text',
-      data: { article_id: that.data.article_id },
-      success: function (res) {
+      data: { 
+        article_id: that.data.article_id,
+        uid: that.data.uid
+      },
+      success: function (res) { 
         that.setData({
           article: res.data
         })
-        console.log(that.data.article);
       }
     });
     wx.request({
