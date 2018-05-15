@@ -1,10 +1,10 @@
 <!--pages/myInfo/myInfo.wxml-->
-<view class='info-container'> 
+<view class='info-container'>  
   <view class='left-content' bindtap='to_private_message'>
      <image src='{{userInfo.logo_url}}' class='touxiang'></image>
   </view>
   <view class='right-content'>
-     <text class='name'>{{userInfo.user_name}}</text>
+     <text class='name' bindtap='to_login'>{{userInfo.user_name}}</text>
      <text class='number'>{{userInfo.user_id}}</text>
   </view>
 </view>

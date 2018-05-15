@@ -1,5 +1,5 @@
 // pages/myInfo/myInfo.js
-
+const app = getApp();
 Page({
 
   /**
@@ -28,6 +28,8 @@ Page({
   onLoad: function (options) { 
     var that = this;
     var uid = wx.getStorageSync('uid');
+    console.log(uid);
+    if(uid){
       wx.request({
         url: 'https://6kxrdzrv.qcloud.la/user/select_user',
         data: {
@@ -45,6 +47,12 @@ Page({
 
         }
       });
+    }else{
+      that.setData({
+        userInfo:{logo_url:'../../images/myinfo.png',user_name:'请登录',user_id:'暂无ID'}
+      })
+    }
+     
     
     //console.log(uid);
    
@@ -71,7 +79,32 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-   
+    var that = this;
+    var uid = wx.getStorageSync('uid');
+    //console.log(uid);
+    if (uid) {
+      wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/user/select_user',
+        data: {
+          uid: uid
+        },
+        dataType: 'json',
+        //responseType:'text', 
+        success: function (res) {
+
+          that.setData({
+            userInfo: res.data[0]
+          })
+
+
+
+        }
+      });
+    } else {
+      that.setData({
+        userInfo: { logo_url: '../../images/myinfo.png', user_name: '请登录', user_id: '暂无ID' }
+      })
+    }
   },
 
   /**
@@ -133,6 +166,15 @@ Page({
           }),
           that.setData({
             userInfo: res.data[0]
+          }),
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/user/select_coin',
+            success: function (res) {
+
+              app.globalData.rank = res.data;
+            
+
+            }
           })
           
         }
@@ -205,6 +247,11 @@ Page({
       url: '../money/money',
     })
   },
+  to_login:function(){
+    wx.navigateTo({
+      url: '../login/login',
+    })
+  }
   // login:function(){
   //   wx.redirectTo({
   //     url: '../login/login',

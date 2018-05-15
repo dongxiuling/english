@@ -4,7 +4,7 @@ const app = getApp();
 
 Page({
   data: {
-   rank:{},
+    rank:{},
 
    imgUrls: [
      {
@@ -32,6 +32,55 @@ Page({
   },
   onLoad:function(){
     var that = this;
+    // wx.getSetting({
+    //   success: function (res) {
+    //     if (res.authSetting['scope.userInfo']) {
+    //       //已经授权，可以直接调用 getUserInfo 获取头像昵称
+    //       wx.login({
+    //         success: function (res) {
+    //           if (res.code) {
+    //             var code = res.code;
+    //             console.log(code);
+    //             wx.getUserInfo({
+    //               success: function (res) {
+    //                 //console.log(res.userInfo.avatarUrl);
+    //                 that.setData({
+    //                   userInfo: {
+    //                     avatarUrl: res.userInfo.avatarUrl,//用户头像  
+    //                     nickName: res.userInfo.nickName//用户昵称  
+    //                   }
+    //                 }),
+    //                   wx.request({
+    //                     url: 'https://6kxrdzrv.qcloud.la/login/add_user',
+    //                     data: {
+    //                       code: code,
+    //                       user_name: that.data.userInfo.nickName,
+    //                       user_logo: that.data.userInfo.avatarUrl
+    //                     },
+    //                     success: function (res) {
+    //                       wx.setStorageSync('uid', res.data);
+    //                       console.log(wx.getStorageSync('uid'));
+    //                     }
+    //                   })
+    //               }
+
+    //             })
+    //           }
+    //         },
+    //         complete: function () {
+    //           console.log('complete');
+    //           wx.switchTab({
+    //             url: '../index/index',
+    //             success: function (res) { },
+    //             fail: function (res) { },
+    //             complete: function (res) { },
+    //           })
+    //         }
+    //       })
+
+    //     }
+    //   }
+    // }),
     wx.pageScrollTo({
       scrollTop: 0
     }),
@@ -39,7 +88,7 @@ Page({
       url: 'https://6kxrdzrv.qcloud.la/user/select_coin',
       success:function(res){
           that.setData({
-            rank:res.data
+            rank: res.data
           })
       }
     })
@@ -57,6 +106,58 @@ Page({
       duration:500
     })
     
+  },
+  onShow:function(){
+    var that= this;
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          //已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.login({
+            success: function (res) {
+              if (res.code) {
+                var code = res.code;
+                //console.log(code);
+                wx.getUserInfo({
+                  success: function (res) {
+                    //console.log(res.userInfo.avatarUrl);
+                    that.setData({
+                      userInfo: {
+                        avatarUrl: res.userInfo.avatarUrl,//用户头像  
+                        nickName: res.userInfo.nickName//用户昵称  
+                      }
+                    }),
+                      wx.request({
+                        url: 'https://6kxrdzrv.qcloud.la/login/add_user',
+                        data: {
+                          code: code,
+                          user_name: that.data.userInfo.nickName,
+                          user_logo: that.data.userInfo.avatarUrl
+                        },
+                        success: function (res) {
+                          wx.setStorageSync('uid', res.data);
+                          //console.log(wx.getStorageSync('uid'));
+                        }
+                      })
+                  }
+
+                })
+              }
+            },
+            complete: function () {
+              //console.log('complete');
+              wx.switchTab({
+                url: '../index/index',
+                success: function (res) { },
+                fail: function (res) { },
+                complete: function (res) { },
+              })
+            }
+          })
+
+        }
+      }
+    })
   },
   //事件处理函数
   //请求数据
