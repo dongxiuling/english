@@ -1,23 +1,28 @@
 {
-  "pages": [ 
+  "pages": [
+
+    "pages/private_message/alter/alter",
     "pages/login/login",
-    "pages/index/index",
-    "pages/attention/attention",    
+    "pages/private_message/private_message",
+    "pages/money/gords/gords",
     "pages/myInfo/myInfo",
+    "pages/money/money",
+    
+   
+    "pages/index/index",
+   
+    "pages/fans/fans",
+    "pages/attention/attention",
+    "pages/help/help",
     "pages/addCgi/addCgi",
     "pages/forum/forum",
     "pages/createNote/createNote",
     "pages/word/word",
     "pages/issue/issue",
     "pages/put_art/put_art",
-    "pages/fans/fans",
-    "pages/help/help",
+    "pages/text/text",
     "pages/aboutus/aboutus",
     "pages/articles/articles",
-    "pages/money/money",
-    "pages/money/gords/gords",
-    "pages/private_message/private_message",
-    "pages/private_message/alter/alter",
     "pages/notes/notes",
     "pages/put_note/put_note"
   ],
