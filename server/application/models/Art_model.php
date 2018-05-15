@@ -2,22 +2,34 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 use QCloud_WeApp_SDK\Mysql\Mysql as DB;
-
+ 
 class Art_model extends CI_Model {
     public function find_all($data){
         $pdo = DB::getInstance();
-        $sql = "select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id where articles.author=:data order by articles.article_id desc";
+        $sql = "select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id and hit.user_id=articles.author where articles.author=:data order by articles.article_id desc";
         $stmt = $pdo->prepare($sql);
         $stmt -> execute(array(
           ':data'=>$data
         ));
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
-    public function find_this($data){
+    public function find_this($data,$user){
         $pdo = DB::getInstance();
-        $sql = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id where articles.article_id='.$data;
+        $sql = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id and  hit.user_id=:user where articles.article_id=:data';
         $stmt = $pdo->prepare($sql);
-        $stmt -> execute();
+        $stmt -> execute(array(
+          ':user'=>$user,
+          ':data'=>$data
+        ));
+        return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function find_this_user($data){
+        $pdo = DB::getInstance();
+        $sql = 'select t_user.* from t_user,articles where t_user.user_id=articles.author and articles.article_id=:id';
+        $stmt = $pdo->prepare($sql);
+        $stmt -> execute(array(
+          ':id'=>$data
+        ));
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
     public function zan_this($data,$user){
@@ -32,7 +44,7 @@ class Art_model extends CI_Model {
           ':id'=>$user,
           ':flag'=>'green'
         ));
-        $sql3 = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id where articles.author=:id order by articles.article_id desc';
+        $sql3 = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id and hit.user_id=articles.author where articles.author=:id order by articles.article_id desc';
         $stmt3 = $pdo->prepare($sql3);
         $stmt3 -> execute(array(
           ':id'=>$user
@@ -50,7 +62,7 @@ class Art_model extends CI_Model {
           ':ref'=>$data,
           ':id'=>$user
         ));
-        $sql3 = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id where articles.author=:id order by articles.article_id desc';
+        $sql3 = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id and hit.user_id=articles.author where articles.author=:id order by articles.article_id desc';
         $stmt3 = $pdo->prepare($sql3);
         $stmt3 -> execute(array(
           ':id'=>$user
@@ -69,7 +81,7 @@ class Art_model extends CI_Model {
           ':id'=>$user,
           ':flag'=>'green'
         ));
-        $sql3 = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id where articles.article_id=:ref and articles.author=:id';
+        $sql3 = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id and hit.user_id=:id where articles.article_id=:ref';
         $stmt3 = $pdo->prepare($sql3);
         $stmt3 -> execute(array(
           ':ref'=>$data,
@@ -88,7 +100,7 @@ class Art_model extends CI_Model {
           ':ref'=>$data,
           ':id'=>$user
         ));
-        $sql3 = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id where articles.article_id=:ref and articles.author=:id';
+        $sql3 = 'select articles.*,hit.* from articles left JOIN hit on hit.reference=articles.article_id and hit.user_id=:id where articles.article_id=:ref';
         $stmt3 = $pdo->prepare($sql3);
         $stmt3 -> execute(array(
           ':ref'=>$data,

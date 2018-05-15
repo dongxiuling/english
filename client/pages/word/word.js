@@ -16,7 +16,9 @@ Page({
     auther:'all',
     show:true,
     audioSrc:'',
-    sentence:{}
+    sentence:{},
+    numss:1,
+    wordsId:''
   },
 
   /**
@@ -37,18 +39,46 @@ Page({
       data:{
         name:that.data.word
       },
-      success:function(res){
-        console.log(res);
-        that.setData({
-          wordsId:res.data[0].words_id
-        });
-      }
+      success:function(res){  
+          that.setData({
+            wordsId: res.data[0].words_id
+          });
+        console.log(that.data.wordsId);  
+        wx.request({
+          url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
+          data: {
+            words_id: that.data.wordsId
+          },
+          success: function (res) {
+            console.log(that.data.wordsId);
+            that.setData({
+              noteFile: res.data
+            });
+          }
+        }),
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
+            data: {
+              words_id: that.data.wordsId
+            },
+            success: function (res) {
+              console.log(res);
+              that.setData({
+                voiceFile: res.data
+              });
+              console.log(that.data.noteFile);
+            }
+          })
+        
+      },     
     })
     var from = '';
     var to = '';
     var str1 = appKey + query + salt + key;
     var sign = md5(str1);
-  
+    var iid = that.data.wordsId;
+    
+    console.log(that.data.noteFile);
     wx.request({
       url: 'https://openapi.youdao.com/api',     
       data: {
@@ -87,25 +117,11 @@ Page({
           sentence:res.data
         })
       }
-    }),
-      wx.request({
-        url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
-        success:function(res){
-          that.setData({
-            noteFile:res.data
-          });
-        }
+    })
 
-      })
-      wx.request({
-        url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
-        success: function (res) {
-          console.log(res);
-          that.setData({
-            voiceFile: res.data
-          });
-        }
-      })
+    
+   
+    
 
      
    
@@ -122,6 +138,32 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
+      data: {
+        words_id: that.data.wordsId
+      },
+      success: function (res) {
+        console.log(that.data.wordsId);
+        that.setData({
+          noteFile: res.data
+        });
+      }
+    }),
+      wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
+        data: {
+          words_id: that.data.wordsId
+        },
+        success: function (res) {
+          console.log(res);
+          that.setData({
+            voiceFile: res.data
+          });
+        }
+      })
+  
     
   },
 
@@ -185,7 +227,7 @@ Page({
     this.setData({
       show: false
     })
-    console.log(this.data.show);
+   
   },
   //播放语音
   audioPlay:function(){
@@ -299,9 +341,9 @@ Page({
     var aa = e.target.dataset.id;
     var myNewNote = that.data.noteFile[aa];
     var myContent = myNewNote.content;
-    var user = 20180034;
+    var user = wx.getStorageSync('uid');
     var style = 'green';
-  console.log(that.data.noteFile);
+  
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Note/add_note',
       data:{
@@ -318,10 +360,42 @@ Page({
             user_id:user,
             flag:style
           },
-          success:function(){
-            
+          success:function(){           
+          }        
+        })
+      }
+    })
+  },
+  //收藏语音笔记
+  collectionVoice: function (e) {
+    var that = this;
+    console.log(that.data.voiceFile);
+   
+    var aa = e.target.dataset.id;
+    var myNewNote = that.data.voiceFile[aa];
+    var user = wx.getStorageSync('uid');
+    
+    var style = 'green';
+
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Voice/insertVoice',
+      data: {
+        Voice_url: myNewNote.url,
+        user_id: user,
+        wordsId: that.data.wordsId
+      },
+      success: function () {
+        console.log(11);
+        wx.request({
+          url: 'https://6kxrdzrv.qcloud.la/CollectNote/insertVoice',
+          data: {
+            voice_id: myNewNote.voice_id,
+            user_id: user,
+            flag: style
+          },
+          success: function () {
+            console.log(that.data.voiceFile.flag)
           }
-        
         })
       }
     })

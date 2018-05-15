@@ -225,7 +225,7 @@ Page({
     wx.navigateTo({ 
       url: '../articles/articles?id=' + wx.getStorageSync('uid'),
       success: function (res) { },
-      fail: function (res) { },
+      fail: function (res) { }, 
       complete: function (res) { wx.getStorage('uid')},
     })
   },
@@ -238,8 +238,10 @@ Page({
     })
   },
   to_private_message:function(){
+    var that = this;
+    var uid = wx.getStorageSync('uid');
     wx.navigateTo({
-      url: '../private_message/private_message',
+      url: '../private_message/private_message?id='+uid,
     })
   },
   to_money: function () {

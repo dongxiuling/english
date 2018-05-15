@@ -39,17 +39,17 @@
   最新文章
 </view>
 <view>
-  <view class='index-article'  bindtap='toPut_art'  wx:for="{{articleInfo}}" wx:for-item="item" id='{{item.article_id}}' data-id='{{item.user_id}}'>
+  <view class='index-article' wx:for="{{article}}" wx:for-item="item"> 
     <view  >
         <view class='index-writer'>
-            <view><image class="head-port" src="{{item.logo_url}}"></image></view> 
+            <view bindtap='toThis_message' id='{{item.user_id}}'><image class="head-port" src="{{item.logo_url}}"></image></view> 
             <view class='index-name'>
-              <view>{{item.title}}{{head_title}}</view>
+              <view>{{item.user_name}}</view>
               <view class="atricle-time">{{item.date}}</view>
             </view>  
         </view>
     </view>
-    <view class="article-content">
+    <view class="article-content" id='{{item.article_id}}' bindtap='toPut_art'>
       <view>{{item.content}}</view>
       <view class='article-img'>
         <image src="{{item.img_url}}"></image>  
@@ -57,14 +57,12 @@
     </view>
     <view class='tab_list'>
         <view class='tab'>
-          <text class="iconfont icon-dianzan">赞</text>
+          <text class="iconfont icon-dianzan {{item.flag}}" id='{{index}}' catchtap='admire'>赞</text>
         </view>
         <view class='tab'>
-          <text class="iconfont icon-pinglun" bindtap='toPut_art'>评论</text>
+          <text class="iconfont icon-pinglun">评论</text>
         </view>
-        <view class='tab'>
-          <text class="iconfont icon-msnui-share">分享</text>
-        </view>
+        
       </view>
   </view> 
 </view>

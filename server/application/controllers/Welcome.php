@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+ 
 class Welcome extends CI_Controller {
 
 	public function index()
@@ -30,9 +30,16 @@ class Welcome extends CI_Controller {
 	}
   public function this_article(){
 		$id = $this->input->get('article_id');
+    $uid = $this->input->get('uid'); 
 		$this->load->model('art_model');
-		$art = $this->art_model->find_this($id);
+		$art = $this->art_model->find_this($id,$uid);
 		echo json_encode($art);
+	}
+  public function this_user(){
+		$id = $this->input->get('article_id');
+		$this->load->model('art_model');
+		$user = $this->art_model->find_this_user($id);
+		echo json_encode($user);
 	}
   public function this_note(){
 		$id = $this->input->get('note_id');

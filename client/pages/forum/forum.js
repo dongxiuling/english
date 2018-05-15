@@ -1,4 +1,5 @@
 // pages/forum/forum.js
+var app = getApp();
 Page({
 
   /**
@@ -7,23 +8,33 @@ Page({
   data: {
      head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
      imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-    articleInfo:""
+    article:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.data.uid = parseInt(wx.getStorageSync('uid'));
     var that = this;
-    wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Article/select_allArticle',
-      success: function (res) {
-        that.setData({
-          articleInfo: res.data
-        });
-        console.log(res.data);
-      }
-    })
+    if(app.data.article){
+      that.setData({
+        article:app.data.article
+      })
+    }else{
+      wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/Article/select_allArticle',
+        data: {
+          uid: that.data.uid
+        },
+        success: function (res) {
+          that.setData({
+            article: res.data
+          });
+        }
+      })
+    }
+    
   },
 
   /**
@@ -37,7 +48,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Article/select_allArticle',
+      data: {
+        uid: that.data.uid
+      },
+      success: function (res) {
+        that.setData({
+          article: res.data
+        });
+      }
+    })
   },
 
   /**
@@ -79,9 +101,73 @@ Page({
       url: '../issue/issue',
     })
   },
-  toPut_art:function(){
+  toPut_art:function(e){
     wx.navigateTo({
-      url: '../put_art/put_art',
+      url: '../put_art/put_art?id='+e.currentTarget.id,
+    })
+  },
+  toThis_message: function (e) {
+    wx.navigateTo({
+      url: '../private_message/private_message?id=' + e.currentTarget.id,
+    })
+  },
+  admire: function (e) {
+    this.data.id = this.data.article[e.currentTarget.id].article_id;
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/judge',
+      responseType: 'text',
+      data: {
+        id: that.data.id,
+        uid: that.data.uid
+      },
+      complete: function (res) {
+        if (res.data == '') {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/zan2',
+            responseType: 'text',
+            data: {
+              id: that.data.id,
+              uid: that.data.uid
+            },
+            success: function (res) {
+              wx.request({
+                url: 'https://6kxrdzrv.qcloud.la/Article/select_allArticle',
+                data: {
+                  uid: that.data.uid
+                },
+                success: function (res) {
+                  that.setData({
+                    article: res.data
+                  });
+                }
+              })
+            }
+          })
+        } else {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/cancel2',
+            responseType: 'text',
+            data: {
+              id: that.data.id,
+              uid: that.data.uid
+            },
+            success: function (res) {
+              wx.request({
+                url: 'https://6kxrdzrv.qcloud.la/Article/select_allArticle',
+                data: {
+                  uid: that.data.uid
+                },
+                success: function (res) {
+                  that.setData({
+                    article: res.data
+                  });
+                }
+              })
+            }
+          })
+        }
+      }
     })
   }
   

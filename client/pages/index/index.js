@@ -24,13 +24,14 @@ Page({
     duration: 1000,
     userInfo: {},
     searchText: '',
-    articleInfo:''
+    article:''
   },
-  
+   
   bindFormSubmit: function (e) {
     console.log(e.detail.value.textarea)
   },
   onLoad:function(){
+    this.data.uid = parseInt(wx.getStorageSync('uid'));
     var that = this;
     // wx.getSetting({
     //   success: function (res) {
@@ -94,9 +95,12 @@ Page({
     })
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
+      data:{
+        uid: that.data.uid
+      },
       success:function(res){
         that.setData({
-          articleInfo:res.data
+          article:res.data
         });
       }
     })
@@ -161,7 +165,28 @@ Page({
   },
   //事件处理函数
   //请求数据
-  
+  onShow:function(){
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/user/select_coin',
+      success: function (res) {
+        that.setData({
+          rank: res.data
+        })
+      }
+    }),
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
+      data: {
+        uid: that.data.uid
+      },
+      success: function (res) {
+        that.setData({
+          article: res.data
+        });
+      }
+    })
+  },
 
 
 
@@ -182,7 +207,74 @@ Page({
   },
   toPut_art:function(e){
     wx.navigateTo({
-      url: '../put_art/put_art?id=' + e.currentTarget.id+'&dataId =' +e.target.dataset.id,
+      url: '../put_art/put_art?id=' + e.currentTarget.id,
+    })
+  },
+  toThis_message:function (e) {
+    wx.navigateTo({
+      url: '../private_message/private_message?id=' + e.currentTarget.id,
+    })
+  },
+  admire:function(e){
+    // console.log(this.data.article);
+    this.data.id = this.data.article[e.currentTarget.id].article_id;
+    this.data.uid = parseInt(wx.getStorageSync('uid'));
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/judge',
+      responseType: 'text',
+      data: {
+        id: that.data.id,
+        uid: that.data.uid
+      },
+      complete: function (res) {
+        // console.log(res.data);
+        if (res.data == '') {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/zan2',
+            responseType: 'text',
+            data: {
+              id: that.data.id,
+              uid: that.data.uid
+            },
+            success: function (res) {
+              wx.request({
+                url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
+                data: {
+                  uid: that.data.uid
+                },
+                success:function(res){
+                  that.setData({
+                    article:res.data
+                  });
+                }
+              })
+            }
+          })
+        } else {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Welcome/cancel2',
+            responseType: 'text',
+            data: {
+              id: that.data.id,
+              uid: that.data.uid
+            },
+            success: function (res) {
+              wx.request({
+                url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
+                data: {
+                  uid: that.data.uid
+                },
+                success: function (res) {
+                  that.setData({
+                    article: res.data
+                  });
+                }
+              })
+            }
+          })
+        }
+      }
     })
   }
 })

@@ -10,7 +10,9 @@ page{
  background: #209e85;
   color: #fff;
 }
-
+.tab .green{
+  color: #209e85;
+}
 /* 发布人 */
 .index-writer{
   float: left;
@@ -91,8 +93,8 @@ page{
   font-size:30rpx;
   color:white;
   position:fixed;
-  bottom:10rpx;
-  right:10rpx;
+  bottom:60rpx;
+  right:30rpx;
 }
 .index-pub{
   opacity: 0.5;
