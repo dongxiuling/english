@@ -17,7 +17,7 @@ Page({
    */
   onLoad: function (options) {
     var that =this;
-   var uid=wx.getStorageSync('uid');
+   var uid=options.id;
    console.log(uid);
    wx.request({
      url: 'https://6kxrdzrv.qcloud.la/message/select_message',

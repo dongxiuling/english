@@ -5,8 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-    imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
+    head_url:'',
+    user_name:'',
     article_id: '',
     article: [],
     comments: [],
@@ -36,15 +36,29 @@ Page({
       }
     });
     wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Welcome/art_com',
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/this_user',
       responseType: 'text',
-      data: { article_id: that.data.article_id },
+      data: {
+        article_id: that.data.article_id,
+      },
       success: function (res) {
         that.setData({
-          comments: res.data
+          head_url: res.data[0].logo_url,
+          user_name: res.data[0].user_name,
+          user_id: res.data[0].user_id
         })
       }
-    })
+    });
+    // wx.request({
+    //   url: 'https://6kxrdzrv.qcloud.la/Welcome/art_com',
+    //   responseType: 'text',
+    //   data: { article_id: that.data.article_id },
+    //   success: function (res) {
+    //     that.setData({
+    //       comments: res.data
+    //     })
+    //   }
+    // })
   },
 
   /**
@@ -96,6 +110,11 @@ Page({
   
   },
 
+  toThis_message: function (e) {
+    wx.navigateTo({
+      url: '../private_message/private_message?id=' + e.currentTarget.id,
+    })
+  },
   zan: function (e) {
     this.data.id = this.data.article_id;
     this.data.uid = parseInt(wx.getStorageSync('uid'));
@@ -170,51 +189,51 @@ Page({
       }
     })
   },
-  zan_com: function (e) {
-    this.data.id = this.data.article_id;
-    this.data.cid = e.currentTarget.id;
-    this.data.uid = parseInt(wx.getStorageSync('uid'));
-    var that = this;
-    wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Welcome/judge2',
-      responseType: 'text',
-      data: {
-        cid: that.data.cid,
-        uid: that.data.uid
-      },
-      complete: function (res) {
-        if (res.data == '') {
-          wx.request({
-            url: 'https://6kxrdzrv.qcloud.la/Welcome/zan3',
-            responseType: 'text',
-            data: {
-              id: that.data.id,
-              cid: that.data.cid,
-              uid: that.data.uid
-            },
-            success: function (res) {
-              that.setData({
-                comments: res.data
-              })
-            }
-          })
-        } else {
-          wx.request({
-            url: 'https://6kxrdzrv.qcloud.la/Welcome/cancel3',
-            responseType: 'text',
-            data: {
-              id: that.data.id,
-              cid: that.data.cid,
-              uid: that.data.uid
-            },
-            success: function (res) {
-              that.setData({
-                comments: res.data
-              })
-            }
-          })
-        }
-      }
-    })
-  }
+  // zan_com: function (e) {
+  //   this.data.id = this.data.article_id;
+  //   this.data.cid = e.currentTarget.id;
+  //   this.data.uid = parseInt(wx.getStorageSync('uid'));
+  //   var that = this;
+  //   wx.request({
+  //     url: 'https://6kxrdzrv.qcloud.la/Welcome/judge2',
+  //     responseType: 'text',
+  //     data: {
+  //       cid: that.data.cid,
+  //       uid: that.data.uid
+  //     },
+  //     complete: function (res) {
+  //       if (res.data == '') {
+  //         wx.request({
+  //           url: 'https://6kxrdzrv.qcloud.la/Welcome/zan3',
+  //           responseType: 'text',
+  //           data: {
+  //             id: that.data.id,
+  //             cid: that.data.cid,
+  //             uid: that.data.uid
+  //           },
+  //           success: function (res) {
+  //             that.setData({
+  //               comments: res.data
+  //             })
+  //           }
+  //         })
+  //       } else {
+  //         wx.request({
+  //           url: 'https://6kxrdzrv.qcloud.la/Welcome/cancel3',
+  //           responseType: 'text',
+  //           data: {
+  //             id: that.data.id,
+  //             cid: that.data.cid,
+  //             uid: that.data.uid
+  //           },
+  //           success: function (res) {
+  //             that.setData({
+  //               comments: res.data
+  //             })
+  //           }
+  //         })
+  //       }
+  //     }
+  //   })
+  // }
 })

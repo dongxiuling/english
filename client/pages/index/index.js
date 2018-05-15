@@ -67,6 +67,14 @@ Page({
   onShow:function(){
     var that = this;
     wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/user/select_coin',
+      success: function (res) {
+        that.setData({
+          rank: res.data
+        })
+      }
+    }),
+    wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
       data: {
         uid: that.data.uid
@@ -101,7 +109,11 @@ Page({
       url: '../put_art/put_art?id=' + e.currentTarget.id,
     })
   },
-
+  toThis_message:function (e) {
+    wx.navigateTo({
+      url: '../private_message/private_message?id=' + e.currentTarget.id,
+    })
+  },
   admire:function(e){
     // console.log(this.data.article);
     this.data.id = this.data.article[e.currentTarget.id].article_id;

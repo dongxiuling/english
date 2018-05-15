@@ -23,6 +23,15 @@ class Art_model extends CI_Model {
         ));
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
+    public function find_this_user($data){
+        $pdo = DB::getInstance();
+        $sql = 'select t_user.* from t_user,articles where t_user.user_id=articles.author and articles.article_id=:id';
+        $stmt = $pdo->prepare($sql);
+        $stmt -> execute(array(
+          ':id'=>$data
+        ));
+        return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    }
     public function zan_this($data,$user){
         $pdo = DB::getInstance();
         $sql = "update articles set hits=hits+1 where articles.article_id=".$data;

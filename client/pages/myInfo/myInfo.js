@@ -196,8 +196,10 @@ Page({
     })
   },
   to_private_message:function(){
+    var that = this;
+    var uid = wx.getStorageSync('uid');
     wx.navigateTo({
-      url: '../private_message/private_message',
+      url: '../private_message/private_message?id='+uid,
     })
   },
   to_money: function () {

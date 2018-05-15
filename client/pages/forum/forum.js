@@ -106,6 +106,11 @@ Page({
       url: '../put_art/put_art?id='+e.currentTarget.id,
     })
   },
+  toThis_message: function (e) {
+    wx.navigateTo({
+      url: '../private_message/private_message?id=' + e.currentTarget.id,
+    })
+  },
   admire: function (e) {
     this.data.id = this.data.article[e.currentTarget.id].article_id;
     var that = this;
