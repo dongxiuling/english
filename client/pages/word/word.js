@@ -55,7 +55,20 @@ Page({
               noteFile: res.data
             });
           }
-        }) 
+        }),
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
+            data: {
+              words_id: that.data.wordsId
+            },
+            success: function (res) {
+              console.log(res);
+              that.setData({
+                voiceFile: res.data
+              });
+            }
+          })
+        
       },     
     })
     var from = '';
@@ -103,22 +116,11 @@ Page({
           sentence:res.data
         })
       }
-    }),
+    })
 
     
    
-    wx.request({
-        url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
-        data:{
-          words_id: that.data.wordsId
-        },
-        success: function (res) {
-          console.log(res);
-          that.setData({
-            voiceFile: res.data
-          });
-        }
-      })
+    
 
      
    

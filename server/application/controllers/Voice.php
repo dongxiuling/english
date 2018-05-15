@@ -29,6 +29,7 @@ class Voice extends CI_Controller {
     }
 
     public function select_voice(){
+       $words_id = $this ->input ->get('words_id');
       $this ->load ->model('Voice_model');
       $res = $this ->Voice_model ->do_select();
       echo json_encode($res);
