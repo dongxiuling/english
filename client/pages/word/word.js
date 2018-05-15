@@ -66,6 +66,7 @@ Page({
               that.setData({
                 voiceFile: res.data
               });
+              console.log(that.data.noteFile);
             }
           })
         
@@ -77,7 +78,7 @@ Page({
     var sign = md5(str1);
     var iid = that.data.wordsId;
     
-  
+    console.log(that.data.noteFile);
     wx.request({
       url: 'https://openapi.youdao.com/api',     
       data: {
@@ -137,6 +138,32 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
+      data: {
+        words_id: that.data.wordsId
+      },
+      success: function (res) {
+        console.log(that.data.wordsId);
+        that.setData({
+          noteFile: res.data
+        });
+      }
+    }),
+      wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
+        data: {
+          words_id: that.data.wordsId
+        },
+        success: function (res) {
+          console.log(res);
+          that.setData({
+            voiceFile: res.data
+          });
+        }
+      })
+  
     
   },
 

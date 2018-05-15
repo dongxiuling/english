@@ -18,14 +18,14 @@ Page({
   finish: function () {
     var that = this;
     wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Words/insertWords',
+      url: 'https://6kxrdzrv.qcloud.la/Words/selectWords',
       data:{
-        words:that.data.word
+        name:that.data.word 
       },
       success:function(res){
-        console.log(res);
+        console.log(res.data[0].words_id);
         that.setData({
-          wordsId:res.data
+          wordsId:res.data[0].words_id
         });
         console.log(that.data.wordsId)
         wx.request({
@@ -33,12 +33,12 @@ Page({
           data: {
             content: that.data.content,
             user_id: user,
-            wordsId: res.data
+            wordsId: res.data[0].words_id
           },
           success: function (res) {
             console.log(res.data);
-            wx.switchTab({
-              url: '../index/index',
+            wx.navigateBack({
+              
             })
           }
         })
@@ -55,6 +55,17 @@ Page({
      that.setData({
        word:options.words
      });
+     wx.request({
+       url: 'https://6kxrdzrv.qcloud.la/Words/insertWords',
+       data: {
+         words: that.data.word
+       },
+       success: function (res) {
+         that.setData({
+           wordsId: res.data
+         });
+       }
+     })
      console.log(that.data.word)
   },
  
