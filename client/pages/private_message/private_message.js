@@ -10,15 +10,52 @@ Page({
      follow:"",
      fans:"",
      user:"",
+     flag:"",
+     flag2:"",
+     uid:"",
+     mid:"",
+     isFollow:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that =this;
-   var uid=options.id;
-   console.log(uid);
+   var uid = options.id;
+   this.data.uid = uid; 
+   var mid = parseInt(wx.getStorageSync('uid'));
+   this.data.mid = mid;
+   var that =this;
+   if(uid==mid){
+     that.setData({
+       flag:2
+     })
+   }else{
+     that.setData({
+       flag:1
+     })
+   }
+   wx.request({
+     url:
+'https://6kxrdzrv.qcloud.la/user/select_follow',
+     data: {
+       'uid': uid,
+       'mid': mid
+     },
+     success:function(res){
+       if(res.data==''){
+         that.setData({
+           flag2: true,
+           isFollow: '+关注'
+         }) 
+       }else{
+         that.setData({
+           flag2: false,
+           isFollow: '取消关注'
+         })
+       }
+     }
+   })
    wx.request({
      url: 'https://6kxrdzrv.qcloud.la/message/select_message',
      data:{
@@ -26,7 +63,6 @@ Page({
      },
      success:function(res)
      {
-       console.log(res.data);
        that.setData({
          'article': res.data[0][0].one,
          'note': res.data[1][0].two*1 + res.data[2][0].three*1,
@@ -85,5 +121,37 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  the_follow:function(){
+    var that = this;
+    if (that.data.flag2) {
+      wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/user/add_follow',
+        data:{
+          uid:that.data.uid,
+          mid:that.data.mid
+        },
+        success:function(res){
+          that.data.flag2 = !that.data.flag2
+          that.setData({
+            isFollow: '取消关注'
+          })
+        }
+      })
+    } else {
+      wx.request({
+        url: 'https://6kxrdzrv.qcloud.la/user/delete_follow',
+        data: {
+          uid: that.data.uid,
+          mid: that.data.mid
+        },
+        success: function (res) {
+          that.data.flag2 = !that.data.flag2
+          that.setData({
+            isFollow: '+关注'
+          })
+        }
+      })
+    }
   }
 })

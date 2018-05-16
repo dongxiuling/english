@@ -41,11 +41,11 @@
     </view>    
     <view class='input'>
       <label for='school'>学校</label>
-      <input id='school' type='text' value='东北林业大学'     bindfocus="focusschool"  bindblur='blurschool' class=''></input>
+      <input id='school' type='text' value='{{school}}'     bindfocus="focusschool"  bindblur='blurschool' class=''></input>
     </view>
     <view class='intel'>
       <label for='intel'>简介</label>
-      <textarea id='intel' bindinput='blurintel' focus='focusintel' value='爱自己，爱生活'></textarea>
+      <textarea id='intel' bindinput='blurintel' focus='focusintel' value='{{introduce}}'></textarea>
     </view>
   </view>
   <button type='mini' form-type='submit' plain='true' style='border:0px;background: #1f9e83;height: 90rpx;width: 50%;margin: 30rpx auto 10rpx;line-height:80rxp;' >

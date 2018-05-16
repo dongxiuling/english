@@ -76,5 +76,35 @@ class User_model extends CI_Model {
     $stmt->execute();
     return $sql;
   }
+  public function select_follow($uid,$mid){
+    $pdo = DB::getInstance();
+    $sql = 'select * from ff where uid=:mid and follow_id=:uid';
+    $stmt = $pdo->prepare($sql);        
+    $stmt -> execute(array(
+        ':mid'=>$mid,
+        ':uid'=>$uid        
+    ));
+    return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+  }
+  public function add_follow($uid,$mid){
+    $pdo = DB::getInstance();
+    $sql = 'insert into ff(uid,follow_id) values (:mid,:uid)';
+    $stmt = $pdo->prepare($sql);        
+    $stmt -> execute(array(
+        ':mid'=>$mid,
+        ':uid'=>$uid        
+    ));
+    return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+  }
+  public function delete_follow($uid,$mid){
+    $pdo = DB::getInstance();
+    $sql = 'delete from ff where uid=:mid and follow_id=:uid';
+    $stmt = $pdo->prepare($sql);        
+    $stmt -> execute(array(
+        ':mid'=>$mid,
+        ':uid'=>$uid        
+    ));
+    return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+  }
 }
 ?>

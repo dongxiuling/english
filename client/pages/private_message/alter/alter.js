@@ -147,7 +147,7 @@ Page({
       success: function (res) {
         console.log(res.data);
         wx.navigateTo({
-          url: '../private_message',
+          url: '../private_message?id=' + uid,
         });
       }
     })
