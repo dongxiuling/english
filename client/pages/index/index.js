@@ -111,8 +111,12 @@ Page({
     })
     
   },
+
+  //事件处理函数
+  //请求数据
   onShow:function(){
-    var that= this;
+  
+    var that = this;
     wx.getSetting({
       success: function (res) {
         if (res.authSetting['scope.userInfo']) {
@@ -161,12 +165,7 @@ Page({
 
         }
       }
-    })
-  },
-  //事件处理函数
-  //请求数据
-  onShow:function(){
-    var that = this;
+    }),
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/user/select_coin',
       success: function (res) {
