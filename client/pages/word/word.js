@@ -206,6 +206,7 @@ Page({
   },
   //播放语音
   audioPlay:function(){
+    console.log(this.data.audioSrc)
     const innerAudioContext = wx.createInnerAudioContext()
     innerAudioContext.autoplay = true,
       innerAudioContext.src = this.data.audioSrc,
@@ -321,8 +322,9 @@ Page({
   },
 
   createVoice: function (e) {
+
     var that = this;
-    var num = e.target.dataset.id;
+    var num = e.target.dataset.num;
     const innerAudioContext = wx.createInnerAudioContext()
     innerAudioContext.autoplay = true,
 

@@ -46,7 +46,7 @@
         <text class='title' id='book'>笔记111</text>     
       </view>
         <text id='cont'>{{}}</text>
-        <image src='../../images/trum.png' id='playVoice' bindtap='createVoice' data-id='{{item.voice_id}}'></image>
+        <image src='../../images/trum.png' id='playVoice' bindtap='createVoice' data-id='{{item.voice_id}}' data-num='{{index}}'></image>
         <view id='auther'>作者:{{item.user_name}}</view>
         <image class='starIcon {{item.flag}}' src='../../images/star.png' bindtap='collectionVoice'
         data-id='{{item.voice_id}}'></image>
