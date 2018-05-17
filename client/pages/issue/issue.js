@@ -106,8 +106,7 @@ Page({
     console.log(that.data.filePath);
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Article/insert_article',
-      data:{
-        
+      data:{       
         content:that.data.content,
         filePath:that.data.filePath,
         userId:wx.getStorageSync('uid')

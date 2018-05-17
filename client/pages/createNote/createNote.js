@@ -1,5 +1,4 @@
 // pages/createNote/createNote.js
-var user = wx.getStorageSync('uid');
 Page({
 
   /**
@@ -20,7 +19,7 @@ Page({
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Words/selectWords',
       data:{
-        name:that.data.word 
+        name:that.data.word
       },
       success:function(res){
         console.log(res.data[0].words_id);
@@ -28,11 +27,12 @@ Page({
           wordsId:res.data[0].words_id
         });
         console.log(that.data.wordsId)
+        console.log(user + '11333333');
         wx.request({
           url: 'https://6kxrdzrv.qcloud.la/Note/add_note',
           data: {
             content: that.data.content,
-            user_id: user,
+            user_id: wx.getStorageSync('uid'),
             wordsId: res.data[0].words_id
           },
           success: function (res) {
@@ -51,6 +51,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   
     var that = this;
      that.setData({
        word:options.words

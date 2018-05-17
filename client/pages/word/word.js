@@ -34,51 +34,14 @@ Page({
     that.setData({
       word:options.searchContent
     });
-    wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/words/selectWords',
-      data:{
-        name:that.data.word
-      },
-      success:function(res){  
-          that.setData({
-            wordsId: res.data[0].words_id
-          });
-        console.log(that.data.wordsId);  
-        wx.request({
-          url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
-          data: {
-            words_id: that.data.wordsId
-          },
-          success: function (res) {
-            console.log(that.data.wordsId);
-            that.setData({
-              noteFile: res.data
-            });
-          }
-        }),
-          wx.request({
-            url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
-            data: {
-              words_id: that.data.wordsId
-            },
-            success: function (res) {
-              console.log(res);
-              that.setData({
-                voiceFile: res.data
-              });
-              console.log(that.data.noteFile);
-            }
-          })
-        
-      },     
-    })
+    
     var from = '';
     var to = '';
     var str1 = appKey + query + salt + key;
     var sign = md5(str1);
     var iid = that.data.wordsId;
     
-    console.log(that.data.noteFile);
+    console.log(wx.getStorageSync('uid')+'11111111111');
     wx.request({
       url: 'https://openapi.youdao.com/api',     
       data: {
@@ -140,29 +103,42 @@ Page({
   onShow: function () {
     var that = this;
     wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
-      data: {
-        words_id: that.data.wordsId
+      url: 'https://6kxrdzrv.qcloud.la/words/selectWords',
+      data:{
+        name:that.data.word
       },
-      success: function (res) {
-        console.log(that.data.wordsId);
+      success:function(res){
         that.setData({
-          noteFile: res.data
+          wordsId: res.data[0].words_id
         });
+        wx.request({
+          url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
+          data: {
+            words_id: that.data.wordsId
+          },
+          success: function (res) {
+            console.log(res);
+            that.setData({
+              noteFile: res.data
+            });
+
+          }
+        }),
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
+            data: {
+              words_id: that.data.wordsId
+            },
+            success: function (res) {
+              console.log(res);
+              that.setData({
+                voiceFile: res.data
+              });
+            }
+          })
       }
-    }),
-      wx.request({
-        url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
-        data: {
-          words_id: that.data.wordsId
-        },
-        success: function (res) {
-          console.log(res);
-          that.setData({
-            voiceFile: res.data
-          });
-        }
-      })
+    })
+    
   
     
   },
@@ -215,7 +191,7 @@ Page({
       url: '../createNote/createNote?words='+words,
     })
   },
-  //跳转更多笔记页
+  
   
   changeShow: function () {
     this.setData({
@@ -300,13 +276,40 @@ Page({
                   upvoicePath: str
                 });
                 wx.request({
-                  url: 'https://6kxrdzrv.qcloud.la/Voice/insertVoice',
-                  data: {
-                    Voice_url: that.data.upvoicePath,
-                    user_id: user,
-                    wordsId: that.data.wordsId
+                  url: 'https://6kxrdzrv.qcloud.la/Words/selectWords',
+                  data:{
+                    name: that.data.word
+                  },
+                  success:function(res){
+                    that.setData({
+                      wordsId: res.data[0].words_id
+                    });
+                    wx.request({
+                      url: 'https://6kxrdzrv.qcloud.la/Voice/insertVoice',
+                      data: {
+                        Voice_url: that.data.upvoicePath,
+                        user_id: 20180104,
+                        wordsId: that.data.wordsId
+                      },
+                      success:function(){
+                        wx.request({
+                          url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
+                          data: {
+                            words_id: that.data.wordsId
+                          },
+                          success: function (res) {
+                            console.log(res);
+                            that.setData({
+                              voiceFile: res.data
+                            });
+
+                          }
+                        })
+                      }
+                    })
                   }
                 })
+               
               }
             })
           } else if (res.cancel) {
@@ -336,35 +339,71 @@ Page({
 
 
   //收藏笔记
-  collection:function(e){
+  collection:function(event){
     var that = this;
-    var aa = e.target.dataset.id;
-    var myNewNote = that.data.noteFile[aa];
-    var myContent = myNewNote.content;
+    var aa = event.currentTarget.dataset['id'];
+    // var myNewNote = that.data.noteFile[aa];
+    // var myContent = myNewNote.content;
     var user = wx.getStorageSync('uid');
     var style = 'green';
-  
     wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Note/add_note',
+      url: 'https://6kxrdzrv.qcloud.la/CollectNote/selectCollect',
       data:{
-        content:myContent,
-        user_id:user,
-        wordsId:that.data.wordsId
+        note_id: aa,
+        user_id: 20180104,
       },
-      success:function(){
-        console.log(11);
-        wx.request({ 
-          url: 'https://6kxrdzrv.qcloud.la/CollectNote/insert',
-          data:{
-            note_id:myNewNote.note_id,
-            user_id:user,
-            flag:style
-          },
-          success:function(){           
-          }        
-        })
+      success:function(res){
+        console.log(res.data)
+        if(res.data == ''){
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/CollectNote/insert',
+            data: {
+              note_id: aa,
+              user_id: 20180104,
+              flag: style
+            },
+            success: function (res) {
+              wx.request({
+                url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
+                data: {
+                  words_id: that.data.wordsId
+                },
+                success: function (res) {
+                  console.log(res);
+                  that.setData({
+                    noteFile: res.data
+                  });
+
+                }
+              })
+            }
+          })
+        }else{
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/CollectNote/cancelCollect',
+            data:{
+              note_id: aa,
+              user_id: 20180104,
+            },
+            success:function(){
+              wx.request({
+                url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
+                data: {
+                  words_id: that.data.wordsId
+                },
+                success: function (res) {
+                  console.log(that.data.wordsId);
+                  that.setData({
+                    noteFile: res.data
+                  });
+                }
+              })
+            }
+          })
+        }
       }
     })
+   
   },
   //收藏语音笔记
   collectionVoice: function (e) {
@@ -373,30 +412,63 @@ Page({
    
     var aa = e.target.dataset.id;
     var myNewNote = that.data.voiceFile[aa];
-    var user = wx.getStorageSync('uid');
-    
+    var user = wx.getStorageSync('uid');   
     var style = 'green';
-
     wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Voice/insertVoice',
+      url: 'https://6kxrdzrv.qcloud.la/CollectNote/selectVoice',
       data: {
-        Voice_url: myNewNote.url,
-        user_id: user,
-        wordsId: that.data.wordsId
+        voice_id: aa,
+        user_id: 20180104,
       },
-      success: function () {
-        console.log(11);
-        wx.request({
-          url: 'https://6kxrdzrv.qcloud.la/CollectNote/insertVoice',
-          data: {
-            voice_id: myNewNote.voice_id,
-            user_id: user,
-            flag: style
-          },
-          success: function () {
-            console.log(that.data.voiceFile.flag)
-          }
-        })
+      success: function (res) {
+        console.log(res.data)
+        if (res.data == '') {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/CollectNote/insertVoice',
+            data: {
+              voice_id: aa,
+              user_id: 20180104,
+              flag: style
+            },
+            success: function (res) {
+              wx.request({
+                url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
+                data: {
+                  words_id: that.data.wordsId
+                },
+                success: function (res) {
+                  console.log(res);
+                  that.setData({
+                    noteFile: res.data
+                  });
+
+                }
+              })
+            }
+          })
+        } else {
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/CollectNote/cancelvoice',
+            data: {
+              voice_id: aa,
+              user_id: 20180104,
+            },
+            success: function () {
+              wx.request({
+                url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
+                data: {
+                  words_id: that.data.wordsId
+                },
+                success: function (res) {
+                  console.log(that.data.wordsId);
+                  that.setData({
+                    noteFile: res.data
+                  });
+                }
+              })
+            }
+          })
+        }
       }
     })
   }
