@@ -33,7 +33,26 @@ class User extends CI_Controller {
       $res=$this->user_model->do_alter_user($uid,$sex,$school,$introduce,$date,$name,$img,$ll);
       echo json_encode($res);
     }
-
-
+    public function select_follow(){
+      $uid=$this->input->get('uid');
+      $mid=$this->input->get('mid');
+      $this->load->model("user_model");
+      $res=$this->user_model->select_follow($uid,$mid);
+      echo json_encode($res);
+    }
+    public function add_follow(){
+      $uid=$this->input->get('uid');
+      $mid=$this->input->get('mid');
+      $this->load->model("user_model");
+      $res=$this->user_model->add_follow($uid,$mid);
+      echo json_encode($res);
+    }
+    public function delete_follow(){
+      $uid=$this->input->get('uid');
+      $mid=$this->input->get('mid');
+      $this->load->model("user_model");
+      $res=$this->user_model->delete_follow($uid,$mid);
+      echo json_encode($res);
+    }
 }
 ?>
