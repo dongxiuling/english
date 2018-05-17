@@ -389,7 +389,8 @@ Page({
               wx.request({
                 url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
                 data: {
-                  words_id: that.data.wordsId
+                  words_id: that.data.wordsId,
+                  user_id:user
                 },
                 success: function (res) {
                   console.log(that.data.wordsId);
@@ -458,7 +459,8 @@ Page({
               wx.request({
                 url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
                 data: {
-                  words_id: that.data.wordsId
+                  words_id: that.data.wordsId,
+                  user_id:user
                 },
                 success: function (res) {
                   console.log(that.data.wordsId);
