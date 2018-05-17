@@ -439,7 +439,7 @@ Page({
                 success: function (res) {
                   console.log(res);
                   that.setData({
-                    noteFile: res.data
+                    voiceFile: res.data
                   });
 
                 }
@@ -462,7 +462,7 @@ Page({
                 success: function (res) {
                   console.log(that.data.wordsId);
                   that.setData({
-                    noteFile: res.data
+                    voiceFile: res.data
                   });
                 }
               })
