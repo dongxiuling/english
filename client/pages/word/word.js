@@ -2,6 +2,7 @@ var md5 = require('../../utils/myMd5.js');
 const recorderManager = wx.getRecorderManager();
 const innerAudioContext = wx.createInnerAudioContext();
 const app = getApp();
+var user = wx.getStorageSync('uid');
 var tempFilePath;
 Page({
 
@@ -33,15 +34,12 @@ Page({
     var query = options.searchContent;
     that.setData({
       word:options.searchContent
-    });
-    
+    });    
     var from = '';
     var to = '';
     var str1 = appKey + query + salt + key;
     var sign = md5(str1);
     var iid = that.data.wordsId;
-    
-    console.log(wx.getStorageSync('uid')+'11111111111');
     wx.request({
       url: 'https://openapi.youdao.com/api',     
       data: {
@@ -114,7 +112,8 @@ Page({
         wx.request({
           url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
           data: {
-            words_id: that.data.wordsId
+            words_id: that.data.wordsId,
+            user_id:wx.getStorageSync('uid')
           },
           success: function (res) {
             console.log(res);
@@ -288,7 +287,7 @@ Page({
                       url: 'https://6kxrdzrv.qcloud.la/Voice/insertVoice',
                       data: {
                         Voice_url: that.data.upvoicePath,
-                        user_id: 20180104,
+                        user_id: user,
                         wordsId: that.data.wordsId
                       },
                       success:function(){
@@ -350,7 +349,7 @@ Page({
       url: 'https://6kxrdzrv.qcloud.la/CollectNote/selectCollect',
       data:{
         note_id: aa,
-        user_id: 20180104,
+        user_id: user,
       },
       success:function(res){
         console.log(res.data)
@@ -359,21 +358,22 @@ Page({
             url: 'https://6kxrdzrv.qcloud.la/CollectNote/insert',
             data: {
               note_id: aa,
-              user_id: 20180104,
+              user_id: user,
               flag: style
             },
             success: function (res) {
+              console.log(res);
               wx.request({
                 url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
                 data: {
-                  words_id: that.data.wordsId
+                  words_id: that.data.wordsId,
+                  user_id:user
                 },
                 success: function (res) {
                   console.log(res);
                   that.setData({
                     noteFile: res.data
                   });
-
                 }
               })
             }
@@ -383,7 +383,7 @@ Page({
             url: 'https://6kxrdzrv.qcloud.la/CollectNote/cancelCollect',
             data:{
               note_id: aa,
-              user_id: 20180104,
+              user_id: user,
             },
             success:function(){
               wx.request({
@@ -418,7 +418,7 @@ Page({
       url: 'https://6kxrdzrv.qcloud.la/CollectNote/selectVoice',
       data: {
         voice_id: aa,
-        user_id: 20180104,
+        user_id: user,
       },
       success: function (res) {
         console.log(res.data)
@@ -427,14 +427,15 @@ Page({
             url: 'https://6kxrdzrv.qcloud.la/CollectNote/insertVoice',
             data: {
               voice_id: aa,
-              user_id: 20180104,
+              user_id: user,
               flag: style
             },
             success: function (res) {
               wx.request({
                 url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
                 data: {
-                  words_id: that.data.wordsId
+                  words_id: that.data.wordsId,
+                  user_id:user
                 },
                 success: function (res) {
                   console.log(res);
@@ -451,7 +452,7 @@ Page({
             url: 'https://6kxrdzrv.qcloud.la/CollectNote/cancelvoice',
             data: {
               voice_id: aa,
-              user_id: 20180104,
+              user_id: user,
             },
             success: function () {
               wx.request({

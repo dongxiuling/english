@@ -16,8 +16,9 @@ class Note extends CI_Controller {
 
   public function select_note(){
     $words_id = $this ->input ->get('words_id');
+    $user_id = $this ->input ->get('user_id');
     $this ->load ->model('Note_model');
-    $res = $this -> Note_model ->do_select($words_id);
+    $res = $this -> Note_model ->do_select($words_id,$user_id);
     echo json_encode($res);
   }
 }
