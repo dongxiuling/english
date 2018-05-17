@@ -34,6 +34,8 @@ class Voice extends CI_Controller {
       $res = $this ->Voice_model ->do_select($words_id);
       echo json_encode($res);
     }
+
+    
     }
 
 ?>

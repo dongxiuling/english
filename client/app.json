@@ -1,6 +1,6 @@
 {
   "pages": [
-
+  "pages/index/index",
     "pages/private_message/alter/alter",
     "pages/login/login",
     "pages/private_message/private_message",
@@ -9,7 +9,7 @@
     "pages/money/money",
     
    
-    "pages/index/index",
+   
    
     "pages/fans/fans",
     "pages/attention/attention",

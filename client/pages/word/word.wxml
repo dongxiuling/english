@@ -37,22 +37,20 @@
       </view>
         <text id='cont'>{{item.content}}</text>
         <view id='auther'>作者:{{item.user_name}}</view>
-        <image  class='starIcon {{item.flag}}' src='../../images/star.png' data-id='{{index}}'bindtap='collection'></image>
-        <image  class='starIcon collect' wx:if='{{item.flag}}' src='../../images/collectNote.png' ></image>
+        <image  class='starIcon {{item.flag}}' src='../../images/star.png' data-id='{{item.note_id}}'bindtap='collection'></image>
+        <image  class='starIcon collect' wx:if='{{item.flag}}' src='../../images/collectNote.png' bindtap='collection' data-id='{{item.note_id}}'></image>
   </view>
   <view class='wrapper voice' wx:if="{{show==false}}" id='commit' wx:for='{{voiceFile}}'>
       <view id='content-line'>
         <image id='bookIcon'src='../../images/book.png'></image>
-        <text class='title' id='book'>笔记111</text>
-     
+        <text class='title' id='book'>笔记111</text>     
       </view>
         <text id='cont'>{{}}</text>
-
-        <image src='../../images/trum.png' id='playVoice' bindtap='createVoice' data-id='{{index}}'></image>
+        <image src='../../images/trum.png' id='playVoice' bindtap='createVoice' data-id='{{item.voice_id}}'></image>
         <view id='auther'>作者:{{item.user_name}}</view>
         <image class='starIcon {{item.flag}}' src='../../images/star.png' bindtap='collectionVoice'
-        data-id='{{index}}'></image>
-        <image  class='starIcon collect' wx:if='{{item.flag}}' src='../../images/collectNote.png' ></image>
+        data-id='{{item.voice_id}}'></image>
+        <image  class='starIcon collect' wx:if='{{item.flag}}' src='../../images/collectNote.png'  data-id='{{item.voice_id}}' bindtap='collectionVoice'></image>
   </view>
   <view class='wrapper'>
       <text class='go' id='goOne' bindtap='goCreate'>去翻译</text>
