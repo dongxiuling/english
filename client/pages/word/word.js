@@ -34,45 +34,7 @@ Page({
     that.setData({
       word:options.searchContent
     });
-    wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/words/selectWords',
-      data:{
-        name:that.data.word
-      },
-      success:function(res){  
-          that.setData({
-            wordsId: res.data[0].words_id
-          });
-        console.log(that.data.wordsId);  
-        wx.request({
-          url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
-          data: {
-            words_id: that.data.wordsId
-          },
-          success: function (res) {
-            console.log(that.data.wordsId);
-            that.setData({
-              noteFile: res.data
-            });
-          }
-        }),
-          wx.request({
-            url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
-            data: {
-              words_id: that.data.wordsId
-            },
-            success: function (res) {
-              console.log(res);
-              that.setData({
-                voiceFile: res.data
-              });
-              
-            }
-          })
-         
-        
-      },     
-    })
+    
     var from = '';
     var to = '';
     var str1 = appKey + query + salt + key;
@@ -141,30 +103,42 @@ Page({
   onShow: function () {
     var that = this;
     wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
-      data: {
-        words_id: that.data.wordsId
+      url: 'https://6kxrdzrv.qcloud.la/words/selectWords',
+      data:{
+        name:that.data.word
       },
-      success: function (res) {
-        console.log(res);
+      success:function(res){
         that.setData({
-          noteFile: res.data
+          wordsId: res.data[0].words_id
         });
+        wx.request({
+          url: 'https://6kxrdzrv.qcloud.la/Note/select_note',
+          data: {
+            words_id: that.data.wordsId
+          },
+          success: function (res) {
+            console.log(res);
+            that.setData({
+              noteFile: res.data
+            });
 
+          }
+        }),
+          wx.request({
+            url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
+            data: {
+              words_id: that.data.wordsId
+            },
+            success: function (res) {
+              console.log(res);
+              that.setData({
+                voiceFile: res.data
+              });
+            }
+          })
       }
-    }),
-      wx.request({
-        url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
-        data: {
-          words_id: that.data.wordsId
-        },
-        success: function (res) {
-          console.log(res);
-          that.setData({
-            voiceFile: res.data
-          });
-        }
-      })
+    })
+    
   
     
   },
