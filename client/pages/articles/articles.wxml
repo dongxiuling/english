@@ -1,4 +1,5 @@
 <!--pages/articles/articles.wxml-->
+<view class='tip' wx:if="{{show == false}}">您暂时还没有发表过文章哦</view>
   <scroll-view class='art_list' scroll-y='true'>
     <view class='art' wx:for='{{articles}}'>
       <view class='cont' id='{{item.article_id}}' bindtap='toPut_art'>

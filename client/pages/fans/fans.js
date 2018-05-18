@@ -5,39 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    fans:{},
-    show: ''
+    voices:"",
+    uid:"",
+    show: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.data.uid = wx.getStorageSync('uid');
     var that = this;
-    var uid = wx.getStorageSync('uid');
     wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/fans/select_fans',
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/my_collages2',
       data: {
-        uid: uid
+        uid: that.data.uid
       },
       success: function (res) {
-        if (res.data.length != 0) {
+        if (res.data != "") {
           that.setData({
-            show: 'false'
+            show: true
           })
-
-        } else {
-          that.setData({
-            show: 'true'
-          })
-
         }
         that.setData({
-          fans: res.data
+          voices: res.data
         })
       }
     })
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -86,5 +82,20 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  createVoice: function (e) {
+    var that = this;
+    var num = e.target.dataset.num;
+    const innerAudioContext = wx.createInnerAudioContext()
+    innerAudioContext.autoplay = true,
+
+      innerAudioContext.src = that.data.voices[num].url,
+      innerAudioContext.onPlay(() => {
+        console.log('开始播放')
+      })
+    innerAudioContext.onError((res) => {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
   }
 })

@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $this->load->model("good_model");
       $gid=$this->input->get('goods_id');
       $res=$this->good_model->do_update_number($gid);
-      echo json-encode($res);
+      echo json_encode($res);
     }
   }
 ?>

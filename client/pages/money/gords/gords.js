@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    num:500,
+    num: 0,
     // imageUrl: ['../../../images/gords1.jpg', '../../../images/gords2.jpg', '../../../images/gords3.jpg', '../../../images/gords4.jpg', '../../../images/gords5.jpg', '../../../images/gords6.jpg'],
     // name: ['神奇洗面奶', '佳能照相机', '鳄鱼腰带', '玉色茶具', '康佳旅游鞋', '宝鉴奶粉'],
     // privce:['200','400','600','700','100','500'],
@@ -68,7 +68,7 @@ Page({
           })
           wx.showToast({
             title: '兑换成功',
-            icon: 'sucess',
+            icon: 'sucess'
           });
         }
       })
@@ -77,7 +77,7 @@ Page({
     {
       wx.showToast({
         title: '余额不足',
-        icon: 'loading',
+        icon:'none'
       });
     }
   },

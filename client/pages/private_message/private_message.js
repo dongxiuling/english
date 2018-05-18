@@ -122,36 +122,36 @@ Page({
   onShareAppMessage: function () {
   
   },
-  the_follow:function(){
-    var that = this;
-    if (that.data.flag2) {
-      wx.request({
-        url: 'https://6kxrdzrv.qcloud.la/user/add_follow',
-        data:{
-          uid:that.data.uid,
-          mid:that.data.mid
-        },
-        success:function(res){
-          that.data.flag2 = !that.data.flag2
-          that.setData({
-            isFollow: '取消关注'
-          })
-        }
-      })
-    } else {
-      wx.request({
-        url: 'https://6kxrdzrv.qcloud.la/user/delete_follow',
-        data: {
-          uid: that.data.uid,
-          mid: that.data.mid
-        },
-        success: function (res) {
-          that.data.flag2 = !that.data.flag2
-          that.setData({
-            isFollow: '+关注'
-          })
-        }
-      })
-    }
-  }
+  // the_follow:function(){
+  //   var that = this;
+  //   if (that.data.flag2) {
+  //     wx.request({
+  //       url: 'https://6kxrdzrv.qcloud.la/user/add_follow',
+  //       data:{
+  //         uid:that.data.uid,
+  //         mid:that.data.mid
+  //       },
+  //       success:function(res){
+  //         that.data.flag2 = !that.data.flag2
+  //         that.setData({
+  //           isFollow: '取消关注'
+  //         })
+  //       }
+  //     })
+  //   } else {
+  //     wx.request({
+  //       url: 'https://6kxrdzrv.qcloud.la/user/delete_follow',
+  //       data: {
+  //         uid: that.data.uid,
+  //         mid: that.data.mid
+  //       },
+  //       success: function (res) {
+  //         that.data.flag2 = !that.data.flag2
+  //         that.setData({
+  //           isFollow: '+关注'
+  //         })
+  //       }
+  //     })
+  //   }
+  // }
 })

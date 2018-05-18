@@ -1,11 +1,9 @@
 <!--pages/notes/notes.wxml-->
+<view class='tip' wx:if="{{show == false}}">您暂时还没有发表过笔记哦</view>
   <scroll-view class='note_list' scroll-y='true'>
     <view class='note' wx:for='{{notes}}'>
       <view class='cont' id='{{item.note_id}}' bindtap='toPut_note'>
         <view>{{item.content}}</view>
-        <view class='img'>
-          <image src="{{item.img_url}}"></image>
-        </view>
       </view>
       <view class='tab_list'>
         <view class='time'>
@@ -17,7 +15,7 @@
   <scroll-view class='voice_list' scroll-y='true'>
     <view class='voice' wx:for='{{voice}}'>
       <view class='voice_cont' id='{{item.voice_id}}'>
-        <audio controls="controls" src='{{item.url}}'></audio>
+        <audio controls="controls" name='{{item.name}}' author='{{item.user_name}}' src='{{item.url}}'></audio>
       </view>
       <view class='tab_list'>
         <view class='time'>
