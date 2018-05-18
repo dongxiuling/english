@@ -1,4 +1,5 @@
 <!--pages/notes/notes.wxml-->
+<view class='tip' wx:if="{{show == false}}">您暂时还没有发表过笔记哦</view>
   <scroll-view class='note_list' scroll-y='true'>
     <view class='note' wx:for='{{notes}}'>
       <view class='cont' id='{{item.note_id}}' bindtap='toPut_note'>

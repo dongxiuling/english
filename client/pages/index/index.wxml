@@ -56,7 +56,7 @@
       </view>
     </view>
     <view class='tab_list'>
-        <view class='tab'>
+        <view class='tab' wx:if='{{show==true}}'>
           <text class="iconfont icon-dianzan {{item.flag}}" id='{{index}}' catchtap='admire'>赞</text>
         </view>
         <view class='tab' bindtap='toPut_art' id='{{item.article_id}}'>

@@ -12,7 +12,7 @@
       <image src="{{item.img_url}}"></image>
   </view>
   <view class='tab_list'>
-      <view class='tab' bindtap='zan'>
+      <view class='tab' bindtap='zan' wx:if='{{show==true}}'>
         <text class="iconfont icon-dianzan {{item.flag}}">{{item.hits}}赞</text>
       </view>
   </view>
@@ -33,8 +33,8 @@
     </view> -->
   </view>
 </scroll-view>
-<button class='iconfont icon-bi' bindtap='bindReply'>评 论</button>
-<view class="release" hidden="{{!releaseFocus}}">
+<button class='iconfont icon-bi' bindtap='bindReply' wx:if='{{show==true}}'>评 论</button>
+<view class="release" hidden="{{!releaseFocus}}" wx:if='{{show==true}}'>
   <textarea class="text"
   placeholder-class="input_null"
   fixed="true"
