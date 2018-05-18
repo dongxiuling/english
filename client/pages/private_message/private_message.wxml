@@ -3,9 +3,9 @@
   <view class='title'>
     <navigator class='iconfont icon-back'></navigator>
     <navigator class='iconfont {{flag==1 ? "display:none":"icon-pinglun"}}' url='alter/alter' ></navigator>
-    <view class='{{flag==1 ? "follow":"follow2"}}' bindtap='the_follow'>
+    <!-- <view class='{{flag==1 ? "follow":"follow2"}}' bindtap='the_follow'>
     {{isFollow}}
-    </view>
+    </view>  -->
   </view>
   <view class='logo' style="background-image:url('{{user.logo_url}}')"></view>
   <text class='id'>{{user.user_id}}</text>

@@ -1,8 +1,8 @@
 <!--pages/put_note/put_note.wxml-->
 <view class='user' wx:for='{{note}}'>
-  <image src='{{head_url}}'></image>
+  <image src='{{item.logo_url}}'></image>
   <view class='user_info'>
-    <view>自己</view>
+    <view>{{item.user_name}}</view>
     <view class='time'>{{item.date}}</view>
   </view>
 </view>

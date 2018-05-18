@@ -119,4 +119,16 @@ class Welcome extends CI_Controller {
 		$com = $this->com_model->cancel_this($id,$cid,$uid);
 		echo json_encode($com);
 	}
+  public function my_collages(){
+    $uid = $this->input->get('uid');
+		$this->load->model('collectNote_model');
+		$res = $this->collectNote_model->select_words_collect($uid);
+		echo json_encode($res);
+	}
+  public function my_collages2(){
+    $uid = $this->input->get('uid');
+		$this->load->model('collectNote_model');
+		$res = $this->collectNote_model->select_voices_collect($uid);
+		echo json_encode($res);
+	}
 }

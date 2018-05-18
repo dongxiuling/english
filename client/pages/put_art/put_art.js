@@ -49,16 +49,16 @@ Page({
         })
       }
     });
-    // wx.request({
-    //   url: 'https://6kxrdzrv.qcloud.la/Welcome/art_com',
-    //   responseType: 'text',
-    //   data: { article_id: that.data.article_id },
-    //   success: function (res) {
-    //     that.setData({
-    //       comments: res.data
-    //     })
-    //   }
-    // })
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/art_com',
+      responseType: 'text',
+      data: { article_id: that.data.article_id },
+      success: function (res) {
+        that.setData({
+          comments: res.data
+        })
+      }
+    })
   },
 
   /**

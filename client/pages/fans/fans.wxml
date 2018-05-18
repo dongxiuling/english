@@ -1,7 +1,9 @@
 <!--pages/fans/fans.wxml-->
-<view class='tip' wx:if="{{show == 'true'}}">您暂时还没有关注过任何人哦</view> 
-<view class='fans_container' wx:for="{{fans}}">
-    <image class='fans_icon' src='{{item.logo_url}}'></image>
-    <text class='fans_name'>{{item.user_name}}</text>
-    <button class='fans_state'>已关注</button>
-</view>
+<view class='tip' wx:if="{{show == false}}">您暂时还没有收藏过笔记哦</view> 
+<view class='wrapper' wx:if="{{show}}" id='commit' wx:for='{{voices}}'>
+      <view id='content-line'>
+        <image id='bookIcon'src='../../images/book.png'></image>
+        <text class='title' id='book'>语音笔记{{index+1}}</text>         </view>
+      <image src='../../images/trum.png' id='playVoice' bindtap='createVoice' data-id='{{item.voice_id}}' data-num='{{index}}'></image>
+      <view id='auther'>作者:{{item.user_name}}</view>
+  </view>

@@ -14,14 +14,9 @@ page{
   background: #ffffff;
 }
 .cont{
-  padding:10rpx 30rpx;
+  padding:20rpx 30rpx;
   font-size:34rpx;
   color:#666666;
-}
-.img image{
-  width:200rpx;
-  height:200rpx;
-  margin-right:10rpx;
 }
 .tab_list{
   background: #ffffff;

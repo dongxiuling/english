@@ -19,10 +19,10 @@ class Voice_model extends CI_Model {
     }
     public function find_all($data){
           $pdo = DB::getInstance();
-          $sql = "select * from voice where voice.user_id=".$data;
+          $sql = "select * from voice,words,t_user where voice.words_id=words.words_id and voice.user_id=t_user.user_id and voice.user_id=".$data;
           $stmt = $pdo->prepare($sql);
           $stmt -> execute();
           return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
-}
+} 
 ?>

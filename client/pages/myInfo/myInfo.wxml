@@ -19,10 +19,10 @@
   </view>
 </view>
 <view class='my_product'>
-    <view class='product_item' bindtap='to_articles'>文章</view>
-    <view class='product_item' bindtap='to_notes'>笔记</view>
-    <view class='product_item' bindtap='to_attention'>关注</view>
-    <view class='product_item fans' bindtap='to_fans'>粉丝</view>
+    <view class='product_item' bindtap='to_articles'>我的文章</view>
+    <view class='product_item' bindtap='to_notes'>我的笔记</view>
+    <view class='product_item' bindtap='to_attention'>文字收藏</view>
+    <view class='product_item fans' bindtap='to_fans'>语音收藏</view>
 </view>
 <view class='help'>
     <view class='help_item' bindtap='to_help'>意见反馈和帮助

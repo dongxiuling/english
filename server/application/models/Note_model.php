@@ -31,7 +31,7 @@ class Note_model extends CI_Model {
     }
     public function find_this($data){
         $pdo = DB::getInstance();
-        $sql = 'select * from note where note.note_id='.$data;
+        $sql = 'select * from note,t_user where note.user_id=t_user.user_id and note.note_id='.$data;
         $stmt = $pdo->prepare($sql);
         $stmt -> execute();
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
