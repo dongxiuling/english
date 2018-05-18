@@ -8,6 +8,10 @@ class Voice_model extends CI_Model {
            'user_id' =>$uid ,
            'words_id' =>$wordsId
        ]);
+       $pdo = DB::getInstance();
+       $sql = "update t_user set coin = coin + 3 where user_id = '$uid'";
+       $stmt = $pdo ->prepare($sql);
+       $stmt ->execute(); 
     }
     public function do_select($words_id,$user_id){
        $pdo = DB::getInstance();
