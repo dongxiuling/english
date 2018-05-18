@@ -1,6 +1,6 @@
 <!--pages/money/gords/gords.wxml-->
 <view class='head'>
-<text class='hide'></text>
+<text class='hide'></text> 
 <text class="title">我的余额:<text style='color:#1f9e83'>{{num}}金币</text></text>
 <text class='hide'></text>
 </view>

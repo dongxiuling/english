@@ -12,11 +12,11 @@
    </view>
    <view class='rule'>
      <text class='rules'>发表一篇文章+5金币</text>
-     <text class='rules'>评论一篇文章+3金币</text>
-     <text class='rules'>分享朋友圈+5金币</text>
+     <text class='rules'>发表一篇笔记+3金币</text>
+     <text class='rules'>每日签到+1金币</text>
    </view>
    <view class='gord'>
-     <text class='gords'>1000金币可兑换英语六级书1本</text>
+     <text class='gords'>1000金币可兑换英语四六级书1本</text>
      <text class='gords'>2000金币可兑换小米充电宝1个</text>
      <text class='gords'>3000金币可兑换小米耳机1个</text>
    </view>
