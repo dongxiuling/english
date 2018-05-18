@@ -27,7 +27,7 @@ Page({
           wordsId:res.data[0].words_id
         });
         console.log(that.data.wordsId)
-        console.log(user + '11333333');
+        
         wx.request({
           url: 'https://6kxrdzrv.qcloud.la/Note/add_note',
           data: {
@@ -38,7 +38,7 @@ Page({
           success: function (res) {
             console.log(res.data);
             wx.navigateBack({
-              
+              url:'../word/word'
             })
           }
         })
