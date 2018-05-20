@@ -51,35 +51,57 @@ Page({
     var num=e.currentTarget.dataset.num;
     var price=e.currentTarget.dataset.price;
     var yue = e.currentTarget.dataset.yue;
-    if(yue>=price)
-    {
-      wx.request({
-        url: 'https://6kxrdzrv.qcloud.la/money/update_goods',
-        data:{
-          'goods_id':id,
-          'coin':yue-price,
-          'user_id':uid,
-        },
-        success:function(res)
-        {
-          that.setData({
-            'goods':res.data,
-            "num":yue-price,
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          //已经授权，可以直接调用 getUserInfo 获取头像昵称
+          if (yue >= price) {
+            wx.request({
+              url: 'https://6kxrdzrv.qcloud.la/money/update_goods',
+              data: {
+                'goods_id': id,
+                'coin': yue - price,
+                'user_id': uid,
+              },
+              success: function (res) {
+                that.setData({
+                  'goods': res.data,
+                  "num": yue - price,
+                })
+                wx.showToast({
+                  title: '兑换成功',
+                  icon: 'sucess'
+                });
+              }
+            })
+          }
+          else {
+            wx.showToast({
+              title: '余额不足',
+              icon: 'none'
+            });
+          }
+
+
+        } else {
+          //return false;
+          wx.showModal({
+            title: '提示',
+            content: '您还没有登录，点击确定按钮前往登录',
+            success: function (res) {
+              if (res.confirm) {
+                wx.redirectTo({
+                  url: '../../login/login',
+                })
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
           })
-          wx.showToast({
-            title: '兑换成功',
-            icon: 'sucess'
-          });
         }
-      })
-    }
-    else
-    {
-      wx.showToast({
-        title: '余额不足',
-        icon:'none'
-      });
-    }
+      }
+    })
+  
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

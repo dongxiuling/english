@@ -5,7 +5,7 @@
         <text id='cancel' bindtap='backIndex'>取消</text>
   </view>
 
-  <view class='wrapper' id='commit'>
+  <view class='wrapper' id='commit'> 
         <view id='content-line'>
           <text class='title' id='word'>{{word}}</text>
           <image id='trumIcon'src='../../images/trum.png' bindtap='audioPlay'></image>

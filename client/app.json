@@ -1,15 +1,27 @@
 {
   "pages": [
-    "pages/login/login",
-    "pages/index/index",
-    "pages/private_message/alter/alter",
-    "pages/private_message/private_message",
-    "pages/money/gords/gords",
     "pages/myInfo/myInfo",
+    "pages/help/help",
+    
+    "pages/index/index",
+    
+    "pages/money/gords/gords",
+   
+    "pages/login/login",
+   
+    "pages/private_message/alter/alter",
+   
+    "pages/private_message/private_message",
+    
+   
     "pages/money/money",
+    
+   
+   
+   
     "pages/fans/fans",
     "pages/attention/attention",
-    "pages/help/help",
+   
     "pages/addCgi/addCgi",
     "pages/forum/forum",
     "pages/createNote/createNote",
@@ -24,9 +36,9 @@
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarBackgroundColor": "#2ac395",
     "navigationBarTitleText": "Wafer Quick Start",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "#ffffff"
   },
   "tabBar": {
     "list": [
@@ -49,6 +61,6 @@
         "text": "我的"
       }
     ],
-    "selectedColor": "#1f9e83"
+    "selectedColor": "#2ac395"
   }
 }
