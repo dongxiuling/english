@@ -1,7 +1,7 @@
 // pages/myInfo/myInfo.js
 const app = getApp();
 Page({
-
+ 
   /**
    * 页面的初始数据
    */
@@ -28,7 +28,7 @@ Page({
   onLoad: function (options) { 
     var that = this;
     var uid = wx.getStorageSync('uid');
-    console.log(uid);
+    //console.log(uid);
     if(uid){
       wx.request({
         url: 'https://6kxrdzrv.qcloud.la/user/select_user',
@@ -150,40 +150,58 @@ Page({
     var day = date.getDate();
   
     var now = year + '-' + month + '-' + day;
-    if (now == this.data.prevtime){
-      wx.showModal({
-        content: '您今天已经打过卡了，明天再来吧',
-      })
-    }else{
-      wx.request({
-        url: 'https://6kxrdzrv.qcloud.la/user/add_day',
-        data:{
-          uid:uid
-        },
-        success:function(res){
-          wx.showModal({
-            content: '打卡成功，学习贵在坚持',
-          }),
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          //已经授权，可以直接调用 getUserInfo 获取头像昵称
+          if (now == that.data.prevtime) {
+            wx.showModal({
+              content: '您今天已经打过卡了，明天再来吧',
+            })
+          } else {
+            wx.request({
+              url: 'https://6kxrdzrv.qcloud.la/user/add_day',
+              data: {
+                uid: uid
+              },
+              success: function (res) {
+                wx.showModal({
+                  content: '打卡成功，学习贵在坚持',
+                }),
+                  that.setData({
+                    userInfo: res.data[0]
+                  })
+
+              }
+            })
+
+          }
           that.setData({
-            userInfo: res.data[0]
-          }),
-          wx.request({
-            url: 'https://6kxrdzrv.qcloud.la/user/select_coin',
+            prevtime: now
+          })
+
+
+        } else {
+          //return false;
+          wx.showModal({
+            title: '提示',
+            content: '您还没有登录，点击确定按钮前往登录',
             success: function (res) {
-
-              app.globalData.rank = res.data;
-            
-
+              if (res.confirm) {
+               wx.redirectTo({
+                 url: '../login/login',
+               })
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
             }
           })
-          
         }
-      })
-    
-    }
-    this.setData({
-      prevtime:now
+      }
     })
+  
+ 
+ 
 
  
   

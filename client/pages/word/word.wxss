@@ -61,8 +61,10 @@ page{
   margin-top:30rpx;
 }
 #content-line{
+  padding: 10rpx;
   border-bottom:1rpx solid #e1e1e1;
 }
+
 /*内容开始*/
 .title{
   color: #209e85;
