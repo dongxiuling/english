@@ -168,9 +168,7 @@ swiper{
    border: 2rpx solid #d0d0d0;  
   border-radius: 10rpx;  
 }
-.index-line{
-  border-bottom: 2rpx solid #d0d0d0;
-}
+
 .index-bottom{
   text-align: center;
   color: white;
@@ -179,6 +177,18 @@ swiper{
 /* 最新文章 */
 page{
     background: #f2f2f2;
+}
+.header{
+  background: #fff;
+  padding-top: 15rpx;
+}
+.header-line{
+  width: 92%;
+  height: 1rpx;
+  background: #d0d0d0;
+  margin-left: 4%;
+  position: relative;
+  top:140rpx;
 }
 /*搜索框开始*/
 .head{
@@ -255,6 +265,9 @@ page{
   margin-bottom:16rpx;
   box-shadow:0 1rpx 2rpx 2rpx rgba(0,0,0,0.1);
 }
+.ranking-list{
+  margin-bottom: -30rpx;
+}
 .icon-custom-news{
   color:#ee5d7a;
   margin:0 10rpx 0 10rpx;
@@ -274,9 +287,13 @@ page{
   overflow: hidden;
    display: flex;
   flex-direction: column;
-  margin-bottom:16rpx;
+  width: 92%;
+  margin-left: 4%;
+   border-radius: 1%;
+     margin-top:20rpx;  
+   border: 1rpx solid #d0d0d0;
   background:#fff;
-  box-shadow:0 1rpx 2rpx 2rpx rgba(0,0,0,0.1);
+  /* box-shadow:0 1rpx 2rpx 2rpx rgba(0,0,0,0.1); */
 }
 .index-name{
   font-size: 28rpx;
@@ -375,6 +392,8 @@ page{
   width: 120rpx;
   height: 70rpx;
   float: right;
+    text-align: center;
+  line-height: 70rpx;
 }
 .tab text{
   font-size: 30rpx;

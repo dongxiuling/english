@@ -38,17 +38,19 @@
   <i class="iconfont icon-custom-news"></i>
   最新文章
 </view>
-<view>
+<view class='header'>
   <view class='index-article'  bindtap='toPut_art'  wx:for="{{articleInfo}}" wx:for-item="item" id='{{item.article_id}}' data-id='{{item.user_id}}'>
-    <view  >
+    <view>
         <view class='index-writer'>
             <view><image class="head-port" src="{{item.logo_url}}"></image></view> 
             <view class='index-name'>
-              <view>{{item.title}}{{head_title}}</view>
+              <view>{{item.user_name}}</view>
               <view class="atricle-time">{{item.date}}</view>
             </view>  
         </view>
+         <view class="header-line"></view>
     </view>
+   
     <view class="article-content">
       <view>{{item.content}}</view>
       <view class='article-img'>
