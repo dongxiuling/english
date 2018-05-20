@@ -51,15 +51,15 @@
     </view>
     <view class="article-content" id='{{item.article_id}}' bindtap='toPut_art'>
       <view>{{item.content}}</view>
-      <view class='article-img'>
+      <view class='article-img'  wx:if="{{item.img_url!=''}}">
         <image src="{{item.img_url}}"></image>  
       </view>
     </view>
     <view class='tab_list'>
-        <view class='tab'>
+        <view class='tab' wx:if='{{show==true}}'>
           <text class="iconfont icon-dianzan {{item.flag}}" id='{{index}}' catchtap='admire'>赞</text>
         </view>
-        <view class='tab'>
+        <view class='tab' bindtap='toPut_art' id='{{item.article_id}}'>
           <text class="iconfont icon-pinglun">评论</text>
         </view>
         

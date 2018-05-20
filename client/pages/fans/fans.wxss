@@ -1,33 +1,77 @@
 /* pages/fans/fans.wxss */
-.fans_container{
-  height: 200rpx;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  padding: 25rpx;
-  display: flex;
-  align-items: center;
-  margin-bottom: 20rpx;
-  position: relative;
+page{
+  background-color: #eee;
 }
-.fans_icon{
-  width: 100rpx;
-  height: 100rpx;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-  margin-right:20rpx; 
-}
-.fans_name{
-  font-size: 32rpx;
-}
-.fans_state{
-  width: 200rpx;
-  font-size: 28rpx;
-  position: absolute;
-  right: 20rpx;
+.wrapper{
+   width: 690rpx;
+   margin: 0 auto;
 }
 .tip{
-  color: #ccc;
+  color: #000;
   font-size: 32rpx;
   text-align: center;
   margin-top: 20rpx;
 }
+/*笔记开始*/
+#commit{
+  height: 280rpx; 
+  border: 1rpx solid #e1e1e1;
+  background: #fff;
+  margin-top:30rpx;
+}
+#content-line{
+  border-bottom:1rpx solid #e1e1e1;
+}
+.title{
+  color: #209e85;
+  font-size: 40rpx;
+  margin-left: 20rpx
+}
+#cont{
+  color: #a7a7a7;
+  font-size: 30rpx;
+  padding-left:20rpx;
+  padding-right: 20rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+#bookIcon{
+  width: 40rpx;
+  height: 40rpx;
+  float: left;
+  margin: 13rpx;
+}
+#rightIcon{
+  width: 40rpx;
+  height: 40rpx;
+  float: right;
+  margin-top: 13rpx;
+  margin-right: 13rpx;
+  padding-left:10rpx;
+  border-left: 3rpx solid #e1e1e1;
+}
+#auther{
+  color: grey;
+  font-size: 30rpx;
+  padding-left:20rpx 
+}
+.green{
+ display: none;
+}
+.starIcon{
+  width: 30rpx;
+  height: 30rpx;
+  float: right;
+  margin-right:10rpx;
+  padding-bottom: 30rpx
+}
+#playVoice{
+  width: 40rpx;
+  height:40rpx;
+  margin-left: 20rpx;
+}
+/*笔记结束*/

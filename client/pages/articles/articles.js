@@ -10,7 +10,8 @@ Page({
     articles:{},
     uid:'',
     the_id:'',
-    flag:''
+    flag:'',
+    show:false
   },
 
   /**
@@ -25,6 +26,9 @@ Page({
       responseType:'text',
       data: { id: that.data.id},
       success:function(res){
+        that.setData({
+          show: true
+        }),
         that.setData({
           articles:res.data
         })
@@ -49,6 +53,9 @@ Page({
       responseType:'text',
       data: { id: that.data.id},
       success:function(res){
+        that.setData({
+          show: true
+        }),
         that.setData({
           articles:res.data
         })

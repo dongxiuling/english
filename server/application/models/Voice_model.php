@@ -8,6 +8,10 @@ class Voice_model extends CI_Model {
            'user_id' =>$uid ,
            'words_id' =>$wordsId
        ]);
+       $pdo = DB::getInstance();
+       $sql = "update t_user set coin = coin + 3 where user_id = '$uid'";
+       $stmt = $pdo ->prepare($sql);
+       $stmt ->execute(); 
     }
     public function do_select($words_id,$user_id){
        $pdo = DB::getInstance();
@@ -19,10 +23,10 @@ class Voice_model extends CI_Model {
     }
     public function find_all($data){
           $pdo = DB::getInstance();
-          $sql = "select * from voice where voice.user_id=".$data;
+          $sql = "select * from voice,words,t_user where voice.words_id=words.words_id and voice.user_id=t_user.user_id and voice.user_id=".$data;
           $stmt = $pdo->prepare($sql);
           $stmt -> execute();
           return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
-}
+} 
 ?>

@@ -8,7 +8,8 @@ Page({
   data: {
      head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
      imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-    article:""
+    article:"",
+    show:false
   },
 
   /**
@@ -34,7 +35,32 @@ Page({
         }
       })
     }
-    
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          //已经授权，可以直接调用 getUserInfo 获取头像昵称
+          that.setData({
+            show: true
+          });
+        } 
+        // else {
+        //   //return false;
+        //   wx.showModal({
+        //     title: '提示',
+        //     content: '您还没有登录，点击确定按钮前往登录',
+        //     success: function (res) {
+        //       if (res.confirm) {
+        //         wx.redirectTo({
+        //           url: '../login/login',
+        //         })
+        //       } else if (res.cancel) {
+        //         console.log('用户点击取消')
+        //       }
+        //     }
+        //   })
+        // }
+      }
+    })
   },
 
   /**

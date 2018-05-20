@@ -10,7 +10,8 @@ Page({
     notes: [],
     voice: [],
     uid: '',
-    the_id: ''
+    the_id: '',
+    show:false
   },
 
   /**
@@ -27,6 +28,9 @@ Page({
       data: { id: that.data.id },
       success: function (res) {
         that.setData({
+          show: true
+        })
+        that.setData({
           notes: res.data
         })
       }
@@ -36,6 +40,9 @@ Page({
       responseType: 'text',
       data: { id: that.data.id },
       success: function (res) {
+        that.setData({
+          show: true
+        })
         that.setData({
           voice: res.data
         })
@@ -58,10 +65,26 @@ Page({
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Welcome/my_notes',
       responseType: 'text',
-      data: { id: that.data.the_id },
+      data: { id: that.data.id },
       success: function (res) {
         that.setData({
+          show: true
+        })
+        that.setData({
           notes: res.data
+        })
+      }
+    })
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/my_voice',
+      responseType: 'text',
+      data: { id: that.data.id },
+      success: function (res) {
+        that.setData({
+          show: true
+        })
+        that.setData({
+          voice: res.data
         })
       }
     })

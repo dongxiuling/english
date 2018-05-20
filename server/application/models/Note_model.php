@@ -18,6 +18,10 @@ class Note_model extends CI_Model {
            'user_id' => $user_id,
            'words_id' =>$words_id
        ]);
+       $pdo = DB::getInstance();
+       $sql = "update t_user set coin = coin + 3 where user_id = '$user_id'";
+       $stmt = $pdo ->prepare($sql);
+       $stmt ->execute(); 
        return $words_id;
 
     }
@@ -31,7 +35,7 @@ class Note_model extends CI_Model {
     }
     public function find_this($data){
         $pdo = DB::getInstance();
-        $sql = 'select * from note where note.note_id='.$data;
+        $sql = 'select * from note,t_user where note.user_id=t_user.user_id and note.note_id='.$data;
         $stmt = $pdo->prepare($sql);
         $stmt -> execute();
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
