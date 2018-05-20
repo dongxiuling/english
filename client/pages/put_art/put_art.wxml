@@ -1,19 +1,22 @@
 <!--pages/put_art/put_art.wxml-->
 <view class='user' wx:for='{{article}}'>
-  <image src='{{head_url}}' id='{{user_id}}' bindtap='toThis_message'></image>
+  <image src='{{head_url}}'></image>
   <view class='user_info'>
-    <view>{{user_name}}</view>
+    <view>{{item.title}}</view>
     <view class='time'>{{item.date}}</view>
   </view>
 </view>
 <view class='put' wx:for='{{article}}'>
   <view class='write'>{{item.content}}</view>
-  <view class='img' wx:if="{{item.img_url!=''}}">
+  <view class='img'>
       <image src="{{item.img_url}}"></image>
   </view>
   <view class='tab_list'>
-      <view class='tab' bindtap='zan' wx:if='{{show==true}}'>
-        <text class="iconfont icon-dianzan {{item.flag}}">{{item.hits}}赞</text>
+      <view class='tab' bindtap='zan'>
+        <text class="iconfont icon-dianzan {{item.flag}}">{{item.hits}}赞fffffff</text>
+      </view>
+      <view class='tab'>
+        <text class="iconfont icon-msnui-share">分享</text>
       </view>
   </view>
 </view>
@@ -21,20 +24,20 @@
 <scroll-view class='com_area'>
   <view class='comment' wx:for='{{comments}}'>
     <view class='com_user'>
-      <image src='{{item.logo_url}}'></image>
+      <image src='{{head_url}}'></image>
       <view class='com_user_info'> 
         <view>{{item.user_name}}</view>
         <view class='time'>{{item.date}}</view> 
       </view> 
     </view>
     <view class='com_cont'>{{item.content}}</view>
-    <!-- <view class='com_tab' bindtap='zan_com' id='{{item.comment_id}}'>
+    <view class='com_tab' bindtap='zan_com' id='{{item.comment_id}}'>
         <text class="iconfont icon-dianzan {{item.flag}}">{{item.hits}}赞</text>
-    </view> -->
+    </view>
   </view>
 </scroll-view>
-<button class='iconfont icon-bi' bindtap='bindReply' wx:if='{{show==true}}'>评 论</button>
-<view class="release" hidden="{{!releaseFocus}}" wx:if='{{show==true}}'>
+<button class='iconfont icon-bi' bindtap='bindReply'>评 论</button>
+<view class="release" hidden="{{!releaseFocus}}">
   <textarea class="text"
   placeholder-class="input_null"
   fixed="true"

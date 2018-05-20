@@ -14,4 +14,15 @@ class Hit_model extends CI_Model {
         ));
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function index_judge($data,$user){
+       $pdo = DB::getInstance();
+         $sql = 'select * from hit where hit.reference=:id and hit.user_id=:uid';
+          $stmt = $pdo->prepare($sql);
+        $stmt -> execute(array(
+          ':id'=>$data,
+          ':uid'=>$user
+        ));
+        return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    }
 }

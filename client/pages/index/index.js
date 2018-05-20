@@ -4,8 +4,8 @@ const app = getApp();
 
 Page({
   data: {
-    rank:{},
-
+   rank:{},
+   articleInfo:[],
    imgUrls: [
      {
        link: '../../image/head.png',
@@ -24,65 +24,14 @@ Page({
     duration: 1000,
     userInfo: {},
     searchText: '',
-    article:'',
-    show:false
+    articleInfo:''
   },
-   
+  
   bindFormSubmit: function (e) {
     console.log(e.detail.value.textarea)
   },
   onLoad:function(){
-    this.data.uid = parseInt(wx.getStorageSync('uid'));
     var that = this;
-    // wx.getSetting({
-    //   success: function (res) {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       //已经授权，可以直接调用 getUserInfo 获取头像昵称
-    //       wx.login({
-    //         success: function (res) {
-    //           if (res.code) {
-    //             var code = res.code;
-    //             console.log(code);
-    //             wx.getUserInfo({
-    //               success: function (res) {
-    //                 //console.log(res.userInfo.avatarUrl);
-    //                 that.setData({
-    //                   userInfo: {
-    //                     avatarUrl: res.userInfo.avatarUrl,//用户头像  
-    //                     nickName: res.userInfo.nickName//用户昵称  
-    //                   }
-    //                 }),
-    //                   wx.request({
-    //                     url: 'https://6kxrdzrv.qcloud.la/login/add_user',
-    //                     data: {
-    //                       code: code,
-    //                       user_name: that.data.userInfo.nickName,
-    //                       user_logo: that.data.userInfo.avatarUrl
-    //                     },
-    //                     success: function (res) {
-    //                       wx.setStorageSync('uid', res.data);
-    //                       console.log(wx.getStorageSync('uid'));
-    //                     }
-    //                   })
-    //               }
-
-    //             })
-    //           }
-    //         },
-    //         complete: function () {
-    //           console.log('complete');
-    //           wx.switchTab({
-    //             url: '../index/index',
-    //             success: function (res) { },
-    //             fail: function (res) { },
-    //             complete: function (res) { },
-    //           })
-    //         }
-    //       })
-
-    //     }
-    //   }
-    // }),
     wx.pageScrollTo({
       scrollTop: 0
     }),
@@ -90,18 +39,15 @@ Page({
       url: 'https://6kxrdzrv.qcloud.la/user/select_coin',
       success:function(res){
           that.setData({
-            rank: res.data
+            rank:res.data
           })
       }
     })
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
-      data:{
-        uid: that.data.uid
-      },
       success:function(res){
         that.setData({
-          article:res.data
+          articleInfo:res.data
         });
       }
     })
@@ -110,108 +56,11 @@ Page({
       icon:"loading",
       duration:500
     })
-    wx.getSetting({
-      success: function (res) {
-        if (res.authSetting['scope.userInfo']) {
-          //已经授权，可以直接调用 getUserInfo 获取头像昵称
-          that.setData({
-            show:true
-          });
-        } 
-        // else {
-        //   //return false;
-        //   wx.showModal({
-        //     title: '提示',
-        //     content: '您还没有登录，点击确定按钮前往登录',
-        //     success: function (res) {
-        //       if (res.confirm) {
-        //         wx.redirectTo({
-        //           url: '../login/login',
-        //         })
-        //       } else if (res.cancel) {
-        //         console.log('用户点击取消')
-        //       }
-        //     }
-        //   })
-        // }
-      }
-    })
+    
   },
-
   //事件处理函数
   //请求数据
-  onShow:function(){
   
-    var that = this;
-    wx.getSetting({
-      success: function (res) {
-        if (res.authSetting['scope.userInfo']) {
-          //已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.login({
-            success: function (res) {
-              if (res.code) {
-                var code = res.code;
-                //console.log(code);
-                wx.getUserInfo({
-                  success: function (res) {
-                    //console.log(res.userInfo.avatarUrl);
-                    that.setData({
-                      userInfo: {
-                        avatarUrl: res.userInfo.avatarUrl,//用户头像  
-                        nickName: res.userInfo.nickName//用户昵称  
-                      }
-                    }),
-                      wx.request({
-                        url: 'https://6kxrdzrv.qcloud.la/login/add_user',
-                        data: {
-                          code: code,
-                          user_name: that.data.userInfo.nickName,
-                          user_logo: that.data.userInfo.avatarUrl
-                        },
-                        success: function (res) {
-                          wx.setStorageSync('uid', res.data);
-                          //console.log(wx.getStorageSync('uid'));
-                        }
-                      })
-                  }
-
-                })
-              }
-            },
-            complete: function () {
-              //console.log('complete');
-              wx.switchTab({
-                url: '../index/index',
-                success: function (res) { },
-                fail: function (res) { },
-                complete: function (res) { },
-              })
-            }
-          })
-
-        }
-      }
-    }),
-    wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/user/select_coin',
-      success: function (res) {
-        that.setData({
-          rank: res.data
-        })
-      }
-    }),
-    wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
-      data: {
-        uid: that.data.uid
-      },
-      success: function (res) {
-        that.setData({
-          article: res.data
-        });
-      }
-    })
-  },
 
 
 
@@ -231,75 +80,26 @@ Page({
     }   
   },
   toPut_art:function(e){
-    wx.navigateTo({
-      url: '../put_art/put_art?id=' + e.currentTarget.id,
-    })
+    // wx.navigateTo({
+    //   url: '../put_art/put_art?id=' + e.currentTarget.id+'&dataId =' +e.target.dataset.id,
+    // })
   },
-  toThis_message:function (e) {
-    wx.navigateTo({
-      url: '../private_message/private_message?id=' + e.currentTarget.id,
-    })
-  },
-  admire:function(e){
-    // console.log(this.data.article);
-    this.data.id = this.data.article[e.currentTarget.id].article_id;
-    this.data.uid = parseInt(wx.getStorageSync('uid'));
+  tab_prais:function(e){
     var that = this;
     wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Welcome/judge',
-      responseType: 'text',
-      data: {
-        id: that.data.id,
-        uid: that.data.uid
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/index_prais',
+      data:{
+        id:e.target.id,
+        uid: wx.getStorageSync('uid')
       },
-      complete: function (res) {
-        // console.log(res.data);
-        if (res.data == '') {
-          wx.request({
-            url: 'https://6kxrdzrv.qcloud.la/Welcome/zan2',
-            responseType: 'text',
-            data: {
-              id: that.data.id,
-              uid: that.data.uid
-            },
-            success: function (res) {
-              wx.request({
-                url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
-                data: {
-                  uid: that.data.uid
-                },
-                success:function(res){
-                  that.setData({
-                    article:res.data
-                  });
-                }
-              })
-            }
-          })
-        } else {
-          wx.request({
-            url: 'https://6kxrdzrv.qcloud.la/Welcome/cancel2',
-            responseType: 'text',
-            data: {
-              id: that.data.id,
-              uid: that.data.uid
-            },
-            success: function (res) {
-              wx.request({
-                url: 'https://6kxrdzrv.qcloud.la/Article/select_article',
-                data: {
-                  uid: that.data.uid
-                },
-                success: function (res) {
-                  that.setData({
-                    article: res.data
-                  });
-                }
-              })
-            }
-          })
-        }
+      success:function(res){
+        that.setData({
+          articleInfo: res.data
+        })
+         
       }
+      
     })
+   
   }
 })

@@ -405,3 +405,6 @@ page{
 .icon-fanhui:before { content: "\e610"; }
 
 .icon-dianzan:before { content: "\e668"; }
+.active{
+  background: red;
+}

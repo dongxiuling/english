@@ -54,6 +54,15 @@ class Welcome extends CI_Controller {
 		$hit = $this->hit_model->judge_this($id,$uid);
 		echo json_encode($hit); 
   }
+
+   public function index_prais(){
+    $id = $this->input->get('id');
+    $uid = $this -> input->get('uid');
+    $this->load->model('hit_model');
+    $hit = $this->hit_model->index_judge($id,$uid);
+    echo json_encode($hit);
+  }
+
   public function zan(){
 		$id = $this->input->get('id');
     $uid = $this->input->get('uid');
@@ -75,6 +84,8 @@ class Welcome extends CI_Controller {
 		$art = $this->art_model->zan_this2($id,$uid);
 		echo json_encode($art);
 	}
+
+ 
   public function cancel2(){
 		$id = $this->input->get('id');
     $uid = $this->input->get('uid');

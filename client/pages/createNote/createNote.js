@@ -1,4 +1,5 @@
 // pages/createNote/createNote.js
+var user = wx.getStorageSync('uid');
 Page({
 
   /**
@@ -17,28 +18,27 @@ Page({
   finish: function () {
     var that = this;
     wx.request({
-      url: 'https://6kxrdzrv.qcloud.la/Words/selectWords',
+      url: 'https://6kxrdzrv.qcloud.la/Words/insertWords',
       data:{
-        name:that.data.word
+        words:that.data.word
       },
       success:function(res){
-        console.log(res.data[0].words_id);
+        console.log(res);
         that.setData({
-          wordsId:res.data[0].words_id
+          wordsId:res.data
         });
         console.log(that.data.wordsId)
-        
         wx.request({
           url: 'https://6kxrdzrv.qcloud.la/Note/add_note',
           data: {
             content: that.data.content,
-            user_id: wx.getStorageSync('uid'),
-            wordsId: res.data[0].words_id
+            user_id: user,
+            wordsId: res.data
           },
           success: function (res) {
             console.log(res.data);
-            wx.navigateBack({
-              url:'../word/word'
+            wx.navigateTo({
+              url: '../index/index',
             })
           }
         })
@@ -51,22 +51,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
     var that = this;
      that.setData({
        word:options.words
      });
-     wx.request({
-       url: 'https://6kxrdzrv.qcloud.la/Words/insertWords',
-       data: {
-         words: that.data.word
-       },
-       success: function (res) {
-         that.setData({
-           wordsId: res.data
-         });
-       }
-     })
      console.log(that.data.word)
   },
  
