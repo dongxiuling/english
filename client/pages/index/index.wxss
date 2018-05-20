@@ -19,11 +19,12 @@ swiper{
 .ranking-list{
   height: 80rpx;
   line-height: 80rpx;
-  margin-top:16rpx;
+  margin-top:20rpx;
    background: #fff;
-   color: #000;
-   font-size: 36rpx;
+   color: #333333;
+   font-size: 30rpx;
    padding: 10rpx 20rpx;
+   margin-bottom: -35rpx
 }
 .ranking-list i.icon-paihangbang-{
   color:#ee5d7a;
@@ -131,10 +132,10 @@ page{
 .header-line{
   width: 92%;
   height: 1rpx;
-  background: #d0d0d0;
+  background: #dddddd;
   margin-left: 4%;
   position: relative;
-  top:140rpx;
+  top:145rpx;
 }
 /*搜索框开始*/
 #header{
@@ -221,9 +222,9 @@ page{
   background:#fff;
   width: 92%;
   margin-left: 4%;
-   border: 1rpx solid #d0d0d0;
+   border: 1rpx solid #dddddd;
   border-radius: 1%;
-   margin-top:20rpx;  
+   margin-top:28rpx;  
  
   /* box-shadow:0 1rpx 2rpx 2rpx rgba(0,0,0,0.1); */
 }
@@ -300,7 +301,7 @@ page{
 
 
 .atricle-time{
-  color: #d0d0d0;
+  color: #adadad;
   margin-top:6rpx;
 }
 .article-content{
@@ -326,7 +327,7 @@ page{
   float: right;
   text-align: center;
   line-height: 70rpx;
-  margin-bottom: 5rpx;
+  margin-bottom: 15rpx;
 }
 .tab text{
   font-size: 30rpx;
