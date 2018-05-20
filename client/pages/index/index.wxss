@@ -114,9 +114,7 @@ swiper{
    border: 2rpx solid #d0d0d0;  
   border-radius: 10rpx;  
 }
-.index-line{
-  border-bottom: 2rpx solid #d0d0d0;
-}
+
 .index-bottom{
   text-align: center;
   color: white;
@@ -126,12 +124,23 @@ swiper{
 page{
     background: #f2f2f2;
 }
+.header{
+  background: #fff;
+  padding-top: 15rpx;
+}
+.header-line{
+  width: 92%;
+  height: 1rpx;
+  background: #d0d0d0;
+  margin-left: 4%;
+  position: relative;
+  top:140rpx;
+}
 /*搜索框开始*/
 #header{
    width: 100%;
    position: absolute;
    top: 0;
-   
    height: 100rpx;
    line-height: 100rpx;  
    margin-top:16rpx;
@@ -202,6 +211,7 @@ page{
   float: left;
   display: flex;
   flex-direction: row;
+  margin-bottom: 20rpx;
 }
 .index-article{
   overflow: hidden;
@@ -209,7 +219,13 @@ page{
   flex-direction: column;
   margin-bottom:16rpx;
   background:#fff;
-  box-shadow:0 1rpx 2rpx 2rpx rgba(0,0,0,0.1);
+  width: 92%;
+  margin-left: 4%;
+   border: 1rpx solid #d0d0d0;
+  border-radius: 1%;
+   margin-top:20rpx;  
+ 
+  /* box-shadow:0 1rpx 2rpx 2rpx rgba(0,0,0,0.1); */
 }
 .index-name{
   font-size: 28rpx;
@@ -308,6 +324,9 @@ page{
   width: 120rpx;
   height: 70rpx;
   float: right;
+  text-align: center;
+  line-height: 70rpx;
+  margin-bottom: 5rpx;
 }
 .tab text{
   font-size: 30rpx;
