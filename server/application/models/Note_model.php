@@ -18,6 +18,10 @@ class Note_model extends CI_Model {
            'user_id' => $user_id,
            'words_id' =>$words_id
        ]);
+       $pdo = DB::getInstance();
+       $sql = "update t_user set coin = coin + 3 where user_id = '$user_id'";
+       $stmt = $pdo ->prepare($sql);
+       $stmt ->execute(); 
        return $words_id;
 
     }

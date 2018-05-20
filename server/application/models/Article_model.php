@@ -3,12 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use QCloud_WeApp_SDK\Mysql\Mysql as DB;
 class Article_model extends CI_Model {
     public function do_insert($content,$imgUrl,$user_id){
-        DB::insert('articles', [
-           
+        DB::insert('articles', [           
            'content' => $content,
            'img_url' => $imgUrl,
            'author' => $user_id
        ]);
+       $pdo = DB::getInstance();
+       $sql = "update t_user set coin = coin + 5 where user_id = '$user_id'";
+       $stmt = $pdo ->prepare($sql);
+       $stmt ->execute(); 
     }
     public function do_select($data){
        $pdo = DB::getInstance();

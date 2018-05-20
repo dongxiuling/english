@@ -111,6 +111,9 @@ Page({
         filePath:that.data.filePath,
         userId:wx.getStorageSync('uid')
       },
+      success:function(){
+        console.log('发布成功');
+      }
     })
     
     wx.switchTab({
