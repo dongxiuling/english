@@ -1,12 +1,15 @@
 <view class='issue-head'>
  
 
+
+  <textarea
+  class="content"  placeholder="请在这写下你的内容" bindinput='getContent'/>
  
-   <textarea
-  class="content"  placeholder="请在这写你的内容" bindinput='getContent'/>
-  <view class='iconfont icon-photo' bindtap='chooseImg'></view>
-  <image src='{{imgUrl}}' class='photo'></image>
+   <view class='iconfont icon-photo' bindtap='chooseImg'> 
+  </view>
+ 
 </view>
+ <image src='{{imgUrl}}' class='photo'></image>
 <view class="issue-pub" bindtap='toForum'>发布</view>
 
 
