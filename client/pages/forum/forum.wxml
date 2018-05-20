@@ -12,9 +12,8 @@
     </view>
     <view class="article-content" bindtap='toPut_art' id='{{item.article_id}}'> 
       <view>{{item.content}}</view>
-      <view class='article-img'>
+      <view class='article-img'  wx:if="{{item.img_url!=''}}">
         <image src="{{item.img_url}}"></image>
-        
       </view>
     </view>
     <view class='tab_list'> 

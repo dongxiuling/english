@@ -4,7 +4,7 @@
     <view class='art' wx:for='{{articles}}'>
       <view class='cont' id='{{item.article_id}}' bindtap='toPut_art'>
         <view>{{item.content}}</view>
-        <view class='img'>
+        <view class='img' wx:if="{{item.img_url!=''}}">
           <image src="{{item.img_url}}"></image>
         </view>
       </view>

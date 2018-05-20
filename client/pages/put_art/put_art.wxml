@@ -8,7 +8,7 @@
 </view>
 <view class='put' wx:for='{{article}}'>
   <view class='write'>{{item.content}}</view>
-  <view class='img'>
+  <view class='img' wx:if="{{item.img_url!=''}}">
       <image src="{{item.img_url}}"></image>
   </view>
   <view class='tab_list'>
