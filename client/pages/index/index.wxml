@@ -47,7 +47,7 @@
               <view>{{item.user_name}}</view>
               <view class="atricle-time">{{item.date}}</view>
             </view>
-        </view>
+        </view> 
     </view>
     <view class="article-content" id='{{item.article_id}}' bindtap='toPut_art'>
       <view>{{item.content}}</view>
