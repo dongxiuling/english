@@ -2,18 +2,18 @@
 <view class='info-container'>  
   <view class='left-content' bindtap='to_private_message'>
      <image src='{{userInfo.logo_url}}' class='touxiang'></image>
-  </view>
+  </view> 
   <view class='right-content'>
      <text class='name' bindtap='to_login'>{{userInfo.user_name}}</text>
      <text class='number'>{{userInfo.user_id}}</text>
      <view class='money'>
         <view class='money-left-content'>
             <image src='qiandao.png' bindtap='qiandao'></image>
-            <text class='qiandao' bindtap='qiandao'>打卡{{userInfo.day}}天</text>
+            <view class='qiandao' bindtap='qiandao'>打卡<text>{{userInfo.day}}</text>天</view>
         </view>
         <view class='money-right-content' bindtap='to_money'>
           <image src='coin.png'></image>
-          <text class='coin'>金币{{userInfo.coin}}个</text>
+          <view class='coin'>金币<text>{{userInfo.coin}}</text>个</view>
      </view>
 </view>
   </view>
@@ -44,7 +44,7 @@
 <view class='help'>
     <view class='help_item' bindtap='to_help'>
       <image src='help.png'></image>
-      <text> 意见反馈和帮助</text>
+      <text> 意见反馈</text>
       <view>></view>
     </view>
     <view class='help_item about' bindtap='to_aboutus'>

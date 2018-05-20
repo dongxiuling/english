@@ -68,9 +68,21 @@ page{
   height: 40rpx;
   margin-right: 10rpx;
 }
-.qiandao,.coin{
+.qiandao{
   position: absolute;
   top: 0;
+  left: 50rpx;
+}
+.qiandao text{
+  color: #2ac395;
+}
+.coin{
+  position: absolute;
+  top: 0;
+  left: 100rpx;
+}
+.coin text{
+  color: #2ac395;
 }
 .my_product{
   height: 400rpx;
