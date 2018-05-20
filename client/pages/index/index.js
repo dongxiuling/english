@@ -72,6 +72,7 @@ Page({
   },
   //跳转单词详情页
   toWord:function(){  
+    console.log(111);
     if(this.data.searchText != ''){
       var searchContent = this.data.searchText;
       wx.navigateTo({

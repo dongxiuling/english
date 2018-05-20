@@ -12,10 +12,10 @@
 </swiper>  
 <!-- 轮播图 结束-->
 <!-- 搜索 -->
-  <view class='head' id='header'>
+  <view class='head' id='header'> 
         <icon type='search' size='18'></icon>
-        <input bindinput="getText" placeholder="请输入中文或英文" value="{{searchValue}}"></input>
-        <text id='cancel' bindtap='toWord'>搜索</text>
+        <input bindinput="getText" placeholder="请输入中文或英文" value="{{searchValue}}" bindconfirm='toWord' confirm-type='done'></input>
+       
   </view>
 <!-- 搜索结束 -->
 <view class="ranking-list">

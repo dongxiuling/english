@@ -13,61 +13,7 @@ swiper{
 .search{  
   width: 80%;  
 }
-.df search_arr{
-  display: flex;
-  align-items: center;
- 
-}
-.search_arr {  
-  border: 2rpx solid #d0d0d0;  
-  border-radius: 10rpx;  
-  margin-left: 20rpx;  
-  margin-top:10rpx;
-  background: #eee;
-}  
-.search_arr input{  
-  margin-left: 60rpx;  
-  height: 55rpx;
-  padding-top:5rpx;
-  border-radius: 20rpx; 
-  font-size: 30rpx; 
-}  
-.bc_text {  
-  line-height: 68rpx;  
-  height: 68rpx;  
-  margin-top: 34rpx;  
-}  
-  
-.sousuo { 
-  margin-top:10rpx;
-  margin-left: 15rpx;  
-  width: 15%;
-  line-height: 58rpx;  
-  height: 58rpx;  
-  text-align: center;  
-  border: 1px solid #d0d0d0;  
-  border-radius: 10rpx;
-  font-size: 30rpx;
-  color:#333;  
-}  
-.page_row{  
-  display: flex;  
-  flex-direction: row;
-  margin-top:2rpx;  
-}  
-.searchcion {  
-  margin: 12rpx 10rpx 10rpx 10rpx;  
-  position: absolute;  
-  left:25rpx;  
-  z-index: 2;  
-  width: 40rpx;  
-  height: 40rpx;  
-  text-align: center;  
-}  
-.find{
-  background: #209e85;
-  color: #fff;
-}
+
 
 /* 排行榜 */
 .ranking-list{
@@ -168,7 +114,9 @@ swiper{
    border: 2rpx solid #d0d0d0;  
   border-radius: 10rpx;  
 }
-
+.index-line{
+  border-bottom: 2rpx solid #d0d0d0;
+}
 .index-bottom{
   text-align: center;
   color: white;
@@ -178,60 +126,35 @@ swiper{
 page{
     background: #f2f2f2;
 }
-.header{
-  background: #fff;
-  padding-top: 15rpx;
-}
-.header-line{
-  width: 92%;
-  height: 1rpx;
-  background: #d0d0d0;
-  margin-left: 4%;
-  position: relative;
-  top:140rpx;
-}
 /*搜索框开始*/
-.head{
+#header{
    width: 100%;
-   position: relative;
+   position: absolute;
+   top: 0;
+   
    height: 100rpx;
-   line-height: 100rpx;
-   overflow: hidden;
+   line-height: 100rpx;  
    margin-top:16rpx;
+   margin-left: 36rpx;
 }
 .head icon{
    position: absolute;
    left: 4rpx;
-   top:15rpx ;
+   top:10rpx ;
    margin-left: 20rpx;
 }
 .head input{
    float:left;
    font-size: 24rpx;
-   width: 75%;
-   padding-left: 58rpx;
-   margin-left:10rpx; 
-   border: 1rpx solid #ccc;
-   border-radius: 50rpx;
+   width: 80%;
+   padding-left: 78rpx;
+   
+  opacity: 0.8;
    height: 70rpx;
-   margin-top: 10rpx;
-   background: #eeeeee;
-}
-#header{
-  overflow: hidden;
-  background: #fff;
-  border-bottom: 1rpx solid #e1e1e1;
+   margin:0 auto;
+   background: #eee;
 }
 
-#cancel{
-  
-  height: 50rpx; 
-  float: right;
-  line-height: 100rpx;
-  color: #919191;
-  font-size: 30rpx;
-  margin-right: 30rpx;
-}
 /*搜索框结束*/
 
 @font-face {
@@ -265,9 +188,6 @@ page{
   margin-bottom:16rpx;
   box-shadow:0 1rpx 2rpx 2rpx rgba(0,0,0,0.1);
 }
-.ranking-list{
-  margin-bottom: -30rpx;
-}
 .icon-custom-news{
   color:#ee5d7a;
   margin:0 10rpx 0 10rpx;
@@ -287,13 +207,9 @@ page{
   overflow: hidden;
    display: flex;
   flex-direction: column;
-  width: 92%;
-  margin-left: 4%;
-   border-radius: 1%;
-     margin-top:20rpx;  
-   border: 1rpx solid #d0d0d0;
+  margin-bottom:16rpx;
   background:#fff;
-  /* box-shadow:0 1rpx 2rpx 2rpx rgba(0,0,0,0.1); */
+  box-shadow:0 1rpx 2rpx 2rpx rgba(0,0,0,0.1);
 }
 .index-name{
   font-size: 28rpx;
@@ -392,8 +308,6 @@ page{
   width: 120rpx;
   height: 70rpx;
   float: right;
-    text-align: center;
-  line-height: 70rpx;
 }
 .tab text{
   font-size: 30rpx;
@@ -424,6 +338,3 @@ page{
 .icon-fanhui:before { content: "\e610"; }
 
 .icon-dianzan:before { content: "\e668"; }
-.active{
-  background: red;
-}

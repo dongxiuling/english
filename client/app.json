@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/myInfo/myInfo",
     "pages/help/help",
     
-    "pages/index/index",
+   
     
     "pages/money/gords/gords",
    
