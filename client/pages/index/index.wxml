@@ -12,10 +12,10 @@
 </swiper>  
 <!-- 轮播图 结束-->
 <!-- 搜索 -->
-  <view class='head' id='header'> 
+  <view class='head' id='header'>
         <icon type='search' size='18'></icon>
-        <input bindinput="getText" placeholder="请输入中文或英文" value="{{searchValue}}" bindconfirm='toWord' confirm-type='done'></input>
-       
+        <input bindinput="getText" placeholder="请输入中文或英文" value="{{searchValue}}"></input>
+        <text id='cancel' bindtap='toWord'>搜索</text>
   </view>
 <!-- 搜索结束 -->
 <view class="ranking-list">
@@ -23,50 +23,46 @@
   英语达人排行榜
 </view>
 <view class="ranking-content">
- 
+
   <view class="rank"  wx:for="{{rank}}">
     <view  class="top">
       <i class="iconfont icon-jinpairongyu jinpai{{index+1}}"></i>
-      <image src="{{item.logo_url}}"></image> 
+      <image src="{{item.logo_url}}"></image>
       <text class='top-name'>{{item.name}}</text>
       <view class="top-money">{{item.coin}}金币</view>
     </view>
-    
+
   </view>
 </view>
 <view class="ranking-list">
   <i class="iconfont icon-custom-news"></i>
   最新文章
 </view>
-<view class='header'>
-  <view class='index-article'  bindtap='toPut_art'  wx:for="{{articleInfo}}" wx:for-item="item" id='{{item.article_id}}' data-id='{{item.user_id}}'>
-    <view>
+<view class='article-box'>
+  <view class='index-article' wx:for="{{article}}" wx:for-item="item">
+    <view  >
         <view class='index-writer'>
-            <view><image class="head-port" src="{{item.logo_url}}"></image></view> 
+            <view bindtap='toThis_message' id='{{item.user_id}}'><image class="head-port" src="{{item.logo_url}}"></image></view>
             <view class='index-name'>
               <view>{{item.user_name}}</view>
               <view class="atricle-time">{{item.date}}</view>
-            </view>  
+            </view>
         </view>
-         <view class="header-line"></view>
     </view>
-   
-    <view class="article-content">
+    <view class="article-content" id='{{item.article_id}}' bindtap='toPut_art'>
       <view>{{item.content}}</view>
-      <view class='article-img'>
-        <image src="{{item.img_url}}"></image>  
+      <view class='article-img'  wx:if="{{item.img_url!=''}}">
+        <image src="{{item.img_url}}"></image>
       </view>
     </view>
     <view class='tab_list'>
-        <view class='tab'>
-          <text class="iconfont icon-dianzan " catchtap='tab_prais' id='{{item.article_id}}'>赞</text>
+        <view class='tab' wx:if='{{show==true}}'>
+          <text class="iconfont icon-dianzan {{item.flag}}" id='{{index}}' catchtap='admire'>赞</text>
         </view>
-        <view class='tab'>
-          <text class="iconfont icon-pinglun" bindtap='toPut_art'>评论</text>
+        <view class='tab' bindtap='toPut_art' id='{{item.article_id}}'>
+          <text class="iconfont icon-pinglun">评论</text>
         </view>
-        <view class='tab'>
-          <text class="iconfont icon-msnui-share">分享</text>
-        </view>
+
       </view>
   </view> 
 </view>

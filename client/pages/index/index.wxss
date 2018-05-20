@@ -14,7 +14,9 @@ swiper{
   width: 80%;  
 }
 
-
+.article-box{
+  background: #fff;
+}
 /* 排行榜 */
 .ranking-list{
   height: 80rpx;
