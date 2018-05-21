@@ -5,7 +5,7 @@
         <view class='index-writer'>
             <view bindtap='toThis_message' id='{{item.user_id}}'><image class="head-port" src="{{item.logo_url}}"></image></view>  
             <view class='index-name'>
-              <view class="article-name">{{item.user_name}}</view>
+              <view>{{item.user_name}}</view>
               <view class="atricle-time">{{item.date}}</view>
             </view>
         </view>
@@ -34,4 +34,4 @@
   
 </view>
 
-<view class='publish' hover-class="index-pub" bindtap='toPublish'>发布</view>
+<view class='publish' hover-class="index-pub" bindtap='toPublish'>发布+</view>
