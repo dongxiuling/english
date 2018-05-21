@@ -38,7 +38,13 @@ swiper{
   padding-top:90rpx;
   position:relative;
 }
-.rank1 .photo,.rank3 .photo{
+.rank1{
+  order: 1;
+}
+.rank2{
+  order: 2;
+}
+.rank2 .photo,.rank3 .photo{
   width:96rpx;
   height:96rpx;
   border-radius: 50%;
@@ -50,7 +56,7 @@ swiper{
   left:70rpx;
   top:65rpx;
 }
-.rank2 .photo{
+.rank1 .photo{
   width:116rpx;
   height:116rpx;
   border-radius: 50%;
@@ -145,7 +151,8 @@ page{
   background: #dddddd;
   margin-left: 4%;
   position: relative;
-  top:145rpx;
+  top:140rpx;
+  transform:scaleY(0.5);
 }
 /*搜索框开始*/
 #header{
@@ -229,19 +236,19 @@ page{
   float: left;
   display: flex;
   flex-direction: row;
-  margin-bottom: 20rpx;
 }
 .index-article{
   overflow: hidden;
-   display: flex;
-  flex-direction: column;
-  margin-bottom:28rpx;
-  background:#fff;
   width: 92%;
   margin-left: 4%;
-   border: 1rpx solid #dddddd;
-  border-radius: 1%;
-  /* box-shadow:0 1rpx 2rpx 2rpx rgba(0,0,0,0.1); */
+   display: flex;
+  flex-direction: column;
+  /* border: 1rpx solid #dddddd; */
+  border-radius: 10rpx;
+    margin-top:28rpx;  
+  box-shadow:0px 0px 1rpx 1rpx #dddddd;
+  background: #fff;
+ 
 }
 .index-name{
   font-size: 28rpx;
@@ -254,10 +261,24 @@ page{
   font-weight:600;
 }
 .head-port{
-  width: 90rpx;
-  height: 90rpx;
-  margin: 30rpx 20rpx 0 30rpx;
+  width: 98rpx;
+  height: 98rpx;
+  margin: 20rpx 20rpx 0 30rpx;
   border-radius: 50%;
+  border:1px solid #333333;
+}
+
+.index-title{
+  font-weight:600;
+}
+
+
+.head-port{
+  width: 98rpx;
+  height: 98rpx;
+  margin: 20rpx 20rpx 0 30rpx;
+  border-radius: 50%;
+  border:1px solid #333333;
 }
 
 .content{
@@ -294,41 +315,45 @@ page{
   color: white;
   background: #d0d0d0 
 }
-
+.index-line{
+  margin-bottom: 10px;
+}
 .publish{
-  width:100rpx;
-  height:100rpx;
-  border:2rpx solid white;
+  width:70rpx;
+  height:70rpx;
+  border:5rpx solid #f2f2f2;
   border-radius:50%;
   text-align:center;
-  line-height:100rpx;
+  line-height:70rpx;
   z-index:2;
-  background:#209E85;
-  font-size:30rpx;
+  background:#2ac395;
+  font-size:25rpx;
   color:white;
   position:fixed;
-  bottom:10rpx;
-  right:10rpx;
+  bottom:60rpx;
+  right:30rpx;
 }
 .index-pub{
   opacity: 0.5;
 }
-
-
 .atricle-time{
-  color: #adadad;
+  color: #999999;
   margin-top:6rpx;
+  font-size:24rpx;
 }
 .article-content{
   padding:10rpx 30rpx;
-  font-size:34rpx;
-  color:#666;
+  font-size:28rpx;
+  color:#333333;
 
 }
 .article-img image{
   width:200rpx;
   height:200rpx;
   margin-right:10rpx;
+}
+.article-name{
+  color:#333;
 }
 /* 发布人 */
 
@@ -345,8 +370,8 @@ page{
   margin-bottom: 15rpx;
 }
 .tab text{
-  font-size: 30rpx;
-  color: #848484;
+  font-size: 28rpx;
+  color: #999999;
 }
 /* 图标字体 */
 @font-face {

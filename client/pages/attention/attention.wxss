@@ -30,7 +30,7 @@ page{
   margin-left:180rpx;
   margin-top:-150rpx;
   padding:20rpx 30rpx;
-  font-size:36rpx;
+  font-size:28rpx;
   line-height:60rpx;
   color:#666666;
   overflow: hidden;

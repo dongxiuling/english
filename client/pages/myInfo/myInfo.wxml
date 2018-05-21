@@ -6,6 +6,7 @@
   <view class='right-content'>
      <text class='name' bindtap='to_login'>{{userInfo.user_name}}</text>
      <text class='number'>{{userInfo.user_id}}</text>
+     <view class='line'></view>
      <view class='money'>
         <view class='money-left-content'>
             <image src='qiandao.png' bindtap='qiandao'></image>
@@ -23,33 +24,38 @@
     <view class='product_item' bindtap='to_articles'>
        <image src='article.png' bindtap='qiandao'></image>
        <text>我的文章</text>
-       <view>></view>
+       <view class="article-arrow"></view>
+       <view class='list-line'></view>
     </view>
     <view class='product_item' bindtap='to_notes'>
        <image src='note.png' bindtap='qiandao'></image>
        <text>我的笔记</text>
-       <view>></view>
+       <view class="article-arrow"></view>
+       <view class='list-line'></view>
     </view>
     <view class='product_item' bindtap='to_attention'>
        <image src='heart.png' bindtap='qiandao'></image>
        <text>文字收藏</text>
-       <view>></view>
+       <view class="article-arrow"></view>
+       <view class='list-line'></view>
     </view>
     <view class='product_item fans' bindtap='to_fans'>
        <image src='star.png' bindtap='qiandao'></image>
        <text>语音收藏</text>
-       <view>></view>
+       <view class="article-arrow"></view>
     </view>
 </view>
 <view class='help'>
     <view class='help_item' bindtap='to_help'>
       <image src='help.png'></image>
       <text> 意见反馈</text>
-      <view>></view>
+      <view class="article-arrow"></view>
+      <view class='list-line'></view>
     </view>
     <view class='help_item about' bindtap='to_aboutus'>
      <image src='about.png'></image>
      <text>关于我们</text>
-     <view>></view>
+      <view class="article-arrow"></view>
+     <view class='list-line'></view>
     </view>
 </view>

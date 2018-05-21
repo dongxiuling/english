@@ -34,4 +34,4 @@
   
 </view>
 
-<view class='publish' hover-class="index-pub" bindtap='toPublish'>发布+</view>
+<view class='publish' hover-class="index-pub" bindtap='toPublish'>发布</view>

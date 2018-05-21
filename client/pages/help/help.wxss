@@ -11,10 +11,10 @@ input{
   height: 80rpx;
 }
 text{
-  font-size: 32rpx;
+  font-size: 30rpx;
   font-weight: bold;
   margin-left: 5%;
-  color: #515151
+  color: #333;
 }
 textarea{
   border: 1px solid #ccc;
