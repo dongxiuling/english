@@ -7,7 +7,7 @@ Page({
    */
   data: {
      head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-     imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
+     imageurl: '../../images/img01.jpg',
     article:"",
     show:false
   },

@@ -19,12 +19,11 @@
   </view>
 <!-- 搜索结束 -->
 <view class="ranking-list">
-  <i class="iconfont icon-paihangbang-"></i>
   英语达人排行榜
 </view>
 <view class="ranking-content">
 
-  <view class="rank"  wx:for="{{rank}}">
+  <!-- <view class="rank"  wx:for="{{rank}}">
     <view  class="top">
       <i class="iconfont icon-jinpairongyu jinpai{{index+1}}"></i>
       <image src="{{item.logo_url}}"></image>
@@ -32,10 +31,15 @@
       <view class="top-money">{{item.coin}}金币</view>
     </view>
 
+  </view> -->
+  <view class="rank rank{{index+1}}" wx:for="{{rank}}">
+      <image class='photo-wrap' src="../../images/top-bg{{index+1}}.png"></image>
+      <image class="photo" src="{{item.logo_url}}"></image>
+      <view class='top-name'>{{item.user_name}}</view>
+      <view class="top-money">{{item.coin}}金币</view>
   </view>
 </view>
 <view class="ranking-list">
-  <i class="iconfont icon-custom-news"></i>
   最新文章
 </view>
 <view class='article-box'>
