@@ -1,12 +1,22 @@
 <!--pages/attention/attention.wxml-->
 <view class='tip' wx:if="{{show == false}}">您暂时还没有收藏过笔记哦</view>   
-<view>
-  <view class='wrapper'  wx:if="{{show}}" id='commit' wx:for='{{notes}}'>
-      <view id='content-line'>
-        <image id='bookIcon'src='../../images/book.png'></image>
-        <text class='title' id='book'>文字笔记{{index+1}}</text>
+<scroll-view class='note_list'  wx:if="{{show}}" id='commit' wx:for='{{notes}}'>
+  <view class='note' id='{{item.note_id}}' bindtap='toPut_note'>
+      <view class='tab_list'>
+        <view class='name'>
+          {{item.user_name}}
+        </view> 
+        <view class='time'>
+          {{item.date}}
+        </view>
       </view>
-      <text id='cont'>{{item.content}}</text>
-      <view id='auther'>作者:{{item.user_name}}</view>  
+      <view class='head'>
+        <image src='{{item.logo_url}}'></image>
+      </view>
+      <view class='cont'>
+        <view>{{item.content}}</view>
+      </view>
+      <view class='border'>
+      </view> 
   </view>
-</view>
+</scroll-view> 

@@ -1,9 +1,19 @@
 <!--pages/fans/fans.wxml-->
 <view class='tip' wx:if="{{show == false}}">您暂时还没有收藏过笔记哦</view> 
-<view class='wrapper' wx:if="{{show}}" id='commit' wx:for='{{voices}}'>
-      <view id='content-line'>
-        <image id='bookIcon'src='../../images/book.png'></image>
-        <text class='title' id='book'>语音笔记{{index+1}}</text>         </view>
-      <image src='../../images/trum.png' id='playVoice' bindtap='createVoice' data-id='{{item.voice_id}}' data-num='{{index}}'></image>
-      <view id='auther'>作者:{{item.user_name}}</view>
+<view class='voice_list' wx:if="{{show}}" id='commit' wx:for='{{voices}}'>
+    <view class='voice'>
+      <view class='tab_list2'>
+        <view class='name'>
+          {{item.user_name}}
+        </view>      
+        <view class='time'>
+          {{item.date}}
+        </view>
+      </view>
+      <view class='voice_cont' id='{{item.voice_id}}'>
+        <audio poster='{{item.logo_url}}' controls="controls" name='{{item.name}}' author='{{item.user_name}}' src='{{item.url}}'></audio>
+      </view>
+      <view class='border2'>
+      </view>
+    </view>
   </view>

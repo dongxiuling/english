@@ -2,76 +2,45 @@
 page{
   background-color: #eee;
 }
-.wrapper{
-   width: 690rpx;
-   margin: 0 auto;
-}
-.tip{
-  color: #000;
-  font-size: 32rpx;
-  text-align: center;
-  margin-top: 20rpx;
-}
 /*笔记开始*/
-#commit{
-  height: 280rpx; 
-  border: 1rpx solid #e1e1e1;
-  background: #fff;
-  margin-top:30rpx;
+.voice_list{
+  background: #f2f2f2;
 }
-#content-line{
-  border-bottom:1rpx solid #e1e1e1;
+.voice{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
 }
-.title{
-  color: #209e85;
-  font-size: 40rpx;
-  margin-left: 20rpx
-}
-#cont{
-  color: #a7a7a7;
-  font-size: 30rpx;
-  padding-left:20rpx;
-  padding-right: 20rpx;
-  display: -webkit-box;
-  word-break: break-all;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp:3;
+.voice_cont{
+  margin-left:30rpx;
+} 
+.tab_list2{
+  background: #ffffff;
   overflow: hidden;
-  text-overflow:ellipsis;
 }
-#bookIcon{
-  width: 40rpx;
-  height: 40rpx;
-  float: left;
-  margin: 13rpx;
+.tab_list2 .name{
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  color: #2ac395;
+  margin-left:30rpx; 
+  float: left; 
 }
-#rightIcon{
-  width: 40rpx;
-  height: 40rpx;
-  float: right;
-  margin-top: 13rpx;
-  margin-right: 13rpx;
-  padding-left:10rpx;
-  border-left: 3rpx solid #e1e1e1;
+.tab_list2 .time{
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  color: #d0d0d0;
+  margin-left:10rpx;    
+  float: left; 
 }
-#auther{
-  color: grey;
-  font-size: 30rpx;
-  padding-left:20rpx 
-}
-.green{
- display: none;
-}
-.starIcon{
-  width: 30rpx;
-  height: 30rpx;
-  float: right;
-  margin-right:10rpx;
-  padding-bottom: 30rpx
-}
-#playVoice{
-  width: 40rpx;
-  height:40rpx;
-  margin-left: 20rpx;
+.border2{
+  position: absolute;
+  top:213rpx;
+  left: 25rpx;
+  width: 700rpx;
+  height: 1rpx;
+  background-color:#eee; 
 }
 /*笔记结束*/

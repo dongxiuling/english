@@ -170,7 +170,7 @@ Page({
                                                 },
                                                 success: function (res) {
                                                     wx.setStorageSync('uid', res.data);
-                                                    //console.log(wx.getStorageSync('uid'));
+that.data.uid=parseInt(wx.getStorageSync('uid'));
                                                 }
                                             })
                                     }
@@ -210,6 +210,16 @@ Page({
                         article: res.data
                     });
                 }
+            })
+            wx.getSetting({
+            success: function (res) {
+                if (res.authSetting['scope.userInfo']) {
+                    //已经授权，可以直接调用 getUserInfo 获取头像昵称
+                    that.setData({
+                        show:true
+                    });
+                }
+              }
             })
     },
 

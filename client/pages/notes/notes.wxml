@@ -1,26 +1,39 @@
 <!--pages/notes/notes.wxml-->
 <view class='tip' wx:if="{{show == false}}">您暂时还没有发表过笔记哦</view>
-  <scroll-view class='note_list' scroll-y='true'>
-    <view class='note' wx:for='{{notes}}'>
-      <view class='cont' id='{{item.note_id}}' bindtap='toPut_note'>
+   <scroll-view class='note_list' scroll-y='true' wx:for='{{notes}}'>
+    <view class='note' id='{{item.note_id}}' bindtap='toPut_note'>
+      <view class='tab_list'>
+        <view class='name'>
+          {{item.user_name}}
+        </view> 
+        <view class='time'>
+          {{item.date}}
+        </view>
+      </view>
+      <view class='head'>
+        <image src='{{item.logo_url}}'></image>
+      </view>
+      <view class='cont'>
         <view>{{item.content}}</view>
       </view>
-      <view class='tab_list'>
-        <view class='time'>
-          {{item.date}}
-        </view>
+      <view class='border'>
       </view>
     </view>
-  </scroll-view>
-  <scroll-view class='voice_list' scroll-y='true'>
-    <view class='voice' wx:for='{{voice}}'>
-      <view class='voice_cont' id='{{item.voice_id}}'>
-        <audio controls="controls" name='{{item.name}}' author='{{item.user_name}}' src='{{item.url}}'></audio>
-      </view>
-      <view class='tab_list'>
+  </scroll-view> 
+  <scroll-view class='voice_list' scroll-y='true'  wx:for='{{voice}}'>
+    <view class='voice'>
+      <view class='tab_list2'>
+        <view class='name'>
+          {{item.user_name}}
+        </view>      
         <view class='time'>
           {{item.date}}
         </view>
+      </view>
+      <view class='voice_cont' id='{{item.voice_id}}'>
+        <audio poster='{{item.logo_url}}' controls="controls" name='{{item.name}}' author='{{item.user_name}}' src='{{item.url}}'></audio>
+      </view>
+      <view class='border2'>
       </view>
     </view>
   </scroll-view>

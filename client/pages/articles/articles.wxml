@@ -1,24 +1,32 @@
 <!--pages/articles/articles.wxml-->
 <view class='tip' wx:if="{{show == false}}">您暂时还没有发表过文章哦</view>
-  <scroll-view class='art_list' scroll-y='true'>
-    <view class='art' wx:for='{{articles}}'>
-      <view class='cont' id='{{item.article_id}}' bindtap='toPut_art'>
-        <view>{{item.content}}</view>
-        <view class='img' wx:if="{{item.img_url!=''}}">
-          <image src="{{item.img_url}}"></image>
-        </view>
-      </view>
+  <scroll-view class='art_list' scroll-y='true'  wx:for='{{articles}}'>
+    <view class='art' id='{{item.article_id}}' bindtap='toPut_art'>
       <view class='tab_list'>
+        <view class='name'>
+          {{user[0].user_name}}
+        </view>
         <view class='time'>
           {{item.date}}
         </view>
-        <view class='tab' bindtap='zan'>
+        <!-- <view class='tab' bindtap='zan'>
           <text class="iconfont icon-dianzan {{item.flag}}" data-id='{{item.article_id}}'>{{item.hits}}赞
           </text>
         </view>
         <view class='tab' id='{{item.article_id}}' bindtap='toPut_art'>
           <text class="iconfont icon-pinglun">评论</text>
-        </view>
+        </view> -->
+      </view>
+      <view class='head'>
+        <image src='{{user[0].logo_url}}'></image>
+      </view>
+      <view class='cont'>
+        <view>{{item.content}}</view>
+        <!-- <view class='img' wx:if="{{item.img_url!=''}}">
+          <image src="{{item.img_url}}"></image>
+        </view> -->
+      </view>
+      <view class='border'>
       </view>
     </view>
   </scroll-view>

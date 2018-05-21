@@ -61,7 +61,7 @@ class collectNote_model extends CI_Model {
     }
     public function select_voices_collect($user_id){
         $pdo = DB::getInstance();
-        $sql = "select * from collectvoice,voice,t_user where voice.voice_id=collectvoice.voice_id and voice.user_id=t_user.user_id and collectvoice.user_id = '$user_id'";
+        $sql = "select * from collectvoice,voice,t_user,words where words.words_id=voice.words_id and voice.voice_id=collectvoice.voice_id and voice.user_id=t_user.user_id and collectvoice.user_id = '$user_id'";
         $stmt = $pdo->prepare($sql);
         $stmt -> execute();
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);

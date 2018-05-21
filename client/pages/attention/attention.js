@@ -81,5 +81,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  toPut_note: function (e) {
+    wx.navigateTo({
+      url: '../put_note/put_note?id=' + e.currentTarget.id,
+    })
   }
 })

@@ -66,11 +66,11 @@
 .com_title{
   color: #848484;
   padding-left: 25rpx;
-  border-bottom: 1rpx solid #f2f2f2;
+  border-bottom: 10rpx solid #eee;
 }
 button{
   width: 100%;
-  background: #209E85;
+  background: #2ac395;
   color: #ffffff;
   position: fixed;
   left: 0;
@@ -85,9 +85,9 @@ button{
   display: flex;
   flex-direction:column;
   padding-bottom:50rpx;
-  margin-top:10rpx;  
   overflow: hidden;
   background: #ffffff;
+  border: 1rpx solid #eee;
 }
 .com_user{
   height: 90rpx;

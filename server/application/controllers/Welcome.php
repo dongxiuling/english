@@ -7,6 +7,13 @@ class Welcome extends CI_Controller {
 	{ 
     $this->load->view('welcome_message');
 	}
+  public function user_info()
+	{
+    $uid = $this->input->get('uid');
+		$this->load->model('user_model');
+		$info = $this->user_model->do_select_user($uid);
+		echo json_encode($info);
+	}
 	public function my_articles()
 	{
     $id = $this->input->get('id');

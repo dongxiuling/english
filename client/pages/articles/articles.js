@@ -5,8 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    head_url: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
-    imageurl: 'http://img.taopic.com/uploads/allimg/130613/318768-13061301200757.jpg',
+    user:'',
     articles:{},
     uid:'',
     the_id:'',
@@ -21,6 +20,16 @@ Page({
     this.data.uid = parseInt(options.id);
     this.data.id = parseInt(options.id); 
     var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/user_info',
+      responseType: 'text',
+      data: { uid: that.data.uid },
+      success: function (res) {
+        that.setData({
+          user:res.data
+        })
+      }
+    });
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Welcome/my_articles',
       responseType:'text',
@@ -48,6 +57,16 @@ Page({
    */
   onShow: function () {
     var that = this;
+    wx.request({
+      url: 'https://6kxrdzrv.qcloud.la/Welcome/user_info',
+      responseType: 'text',
+      data: { uid: that.data.uid },
+      success: function (res) {
+        that.setData({
+          user: res.data
+        })
+      }
+    });
     wx.request({
       url: 'https://6kxrdzrv.qcloud.la/Welcome/my_articles',
       responseType:'text',
