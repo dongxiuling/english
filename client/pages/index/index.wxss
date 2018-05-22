@@ -56,6 +56,14 @@ swiper{
   left:70rpx;
   top:65rpx;
 }
+.rank1 .photo-wrap{
+  width:132rpx;
+  height:164rpx;
+  position:absolute;
+  left:60rpx;
+  top:40rpx;
+
+}
 .rank1 .photo{
   width:116rpx;
   height:116rpx;

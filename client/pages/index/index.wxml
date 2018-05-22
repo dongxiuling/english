@@ -33,7 +33,7 @@
 
   </view> -->
   <view class="rank rank{{index+1}}" wx:for="{{rank}}">
-      <!-- <image class='photo-wrap' src="../../images/top-bg{{index+1}}.png"></image> -->
+       <image class='photo-wrap' src="../../images/photo{{index+1}}.png"></image> 
       <image class="photo" src="{{item.logo_url}}"></image>
       <view class='top-name'>{{item.user_name}}</view>
       <view class="top-money">{{item.coin}}金币</view>
