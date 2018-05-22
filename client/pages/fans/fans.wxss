@@ -2,6 +2,12 @@
 page{
   background-color: #eee;
 }
+.tip{
+  color: #000;
+  font-size: 32rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
 /*笔记开始*/
 .voice_list{
   background: #f2f2f2;

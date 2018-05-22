@@ -36,11 +36,13 @@ Page({
       data: { id: that.data.id},
       success:function(res){
         that.setData({
-          show: true
-        }),
-        that.setData({
-          articles:res.data
+          articles: res.data
         })
+        if(res.data!=''){
+          that.setData({
+            show: true
+          })
+        }
       }
     })
   },
@@ -73,11 +75,13 @@ Page({
       data: { id: that.data.id},
       success:function(res){
         that.setData({
-          show: true
-        }),
-        that.setData({
-          articles:res.data
+          articles: res.data
         })
+        if (res.data != '') {
+          that.setData({
+            show: true
+          })
+        }
       }
     })
   },

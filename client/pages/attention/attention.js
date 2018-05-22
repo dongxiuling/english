@@ -22,14 +22,14 @@ Page({
         uid: that.data.uid 
       },
       success: function (res) {
+        that.setData({
+          notes: res.data
+        })
         if (res.data != "") {
           that.setData({
             show: true
           })
         }
-        that.setData({
-          notes: res.data
-        })
       }
     })
   },

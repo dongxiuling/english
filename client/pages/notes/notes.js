@@ -26,11 +26,13 @@ Page({
       data: { id: that.data.id },
       success: function (res) {
         that.setData({
-          show: true
-        })
-        that.setData({
           notes: res.data
         })
+        if (res.data != '') {
+          that.setData({
+            show: true
+          })
+        }
       }
     })
     wx.request({
@@ -66,11 +68,13 @@ Page({
       data: { id: that.data.id },
       success: function (res) {
         that.setData({
-          show: true
-        })
-        that.setData({
           notes: res.data
         })
+        if (res.data != '') {
+          that.setData({
+            show: true
+          })
+        }
       }
     })
     wx.request({
