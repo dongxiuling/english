@@ -15,7 +15,6 @@ page{
 .tab .green{
   color: #209e85;
 }
-
 .header{
   background: #fff;
   padding-top: 10rpx;
@@ -157,7 +156,7 @@ page{
   line-height: 70rpx;
   float: right;
 }
-.tab text.iconfont{
+.tab text{
   font-size: 28rpx;
   color: #999999; 
 }

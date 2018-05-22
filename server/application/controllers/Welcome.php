@@ -91,8 +91,6 @@ class Welcome extends CI_Controller {
 		$art = $this->art_model->zan_this2($id,$uid);
 		echo json_encode($art);
 	}
-
- 
   public function cancel2(){
 		$id = $this->input->get('id');
     $uid = $this->input->get('uid');
