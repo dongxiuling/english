@@ -43,7 +43,7 @@
   <view class='wrapper voice' wx:if="{{show==false}}" id='commit' wx:for='{{voiceFile}}'>
       <view id='content-line'>
         <image id='bookIcon'src='../../images/book.png'></image>
-        <text class='title' id='book'>笔记111</text>     
+        <text class='title' id='book'>语音</text>     
       </view>
         <text id='cont'>{{}}</text>
         <image src='../../images/trum.png' id='playVoice' bindtap='createVoice' data-id='{{item.voice_id}}' data-num='{{index}}'></image>
