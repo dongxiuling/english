@@ -4,6 +4,7 @@
     "pages/myInfo/myInfo",
     "pages/help/help",
     "pages/money/gords/gords",
+    "pages/money/goods/goods",
     "pages/login/login",
     "pages/private_message/alter/alter",
     "pages/private_message/private_message",
