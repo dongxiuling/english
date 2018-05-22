@@ -1,45 +1,33 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/myInfo/myInfo",
-    "pages/help/help",
-    
-   
-    
-    "pages/money/gords/gords",
-   
-    "pages/login/login",
-   
-    "pages/private_message/alter/alter",
-   
-    "pages/private_message/private_message",
-    
-   
+    "pages/money/goods/goods",
     "pages/money/money",
-    
-   
-   
-   
-    "pages/fans/fans",
-    "pages/attention/attention",
-   
-    "pages/addCgi/addCgi",
-    "pages/forum/forum",
-    "pages/createNote/createNote",
-    "pages/word/word",
-    "pages/issue/issue",
-    "pages/put_art/put_art",
-    "pages/aboutus/aboutus",
+    "pages/private_message/private_message",
+    "pages/login/login",
+    "pages/put_note/put_note",
     "pages/articles/articles",
-    "pages/notes/notes",
-    "pages/put_note/put_note"
+    "pages/help/help",
+    "pages/fans/fans",
+    "pages/put_art/put_art",
+    "pages/issue/issue",
+    "pages/word/word",
+    "pages/forum/forum",
+    "pages/myInfo/myInfo",
+    "pages/attention/attention",
+    "pages/createNote/createNote",
+    "pages/index/index",
+    "pages/addCgi/addCgi",
+    "pages/aboutus/aboutus",
+    "pages/money/gords/gords",
+    "pages/private_message/alter/alter",
+    "pages/notes/notes"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#2ac395",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#2ac395",
+    "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "Wafer Quick Start",
-    "navigationBarTextStyle": "#ffffff"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "list": [
@@ -62,6 +50,6 @@
         "text": "我的"
       }
     ],
-    "selectedColor": "#2ac395"
+    "selectedColor": "#1f9e83"
   }
 }

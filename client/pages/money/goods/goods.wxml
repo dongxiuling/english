@@ -1,0 +1,15 @@
+<!--pages/money/gords/gords.wxml-->
+<view class='head'>
+  <image src='../../../images/goods-bg.png'></image>
+</view>
+<view class='body'>
+   <view class='gord' wx:for='{{goods}}' wx:for-item='item'style='{{item.number==0?"display:none":""}}'>
+      <image class='logo' src="{{item.img_url}}"></image>
+      <view class='detel'>
+          <text class='name'>{{item.name}}</text>
+          <text class='privce'>{{item.price}}金币</text>
+          <text class='number'>剩余:<text>{{item.number}}</text></text>
+      </view>
+      <view class='duihuan' bindtap='bind' data-id='{{item.goods_id}}' data-num='{{item.number}}' data-price='{{item.price}}' data-yue='{{num}}'>兑换</view>
+   </view>
+</view>

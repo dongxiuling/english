@@ -6,17 +6,20 @@
 </view> -->
 <view class='body'>
    <view class='money'>
-    <text class='mymoney'>我的金币:</text>
+     <navigator class='quduihuan' url='goods/goods'>
+    <text class='mymoney'>我的金币</text>
     <text class='num'>{{num}}</text>
-    <navigator class='quduihuan' url='gords/gords'>去兑换</navigator>
+    </navigator>
+    <!-- <navigator class='quduihuan' url='gords/gords'>去兑换</navigator> -->
    </view>
-   <view class='rule'>
+   <view class='rule' style='padding:0rpx 20rpx;'>
+     <text class='rules' style='font-size:42rpx;text-align:center;'>如何赚取金币</text>
      <text class='rules'>发表一篇文章+5金币</text>
-     <text class='rules'>发表一篇笔记+3金币</text>
-     <text class='rules'>每日签到+1金币</text>
+     <text class='rules'>评论一篇文章+3金币</text>
    </view>
    <view class='gord'>
-     <text class='gords'>1000金币可兑换英语四六级书1本</text>
+     <text class='gords' style='font-size:42rpx;text-align:center;'>我能兑换什么</text>
+     <text class='gords'>1000金币可兑换英语六级书1本</text>
      <text class='gords'>2000金币可兑换小米充电宝1个</text>
      <text class='gords'>3000金币可兑换小米耳机1个</text>
    </view>

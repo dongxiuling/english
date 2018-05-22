@@ -1,1 +1,5 @@
-{"navigationBarTitleText": "修改个人信息"}
+{
+  "navgationBarTextStyle": "#fff",
+  "navigationBarBackgroundColor": "#2ac395",
+  "navigationBarTitleText": "修改个人信息"
+}

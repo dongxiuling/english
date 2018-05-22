@@ -1,4 +1,5 @@
 // pages/money/gords/gords.js
+//555
 Page({
 
   /**
