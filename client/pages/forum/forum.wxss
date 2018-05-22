@@ -18,6 +18,7 @@ page{
 .header{
   background: #fff;
   padding-top: 10rpx;
+  padding-bottom:20rpx;
 }
 .header-line{
   width: 92%;

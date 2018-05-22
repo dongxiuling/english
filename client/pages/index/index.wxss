@@ -17,6 +17,7 @@ swiper{
 .article-box{
   background: #fff;
   overflow:hidden;
+  padding-bottom:20rpx;
 }
 /* 排行榜 */
 .ranking-list{
