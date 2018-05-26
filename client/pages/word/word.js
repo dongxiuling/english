@@ -208,7 +208,7 @@ Page({
   //播放单词语音
   audioPlay:function(){
     console.log(this.data.audioSrc)
-    const innerAudioContext = wx.createInnerAudioContext()
+    
     innerAudioContext.autoplay = true,
       innerAudioContext.src = this.data.audioSrc,
       innerAudioContext.onPlay(() => {
@@ -325,7 +325,7 @@ Page({
   createVoice: function (e) {
     var that = this;
     var num = e.target.dataset.num;
-    const innerAudioContext = wx.createInnerAudioContext()
+    
     innerAudioContext.autoplay = true,
       innerAudioContext.src = that.data.voiceFile[num].url,
       innerAudioContext.onPlay(() => {
