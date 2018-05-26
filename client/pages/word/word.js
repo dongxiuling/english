@@ -205,7 +205,7 @@ Page({
     })
    
   },
-  //播放语音
+  //播放单词语音
   audioPlay:function(){
     console.log(this.data.audioSrc)
     const innerAudioContext = wx.createInnerAudioContext()
@@ -265,54 +265,54 @@ Page({
                 that.setData({
                   wordsId: res.data
                 });
-              }
-            })
-            wx.uploadFile({
-              url: 'https://6kxrdzrv.qcloud.la/Voice/upVoiceFile',
-              filePath: that.data.voicePath,
-              name: 'file',
-              success: function (data) {
-                let str = 'https://6kxrdzrv.qcloud.la/' + data.data.replace('./', '');
-                that.setData({
-                  upvoicePath: str
-                });
-                wx.request({
-                  url: 'https://6kxrdzrv.qcloud.la/Words/selectWords',
-                  data:{
-                    name: that.data.word
-                  },
-                  success:function(res){
+                wx.uploadFile({
+                  url: 'https://6kxrdzrv.qcloud.la/Voice/upVoiceFile',
+                  filePath: that.data.voicePath,
+                  name: 'file',
+                  success: function (data) {
+                    let str = 'https://6kxrdzrv.qcloud.la/' + data.data.replace('./', '');
                     that.setData({
-                      wordsId: res.data[0].words_id
+                      upvoicePath: str
                     });
                     wx.request({
-                      url: 'https://6kxrdzrv.qcloud.la/Voice/insertVoice',
+                      url: 'https://6kxrdzrv.qcloud.la/Words/selectWords',
                       data: {
-                        Voice_url: that.data.upvoicePath,
-                        user_id: user,
-                        wordsId: that.data.wordsId
+                        name: that.data.word
                       },
-                      success:function(){
+                      success: function (res) {
+                        that.setData({
+                          wordsId: res.data[0].words_id
+                        });
                         wx.request({
-                          url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
+                          url: 'https://6kxrdzrv.qcloud.la/Voice/insertVoice',
                           data: {
-                            words_id: that.data.wordsId
+                            Voice_url: that.data.upvoicePath,
+                            user_id: user,
+                            wordsId: that.data.wordsId
                           },
-                          success: function (res) {
-                            console.log(res);
-                            that.setData({
-                              voiceFile: res.data
-                            });
-
+                          success: function () {
+                            wx.request({
+                              url: 'https://6kxrdzrv.qcloud.la/Voice/select_voice',
+                              data: {
+                                words_id: that.data.wordsId
+                              },
+                              success: function (res) {
+                                console.log(res);
+                                that.setData({
+                                  voiceFile: res.data
+                                });
+                              }
+                            })
                           }
                         })
                       }
                     })
+
                   }
                 })
-               
               }
             })
+           
           } else if (res.cancel) {
             console.log('用户点击取消')
           }
@@ -321,14 +321,12 @@ Page({
 
     })
   },
-
+//播放语音
   createVoice: function (e) {
-
     var that = this;
     var num = e.target.dataset.num;
     const innerAudioContext = wx.createInnerAudioContext()
     innerAudioContext.autoplay = true,
-
       innerAudioContext.src = that.data.voiceFile[num].url,
       innerAudioContext.onPlay(() => {
         console.log('开始播放')

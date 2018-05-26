@@ -54,6 +54,6 @@
   </view>
   <view class='wrapper'>
       <text class='go' id='goOne' bindtap='goCreate'>去翻译</text>
-      <text class='go' id='goTwo' bindtouchstart='start' bindtouchend='end'>去发音</text>
+      <text class='go' id='goTwo' bindtouchstart='start' bindtouchend='end'>按住发音</text>
   </view>
 </view>
