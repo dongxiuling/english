@@ -10,7 +10,9 @@
           <text class='title' id='word'>{{word}}</text>
           <image id='trumIcon'src='../../images/trum.png' bindtap='audioPlay'></image>
         </view>
-        <text id='cont'>{{cont}}</text>
+        <text id='cont'>{{cont[0]}}</text>
+        <text id='cont'>{{cont[1]}}</text>
+        <text id='cont'>{{cont[2]}}</text>
   </view>
 
   <view class='wrapper' id='sentence_box'>
