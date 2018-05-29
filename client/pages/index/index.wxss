@@ -185,15 +185,26 @@ page{
 .head input{
    float:left;
    font-size: 28rpx;
-   width: 80%;
+   width:520rpx;
    padding-left: 78rpx;
   opacity: 0.8;
    margin:0 auto;
    background: #eee;
-   border-radius:5rpx;
+   border-radius:5rpx 0 0 5rpx;
    height:60rpx;
    line-height: 60rpx;
    color:#928dad;
+}
+.head text{
+  width:90rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  background:#2ac395;
+  float:left;
+  border-radius: 0 5rpx 5rpx 0;
+  color:#fff;
+  font-size: 28rpx;
+  text-align: center;
 }
 
 /*搜索框结束*/
