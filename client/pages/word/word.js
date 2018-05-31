@@ -19,7 +19,13 @@ Page({
     audioSrc:'',
     sentence:{},
     numss:1,
-    wordsId:''
+    wordsId:'',
+    usPhonetic: "",
+    ukPhonetic:"",
+    colorOne:'#fff',
+    bgColorOne:'#29c394',
+    colorTwo:'#29c394',
+    bgColorTwo:'#fff'
   },
 
   /**
@@ -52,16 +58,25 @@ Page({
       },
       success:function(res){
         console.log(res);
+        console.log(res.data.basic);
         if (reg.test(query)) {
           that.setData({
             word: res.data.query,
             audioSrc: res.data.tSpeakUrl,
+            usPhonetic:res.data.basic['us-phonetic'],
+            usAudio:res.data.basic['us-speech'],
+            ukPhonetic: res.data.basic['uk-phonetic'],
+            ukAudio:res.data.basic['uk-speech'],
             cont: res.data.basic.explains
           });
         } else {
           that.setData({
             word: res.data.query,
             audioSrc: res.data.speakUrl,
+            usPhonetic: res.data.basic['us-phonetic'],
+            usAudio: res.data.basic['us-speech'],
+            ukPhonetic: res.data.basic['uk-phonetic'],
+            ukAudio: res.data.basic['uk-speech'],
             cont: res.data.basic.explains
           });
         }
@@ -195,22 +210,42 @@ Page({
   
   changeShow: function () {
     this.setData({
-      show: true
+      show: true,
+      colorOne: '#fff',
+      bgColorOne: '#29c394',
+      colorTwo: '#29c394',
+      bgColorTwo: '#fff'
     })
     // console.log(this.data.show);
   },
   changeShowVoice: function () {
     this.setData({
-      show: false
+      show: false,
+      colorOne: '#29c394',
+      bgColorOne: '#fff',
+      colorTwo: '#fff',
+      bgColorTwo: '#29c394'
     })
    
   },
-  //播放单词语音
-  audioPlay:function(){
-    console.log(this.data.audioSrc)
-    
+  
+
+  //美式发音
+  usVoice:function(){
     innerAudioContext.autoplay = true,
-      innerAudioContext.src = this.data.audioSrc,
+      innerAudioContext.src = this.data.usAudio,
+      innerAudioContext.onPlay(() => {
+        console.log('开始播放')
+      })
+    innerAudioContext.onError((res) => {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
+  },
+  //英式发音
+  ukVoice: function () {
+    innerAudioContext.autoplay = true,
+      innerAudioContext.src = this.data.ukAudio,
       innerAudioContext.onPlay(() => {
         console.log('开始播放')
       })

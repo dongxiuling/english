@@ -1,14 +1,11 @@
-page{
-  background-color: #eeeeee;
-}
+
 .wrapper{
    width: 690rpx;
    margin: 0 auto;
 }
 
 /*搜索框开始*/
-.head{
-   width: 100%;
+.head{ 
    position: relative;
    height: 100rpx;
    line-height: 100rpx;
@@ -17,24 +14,23 @@ page{
 .head icon{
    position: absolute;
    left: 4rpx;
-   top:15rpx ;
-   margin-left: 20rpx;
+   top:15rpx ;  
 }
 .head input{
    float:left;
    font-size: 24rpx;
-   width: 75%;
-   padding-left: 40rpx;
-   margin-left:10rpx; 
-   border: 1rpx solid #ccc;
-   border-radius: 50rpx;
+   width: 82%;
+   padding-left: 40rpx;   
+   border: 2rpx solid #ccc;
+   border-radius: 10rpx;
    height: 70rpx;
    margin-top: 10rpx;
-   background: #eeeeee;
+   
 }
 #header{
   overflow: hidden;
   background: #fff;
+  width:690rpx;
   border-bottom: 1rpx solid #e1e1e1
 }
 
@@ -45,46 +41,75 @@ page{
   line-height: 100rpx;
   color: #919191;
   font-size: 30rpx;
-  margin-right: 30rpx;
 }
 /*搜索框结束*/
+/*fayin  */
+#speak{
+  color: #666666;
+  font-size: 35rpx
+}
+.box-right{
 
+  
+}
 #commit{
-  height: 280rpx; 
+ 
   border: 1rpx solid #e1e1e1;
   background: #fff;
   margin-top:30rpx;
+  border-radius: 10rpx;
+  box-shadow: 0 0 1rpx #b8b8b8;
+  padding-bottom:20rpx;
 }
-#sentence_box{
-  border: 1rpx solid #e1e1e1;
-  background: #fff;
-  margin-top:30rpx;
-}
+
 #content-line{
-  padding: 10rpx;
+  width: 92%;
+  margin: 0 auto;
   border-bottom:1rpx solid #e1e1e1;
+  padding-top:20rpx;
+  padding-bottom:30rpx;
+  margin-bottom:20rpx;
 }
+#commit .select{
+  margin-bottom:20rpx;
+}
+#content-line .country{
+  margin-top:20rpx;
+  
+}
+
+
 
 /*内容开始*/
+
 .title{
-  color: #209e85;
-  font-size: 50rpx;
-  margin-left: 20rpx
+  color: #333;
+  font-size: 40rpx;
+  font-weight:200;
+  
+}
+#trum-box{ 
+  height: 50rpx;
+  line-height: 50rpx;
+  display: inline-block;
+}
+.box-right{
+  margin-left:40rpx;
 }
 #trumIcon{
   width: 40rpx;
   height: 40rpx;
-  float: right;
-  margin-top: 13rpx;
-  margin-right: 13rpx;
-  padding-left:10rpx;
-  border-left: 3rpx solid #e1e1e1;
+  vertical-align: middle; 
+}
+#speak{
+  vertical-align: middle;
+  margin-left:10rpx;
 }
 #cont{
   color: #a7a7a7;
   font-size: 30rpx;
-  padding-left:20rpx;
-  padding-right: 20rpx;
+  padding-left:35rpx;
+  padding-right: 35rpx;
   display: -webkit-box;
   word-break: break-all;
   -webkit-box-orient: vertical;
@@ -109,6 +134,15 @@ page{
   overflow: hidden;
   text-overflow:ellipsis;
 }
+#sentence_box{
+  height: 310rpx; 
+  border: 1rpx solid #e1e1e1;
+  box-shadow: 0 0 1rpx #b8b8b8;
+  background: #fff;
+  border-radius: 10rpx;
+  margin-top:30rpx;
+  padding-bottom:20rpx;
+}
 #word-two{
   color: #616161;
   font-size:35rpx; 
@@ -122,46 +156,35 @@ page{
   overflow: hidden;
   text-overflow:ellipsis;
 }
+
+
 /*例句结束*/
 /*笔记开始*/
 
-#bookIcon{
-  width: 40rpx;
-  height: 40rpx;
-  float: left;
-  margin: 13rpx;
-}
-
-#rightIcon{
-  width: 40rpx;
-  height: 40rpx;
-  float: right;
-  margin-top: 13rpx;
-  margin-right: 13rpx;
-  padding-left:10rpx;
-  border-left: 3rpx solid #e1e1e1;
-}
 #auther{
+  
+  margin-top:15%;
+  display: inline-block;
   color: grey;
   font-size: 30rpx;
-  padding-left:20rpx 
+  padding-left:35rpx 
 }
 .green{
  display: none;
 }
 .starIcon{
+  margin-top: 15%;
   width: 30rpx;
   height: 30rpx;
   float: right;
-  margin-right:10rpx;
-  padding-bottom: 30rpx
+  margin-right:15rpx;
 }
 #playVoice{
   width: 40rpx;
   height:40rpx;
   margin-left: 20rpx;
 }
-/*笔记结束*/
+
 .range{
   overflow: hidden;
 }
@@ -169,25 +192,32 @@ page{
   width: 200rpx;
   height: 80rpx;
   line-height: 80rpx;
-  border: 1px solid #209e85;
-  color: #fff;
-  background: #209e85;
+  border: 1px solid #29c394; 
   border-radius: 15rpx;
   text-align: center;
   margin-top: 50rpx;
-  float: left;
+  float: left;   
   margin-right: 40rpx;
 }
+
+
 #goOne{
-  float: left;
-  margin-left: 100rpx;
+  color:#fff;
+  background:#29c394;
+  width: 300rpx;
+  float: left; 
+ 
 }
 #goTwo{
+  color:#fff;
+  background:#29c394;
+  width: 300rpx;
   float: right;
-  margin-right: 100rpx
+ 
+  margin-right: 10rpx;
 }
 .sentence{
   font-size: 32rpx;
   color: rgba(0, 0, 0, 0.6);
-  margin: 20rpx 20rpx;
+  margin: 20rpx 32rpx;
 }

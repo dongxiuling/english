@@ -1,8 +1,10 @@
 {
   "pages": [
+   
     "pages/index/index",
     "pages/myInfo/myInfo",
     "pages/help/help",
+    "pages/word/word",
     "pages/money/gords/gords",
     "pages/money/goods/goods",
     "pages/login/login",
@@ -14,7 +16,7 @@
     "pages/addCgi/addCgi",
     "pages/forum/forum",
     "pages/createNote/createNote",
-    "pages/word/word",
+   
     "pages/issue/issue",
     "pages/put_art/put_art",
     "pages/aboutus/aboutus",
