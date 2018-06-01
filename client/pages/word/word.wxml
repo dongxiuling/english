@@ -1,9 +1,9 @@
 <view>
-  <view class='wrapper head' id='header'>
+  <!-- <view class='wrapper head' id='header'>
         <icon type='search' size='13'></icon>
         <input placeholder='查询中文或英文'></input>
         <text id='cancel' bindtap='backIndex'>取消</text>
-  </view>
+  </view> -->
 
   <view class='wrapper' id='commit'> 
         <view id='content-line' class="select">
