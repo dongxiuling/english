@@ -232,27 +232,44 @@ Page({
 
   //美式发音
   usVoice:function(){
-    innerAudioContext.autoplay = true,
+    const innerAudioContext = wx.createInnerAudioContext();
+    // innerAudioContext.autoplay = true,//用它播放iphone播放不了，不支持，安卓可以播放
       innerAudioContext.src = this.data.usAudio,
+      console.log(this.data.usAudio);
+      innerAudioContext.play();      ////兼容起见用它
       innerAudioContext.onPlay(() => {
-        console.log('开始播放')
+        console.log('开始播放test')
       })
+    innerAudioContext.onEnded(() => {
+      console.log('test播放结束')
+      // that.setData({ audioStatus: false })
+      //播放结束，销毁该实例
+      innerAudioContext.destroy()
+    })
     innerAudioContext.onError((res) => {
-      console.log(res.errMsg)
-      console.log(res.errCode)
+      innerAudioContext.destroy();
+      console.log('test播放结束')
     })
   },
   //英式发音
   ukVoice: function () {
-    innerAudioContext.autoplay = true,
+    const innerAudioContext = wx.createInnerAudioContext();
+    // innerAudioContext.autoplay = true,
       innerAudioContext.src = this.data.ukAudio,
+      innerAudioContext.play(); 
       innerAudioContext.onPlay(() => {
         console.log('开始播放')
       })
-    innerAudioContext.onError((res) => {
-      console.log(res.errMsg)
-      console.log(res.errCode)
-    })
+      innerAudioContext.onEnded(() => {
+        console.log('test播放结束')
+        // that.setData({ audioStatus: false })
+        //播放结束，销毁该实例
+        innerAudioContext.destroy()
+      })
+      innerAudioContext.onError((res) => {
+        innerAudioContext.destroy();
+        console.log('test播放结束')
+      })
   },
  
   
@@ -360,15 +377,27 @@ Page({
   createVoice: function (e) {
     var that = this;
     var num = e.target.dataset.num;
-    
-    innerAudioContext.autoplay = true,
+    const innerAudioContext = wx.createInnerAudioContext();
+    // innerAudioContext.autoplay = true,
       innerAudioContext.src = that.data.voiceFile[num].url,
+      innerAudioContext.play(); 
       innerAudioContext.onPlay(() => {
-        console.log('开始播放')
+        console.log('play1开始播放');
       })
+
+    innerAudioContext.onEnded(() => {
+      console.log('play1播放结束');
+      // that.setData({ audioStatus: false })
+      //播放结束，销毁该实例
+      innerAudioContext.destroy()
+
+    })
+
+
     innerAudioContext.onError((res) => {
-      console.log(res.errMsg)
-      console.log(res.errCode)
+      // console.log(res.errMsg)
+      // console.log(res.errCode)
+      innerAudioContext.destroy();
     })
   },
 

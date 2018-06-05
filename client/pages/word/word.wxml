@@ -9,12 +9,12 @@
         <view id='content-line' class="select">
           <text class='title' id='word'>{{word}}</text>
           <view class="country">
-            <view id='trum-box' class='box-left'>
-            <image id='trumIcon'src='../../images/trum.png' bindtap="usVoice"></image>
+            <view id='trum-box' class='box-left' bindtap="usVoice">
+            <image id='trumIcon'src='../../images/trum.png' ></image>
             <text id='speak' >美 [{{usPhonetic}}]</text>
           </view>
-          <view id='trum-box' class='box-right'>
-            <image id='trumIcon'src='../../images/trum.png' bindtap="ukVoice"></image>
+          <view id='trum-box' class='box-right' bindtap="ukVoice">
+            <image id='trumIcon'src='../../images/trum.png' ></image>
             <text id='speak' >英 [{{ukPhonetic}}]</text>
           </view>
           </view>
