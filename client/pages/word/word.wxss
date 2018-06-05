@@ -135,7 +135,7 @@
   text-overflow:ellipsis;
 }
 #sentence_box{
-  height: 310rpx; 
+  /* height: 310rpx;  */
   border: 1rpx solid #e1e1e1;
   box-shadow: 0 0 1rpx #b8b8b8;
   background: #fff;
